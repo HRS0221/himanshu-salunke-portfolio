@@ -63,6 +63,7 @@ export default defineConfig({
     target: 'esnext',
     sourcemap: true,
     rollupOptions: {
+      external: ['canvas', 'fs', 'path'],
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],

@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useParams } from 'react-router-dom'
-import { generateOGImageForArticle } from '../../utils/ogImageGenerator'
+// Simple client-side OG image generator
+const generateOGImageForArticle = (article: any) => {
+  if (!article) return '/images/og/home.jpg'
+  return `/images/og/${article.title.toLowerCase().replace(/\s+/g, '-')}.jpg`
+}
 
 const Article: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
