@@ -1,0 +1,20 @@
+// Site configuration for meta data and SEO
+export const SITE_CONFIG = {
+  name: "Himanshu's Portfolio",
+  author: "Himanshu",
+  twitterHandle: "@yourusername", // Update this with actual Twitter handle
+  description: "Portfolio showcasing modern web development projects and AI/ML solutions",
+  url: process.env.NODE_ENV === 'production' 
+    ? 'https://your-domain.com' // Update with actual domain
+    : 'http://localhost:3000',
+  themeColor: "#3b82f6",
+  language: "en"
+} as const
+
+// Helper function to get current URL safely
+export const getCurrentUrl = (): string => {
+  if (typeof window !== 'undefined') {
+    return window.location.href
+  }
+  return SITE_CONFIG.url
+}

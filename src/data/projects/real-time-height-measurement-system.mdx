@@ -1,0 +1,145 @@
+---
+id: "real-time-height-measurement-system"
+title: "Real-Time Height Measurement System"
+summary: "Achieved ±2cm precision accuracy using MediaPipe and Kalman filtering. Delivered 30 FPS real-time processing with <100ms latency using FastAPI backend."
+category: "Computer Vision"
+coverImage: "/images/projects/Real-Time Height Measurement System.jpg"
+date: "2025-09-07"
+techStack:
+  - "Python"
+  - "FastAPI"
+  - "MediaPipe"
+  - "OpenCV"
+  - "React"
+  - "TypeScript"
+  - "WebSockets"
+  - "TensorFlow"
+  - "Computer Vision"
+  - "Real-time Processing"
+featured: true
+status: "Completed"
+metrics:
+  - label: "Accuracy"
+    value: "±2cm"
+  - label: "Processing Speed"
+    value: "30 FPS"
+  - label: "Latency"
+    value: "<100ms"
+  - label: "Confidence"
+    value: "70-95%"
+githubUrl: "https://github.com/HRS0221/Real-Time-Height-Measurement-System"
+liveUrl: ""
+publishedAt: "2025-09-07"
+order: 1
+completionDate: "2025-09-07"
+images:
+  - "/images/projects/Real-Time Height Measurement System.jpg"
+  - "/images/projects/HeightMeasurement.jpg"
+link: "https://github.com/HRS0221/Real-Time-Height-Measurement-System"
+outputLink:
+tag: "Computer Vision"
+---
+
+## Key Achievements
+
+- **Achieved ±2cm precision accuracy** as measured by real-world testing by implementing advanced computer vision with MediaPipe holistic pose detection and Kalman filtering for smooth measurements.
+
+- **Delivered 30 FPS real-time processing** with <100ms latency as measured by performance benchmarks by optimizing FastAPI backend with CUDA 11.7 GPU acceleration and efficient WebSocket communication.
+
+- **Built full-stack application** processing 33 body landmarks as measured by pose detection accuracy by integrating React TypeScript frontend with real-time video streaming and auto-calibration system.
+
+## Performance Optimizations
+
+### AI-Powered Detection
+- **MediaPipe Integration**: Google's ML framework for 33 precise body landmarks
+- **Smart Auto-Calibration**: Uses torso length with 40 samples and outlier filtering
+- **Advanced Filtering**: Kalman filter ensures smooth, stable measurements
+- **GPU Acceleration**: Leverages CUDA 11.7 for faster processing
+
+### Real-time Processing
+- **WebSocket Communication**: Real-time video processing with auto-calibration
+- **Dual Unit Display**: Shows height in both centimeters and feet/inches
+- **Modern UI**: Beautiful glassmorphism design with real-time visual feedback
+- **Cross-Platform**: Works across all major browsers and devices
+
+## Technical Implementation
+
+### Core Architecture
+```python
+# MediaPipe Holistic Detection
+def process_frame(frame):
+    # Convert BGR to RGB
+    rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    
+    # Process with MediaPipe
+    results = holistic.process(rgb_frame)
+    
+    if results.pose_landmarks:
+        # Extract key landmarks
+        landmarks = results.pose_landmarks.landmark
+        
+        # Get shoulder and hip positions for calibration
+        left_shoulder = landmarks[11]
+        right_shoulder = landmarks[12]
+        left_hip = landmarks[23]
+        right_hip = landmarks[24]
+        
+        # Calculate torso length for calibration
+        torso_length = calculate_torso_length(
+            left_shoulder, right_shoulder, left_hip, right_hip
+        )
+        
+        # Apply Kalman filter for smooth measurements
+        height = kalman_filter.update(calculate_height(landmarks))
+        
+        return height, confidence
+
+# Auto-Calibration System
+def auto_calibrate(samples):
+    # Collect 40 samples for robust calibration
+    torso_lengths = []
+    for sample in samples:
+        if sample.confidence > 0.7:  # 70% visibility threshold
+            torso_lengths.append(sample.torso_length)
+    
+    # Trim 10% of extreme values for accuracy
+    torso_lengths.sort()
+    trim_count = int(len(torso_lengths) * 0.1)
+    trimmed_lengths = torso_lengths[trim_count:-trim_count]
+    
+    return np.mean(trimmed_lengths)
+```
+
+## Results & Performance Metrics
+
+- **Accuracy**: ±2cm precision across diverse lighting conditions
+- **Processing Speed**: 30 FPS real-time processing with GPU acceleration
+- **Latency**: <100ms response time for real-time feedback
+- **Confidence**: 70-95% detection confidence with auto-calibration
+- **Height Range**: 120-220cm supported with robust landmark detection
+- **Memory Usage**: ~512MB RAM with optimized processing
+
+## Technical Challenges Overcome
+
+### Real-time Processing
+**Challenge**: Processing video frames in real-time with high accuracy
+**Solution**: Implemented MediaPipe with CUDA 11.7 GPU acceleration and WebSocket communication
+**Result**: 30 FPS processing with <100ms latency while maintaining ±2cm accuracy
+
+### Auto-Calibration
+**Challenge**: Accurate height measurement without manual calibration
+**Solution**: Developed smart auto-calibration using torso length with 40 samples and outlier filtering
+**Result**: Robust calibration system with 70% visibility threshold and 10% outlier trimming
+
+### Cross-Platform Compatibility
+**Challenge**: Ensuring consistent performance across different devices and browsers
+**Solution**: Built responsive React frontend with WebRTC camera access and modern UI design
+**Result**: Cross-platform compatibility with beautiful glassmorphism design
+
+## What I Learned
+
+- **Computer Vision**: Deep understanding of pose detection and landmark tracking with MediaPipe
+- **Real-time Processing**: WebSocket communication and GPU acceleration techniques
+- **Full-Stack Development**: Integrating Python FastAPI backend with React TypeScript frontend
+- **Mathematical Filtering**: Kalman filter implementation for smooth measurements
+- **Auto-Calibration**: Advanced calibration techniques for computer vision applications

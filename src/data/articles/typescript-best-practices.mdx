@@ -1,0 +1,423 @@
+---
+title: "TypeScript Best Practices for Modern Development"
+slug: "typescript-best-practices"
+date: "2025-01-08"
+coverImage: "/images/articles/typescript-cover.webp"
+tags:
+  - "TypeScript"
+  - "JavaScript"
+  - "Development"
+author: "Jane Smith"
+readTime: 12
+excerpt: "Learn essential TypeScript best practices that will make your code more maintainable, type-safe, and developer-friendly."
+---
+
+# TypeScript Best Practices for Modern Development
+
+TypeScript has become the de facto standard for building large-scale JavaScript applications. In this comprehensive guide, we'll explore the best practices that will help you write more maintainable, type-safe, and efficient TypeScript code.
+
+## 1. Use Strict Mode
+
+Always enable strict mode in your TypeScript configuration. This provides the maximum type safety and catches potential issues early.
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  }
+}
+```
+
+## 2. Leverage Type Inference
+
+TypeScript's type inference is powerful. Let it work for you instead of explicitly typing everything.
+
+```typescript
+// ❌ Unnecessary explicit typing
+const name: string = "John"
+const age: number = 30
+const isActive: boolean = true
+
+// ✅ Let TypeScript infer the types
+const name = "John"
+const age = 30
+const isActive = true
+```
+
+## 3. Use Union Types for Flexibility
+
+Union types allow you to express values that can be one of several types.
+
+```typescript
+// Status can be one of three specific strings
+type Status = "loading" | "success" | "error"
+
+// Function parameter can be string or number
+function formatId(id: string | number): string {
+  return id.toString()
+}
+
+// React component props
+interface ButtonProps {
+  variant: "primary" | "secondary" | "outline"
+  size: "sm" | "md" | "lg"
+  disabled?: boolean
+}
+```
+
+## 4. Create Reusable Type Definitions
+
+Define types once and reuse them throughout your application.
+
+```typescript
+// types/user.ts
+export interface User {
+  id: string
+  name: string
+  email: string
+  createdAt: Date
+  updatedAt: Date
+}
+
+export type UserRole = "admin" | "user" | "moderator"
+
+export interface UserWithRole extends User {
+  role: UserRole
+}
+
+// components/UserCard.tsx
+import { User } from "../types/user"
+
+interface UserCardProps {
+  user: User
+  onEdit: (user: User) => void
+}
+```
+
+## 5. Use Generic Types
+
+Generics provide flexibility while maintaining type safety.
+
+```typescript
+// Generic API response type
+interface ApiResponse<T> {
+  data: T
+  status: number
+  message: string
+}
+
+// Usage
+type UserResponse = ApiResponse<User>
+type ProductResponse = ApiResponse<Product[]>
+
+// Generic function
+function createApiCall<T>(endpoint: string): Promise<ApiResponse<T>> {
+  return fetch(endpoint).then(res => res.json())
+}
+
+// Usage
+const users = await createApiCall<User[]>("/api/users")
+const products = await createApiCall<Product[]>("/api/products")
+```
+
+## 6. Use Utility Types
+
+TypeScript provides powerful utility types that can save you time and make your code more maintainable.
+
+```typescript
+interface User {
+  id: string
+  name: string
+  email: string
+  password: string
+  createdAt: Date
+}
+
+// Create a type without sensitive fields
+type PublicUser = Omit<User, "password">
+
+// Create a type with only specific fields
+type UserSummary = Pick<User, "id" | "name" | "email">
+
+// Make all fields optional
+type PartialUser = Partial<User>
+
+// Make all fields required
+type RequiredUser = Required<Partial<User>>
+
+// Create a type with specific fields made optional
+type UpdateUser = Partial<Pick<User, "name" | "email">> & Pick<User, "id">
+```
+
+## 7. Use Discriminated Unions
+
+Discriminated unions are excellent for representing different states or variants.
+
+```typescript
+// Loading states
+type LoadingState = 
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: User[] }
+  | { status: "error"; error: string }
+
+// Event handling
+type AppEvent = 
+  | { type: "USER_LOGIN"; payload: { userId: string } }
+  | { type: "USER_LOGOUT" }
+  | { type: "DATA_LOADED"; payload: { data: any[] } }
+
+function handleEvent(event: AppEvent) {
+  switch (event.type) {
+    case "USER_LOGIN":
+      // TypeScript knows event.payload exists and has userId
+      console.log(`User ${event.payload.userId} logged in`)
+      break
+    case "USER_LOGOUT":
+      // TypeScript knows there's no payload
+      console.log("User logged out")
+      break
+    case "DATA_LOADED":
+      // TypeScript knows event.payload exists and has data
+      console.log(`Loaded ${event.payload.data.length} items`)
+      break
+  }
+}
+```
+
+## 8. Use Function Overloads
+
+Function overloads allow you to define multiple function signatures for different use cases.
+
+```typescript
+// Function overloads
+function processData(data: string): string
+function processData(data: number): number
+function processData(data: boolean): boolean
+function processData(data: string | number | boolean): string | number | boolean {
+  if (typeof data === "string") {
+    return data.toUpperCase()
+  } else if (typeof data === "number") {
+    return data * 2
+  } else {
+    return !data
+  }
+}
+
+// Usage with proper type inference
+const result1 = processData("hello") // Type: string
+const result2 = processData(42) // Type: number
+const result3 = processData(true) // Type: boolean
+```
+
+## 9. Use Const Assertions
+
+Const assertions help TypeScript infer more specific types.
+
+```typescript
+// Without const assertion
+const colors = ["red", "green", "blue"] // Type: string[]
+
+// With const assertion
+const colors = ["red", "green", "blue"] as const // Type: readonly ["red", "green", "blue"]
+
+// Usage in function
+function getColor(index: number): typeof colors[number] {
+  return colors[index]
+}
+```
+
+## 10. Use Template Literal Types
+
+Template literal types allow you to create complex string types.
+
+```typescript
+// API endpoint types
+type HttpMethod = "GET" | "POST" | "PUT" | "DELETE"
+type ApiEndpoint = `/api/${string}`
+
+type ApiCall<T extends HttpMethod, U extends ApiEndpoint> = {
+  method: T
+  endpoint: U
+  body?: T extends "GET" | "DELETE" ? never : any
+}
+
+// Usage
+const getUser: ApiCall<"GET", "/api/users"> = {
+  method: "GET",
+  endpoint: "/api/users"
+}
+
+const createUser: ApiCall<"POST", "/api/users"> = {
+  method: "POST",
+  endpoint: "/api/users",
+  body: { name: "John", email: "john@example.com" }
+}
+```
+
+## 11. Use Branded Types
+
+Branded types help prevent mixing up similar types.
+
+```typescript
+// Branded types for IDs
+type UserId = string & { readonly brand: unique symbol }
+type ProductId = string & { readonly brand: unique symbol }
+
+// Helper functions to create branded types
+function createUserId(id: string): UserId {
+  return id as UserId
+}
+
+function createProductId(id: string): ProductId {
+  return id as ProductId
+}
+
+// Usage
+const userId = createUserId("user-123")
+const productId = createProductId("product-456")
+
+// This will cause a TypeScript error
+// const user = getUserById(productId) // Error: ProductId is not assignable to UserId
+```
+
+## 12. Use Conditional Types
+
+Conditional types allow you to create types that depend on other types.
+
+```typescript
+// Conditional type for API responses
+type ApiResponse<T> = T extends string 
+  ? { message: T }
+  : T extends number
+  ? { count: T }
+  : { data: T }
+
+// Usage
+type StringResponse = ApiResponse<string> // { message: string }
+type NumberResponse = ApiResponse<number> // { count: number }
+type ObjectResponse = ApiResponse<User> // { data: User }
+
+// More complex conditional type
+type NonNullable<T> = T extends null | undefined ? never : T
+
+type RequiredKeys<T> = {
+  [K in keyof T]-?: {} extends Pick<T, K> ? never : K
+}[keyof T]
+
+type OptionalKeys<T> = {
+  [K in keyof T]-?: {} extends Pick<T, K> ? K : never
+}[keyof T]
+```
+
+## 13. Use Mapped Types
+
+Mapped types allow you to create new types based on existing ones.
+
+```typescript
+// Make all properties optional
+type Partial<T> = {
+  [P in keyof T]?: T[P]
+}
+
+// Make all properties readonly
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P]
+}
+
+// Create a type with specific property types
+type Stringify<T> = {
+  [K in keyof T]: string
+}
+
+// Usage
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+type StringifiedUser = Stringify<User>
+// Result: { id: string; name: string; email: string }
+```
+
+## 14. Use Type Guards
+
+Type guards help TypeScript narrow down types in conditional blocks.
+
+```typescript
+// Type guard functions
+function isString(value: unknown): value is string {
+  return typeof value === "string"
+}
+
+function isUser(value: unknown): value is User {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "id" in value &&
+    "name" in value &&
+    "email" in value
+  )
+}
+
+// Usage
+function processValue(value: unknown) {
+  if (isString(value)) {
+    // TypeScript knows value is string here
+    console.log(value.toUpperCase())
+  }
+  
+  if (isUser(value)) {
+    // TypeScript knows value is User here
+    console.log(value.name)
+  }
+}
+```
+
+## 15. Use Index Signatures Carefully
+
+Index signatures can be powerful but should be used judiciously.
+
+```typescript
+// Good: Specific index signature
+interface StringDictionary {
+  [key: string]: string
+}
+
+// Better: Use Record utility type
+type StringRecord = Record<string, string>
+
+// Best: Use specific keys when possible
+interface Config {
+  apiUrl: string
+  timeout: number
+  retries: number
+}
+
+// When you need flexibility, use union types
+interface FlexibleConfig {
+  apiUrl: string
+  timeout: number
+  retries: number
+  [key: string]: string | number
+}
+```
+
+## Conclusion
+
+These TypeScript best practices will help you write more maintainable, type-safe, and efficient code. Remember that TypeScript is a tool to help you catch errors early and make your code more self-documenting. The key is to find the right balance between type safety and developer productivity.
+
+Start implementing these practices gradually in your projects, and you'll see significant improvements in code quality and developer experience.
+
+## Resources
+
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [TypeScript Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+- [TypeScript Best Practices](https://typescript-eslint.io/docs/linting/typed-linting/)

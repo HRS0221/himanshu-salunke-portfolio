@@ -1,0 +1,30 @@
+[
+  {
+    "id": "gate-preparation",
+    "title": "GATE 2026 Preparation",
+    "description": "Intensive preparation for Graduate Aptitude Test in Engineering 2026, focusing on Data Science and Artificial Intelligence paper.",
+    "icon": "book",
+    "status": "active"
+  },
+  {
+    "id": "computer-vision",
+    "title": "Computer Vision Projects",
+    "description": "Developing real-time object detection and image processing solutions using YOLO and deep learning frameworks.",
+    "icon": "eye",
+    "status": "ongoing"
+  },
+  {
+    "id": "cloud-data-engineering",
+    "title": "Cloud Data Engineering",
+    "description": "Building scalable data pipelines and analytics solutions using AWS services and modern data engineering practices.",
+    "icon": "cloud",
+    "status": "learning"
+  },
+  {
+    "id": "technical-writing",
+    "title": "Technical Writing",
+    "description": "Creating educational content on machine learning and data science concepts through LinkedIn articles and documentation.",
+    "icon": "pen",
+    "status": "active"
+  }
+]
