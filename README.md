@@ -2,7 +2,7 @@
 
 A modern, interactive portfolio website showcasing AI/ML engineering projects, data science solutions, and full-stack development expertise. Built with React, TypeScript, and cutting-edge web technologies featuring 3D animations, real-time GitHub integration, and advanced user experience enhancements.
 
-**Live Demo**: [https://himanshu.dev](https://himanshu.dev) | **GitHub**: [HRS0221](https://github.com/HRS0221)
+**Live Demo**: [https://himanshu.dev](https://himanshu.dev) | **GitHub**: [HRS0221](https://github.com/HRS0221) | **Node.js**: 22.x
 
 ## ✨ Features
 
