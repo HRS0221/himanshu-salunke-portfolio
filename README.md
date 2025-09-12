@@ -1,17 +1,19 @@
-# 🚀 Himanshu's Portfolio Website
+# 🚀 Himanshu Salunke's Portfolio Website
 
-A modern, interactive portfolio website built with React 19, TypeScript, and cutting-edge web technologies. Features AI-powered interactions, 3D animations, and advanced user experience enhancements.
+A modern, interactive portfolio website showcasing AI/ML engineering projects, data science solutions, and full-stack development expertise. Built with React, TypeScript, and cutting-edge web technologies featuring 3D animations, real-time GitHub integration, and advanced user experience enhancements.
+
+**Live Demo**: [https://himanshu.dev](https://himanshu.dev) | **GitHub**: [HRS0221](https://github.com/HRS0221)
 
 ## ✨ Features
 
 ### 🎨 Core Features
-- **Modern Tech Stack**: React 19, TypeScript 5.x, Vite 6, Tailwind CSS 4.x
+- **Modern Tech Stack**: React 18, TypeScript 5.x, Vite 7, Tailwind CSS 3.x
 - **Interactive 3D Hero**: React Three Fiber with animated blob and particle background
-- **AI Chatbot Assistant**: Floating widget for visitor questions about projects and skills
+- **AI/ML Project Showcase**: Featured projects including Computer Vision, Data Analysis, and Real-time Systems
 - **Recruiter Mode**: Toggle to filter recruiter-relevant content and highlight professional achievements
-- **Dynamic Now Page**: Real-time view of current work, learning, and focus areas
+- **Dynamic Focus Tracker**: Real-time view of GATE 2026 preparation, Computer Vision projects, and learning goals
 - **Progress Tracker**: Gamified scroll progress with exploration percentage
-- **Easter Egg**: Hidden Konami code activation for fun interactions
+- **Technical Writing**: Educational content on ML concepts and data science
 
 ### 🎭 Advanced Animations
 - **Page Transitions**: Smooth transitions between routes with Framer Motion
@@ -21,10 +23,11 @@ A modern, interactive portfolio website built with React 19, TypeScript, and cut
 - **Magnetic Buttons**: Interactive buttons with magnetic hover effects
 
 ### 📊 Dynamic Content
-- **GitHub Integration**: Real-time stats (stars, forks, commits) for projects
-- **Tech Usage Visualization**: Animated progress bars showing technology proficiency
-- **MDX Content**: Rich project and article pages with syntax highlighting
-- **Responsive Images**: WebP/AVIF optimization with lazy loading
+- **GitHub Integration**: Real-time stats (stars, forks, commits) for AI/ML projects
+- **Tech Stack Visualization**: Animated progress bars showing proficiency in Python, React, Data Science tools
+- **MDX Content**: Rich project documentation with code examples and technical deep-dives
+- **Project Galleries**: Interactive showcases of Computer Vision, Data Analysis, and ETL projects
+- **Responsive Images**: WebP/AVIF optimization with lazy loading for project screenshots
 - **Theme System**: Dark/light mode with smooth transitions
 
 ### 🎯 User Experience
@@ -36,14 +39,23 @@ A modern, interactive portfolio website built with React 19, TypeScript, and cut
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 19** - Latest React with concurrent features
+- **React 18** - Modern React with hooks and concurrent features
 - **TypeScript 5.x** - Type-safe development
-- **Vite 6** - Fast build tool and dev server
-- **Tailwind CSS 4.x** - Utility-first styling
+- **Vite 7** - Fast build tool and dev server
+- **Tailwind CSS 3.x** - Utility-first styling
 - **Framer Motion 11+** - Advanced animations
-- **React Router v7** - Client-side routing
+- **React Router v6** - Client-side routing
 - **React Three Fiber** - 3D graphics and animations
 - **MDX v3** - Rich content authoring
+
+### AI/ML & Data Science
+- **Python** - Core programming language
+- **TensorFlow/PyTorch** - Deep learning frameworks
+- **OpenCV** - Computer vision processing
+- **Pandas/NumPy** - Data manipulation and analysis
+- **Scikit-learn** - Machine learning algorithms
+- **YOLO** - Real-time object detection
+- **AWS Services** - Cloud data engineering
 
 ### Development Tools
 - **ESLint** - Code linting with TypeScript support
@@ -72,8 +84,8 @@ A modern, interactive portfolio website built with React 19, TypeScript, and cut
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/himanshu-portfolio-website.git
-   cd himanshu-portfolio-website
+   git clone https://github.com/HRS0221/himanshu-salunke-portfolio.git
+   cd himanshu-salunke-portfolio
    ```
 
 2. **Install dependencies**
@@ -89,20 +101,25 @@ A modern, interactive portfolio website built with React 19, TypeScript, and cut
    Edit `.env.local` with your values:
    ```env
    # Site Configuration
-   SITE_URL=https://your-domain.com
-   SITE_NAME="Your Portfolio"
-   SITE_DESCRIPTION="Your Portfolio Description"
+   VITE_SITE_URL=https://himanshu.dev
+   VITE_SITE_NAME="Himanshu's Portfolio"
+   VITE_SITE_DESCRIPTION="AI/ML Engineer & Full-Stack Developer Portfolio"
    
-   # Optional: GitHub API token for higher rate limits
-   GITHUB_TOKEN=your_github_token
-   GITHUB_USERNAME=your_github_username
+   # GitHub Integration
+   VITE_GITHUB_TOKEN=your_github_token
+   VITE_GITHUB_USERNAME=HRS0221
    
-   # Optional: Contact form integration
-   SLACK_WEBHOOK_URL=your_slack_webhook_url
-   RESEND_API_KEY=your_resend_api_key
+   # Contact Form Integration
+   VITE_SLACK_WEBHOOK_URL=your_slack_webhook_url
+   VITE_RESEND_API_KEY=your_resend_api_key
    
-   # Optional: Analytics (Vercel Analytics is enabled by default)
-   VERCEL_ANALYTICS=true
+   # Social Media
+   VITE_TWITTER_HANDLE=your_twitter_handle
+   VITE_LINKEDIN_URL=https://linkedin.com/in/your-profile
+   VITE_GITHUB_URL=https://github.com/HRS0221
+   
+   # Analytics
+   VITE_VERCEL_ANALYTICS=true
    
    # Development
    NODE_ENV=development
@@ -145,6 +162,25 @@ src/
 ├── utils/                # Utility functions
 └── assets/               # Static assets
 ```
+
+## 🚀 Featured Projects
+
+### 🤖 AI/ML Projects
+- **Real-Time Height Measurement System** - Computer vision solution using OpenCV and YOLO for accurate height detection
+- **Moving Vehicle Number Plate Detection** - Advanced object detection and OCR for automated license plate recognition
+- **Sentiment Analysis with BERT** - Natural language processing model for social media sentiment analysis
+- **Exploratory Data Analysis - Iris Dataset** - Comprehensive data analysis and visualization of the classic Iris dataset
+
+### 📊 Data Engineering
+- **YouTube Data Engineering Pipeline** - ETL pipeline for processing and analyzing YouTube data using AWS services
+- **World Layoff Data Analysis** - Statistical analysis and visualization of global layoff trends
+- **Uplifting Happiness Index** - Data science project analyzing factors affecting happiness metrics
+
+### 🎯 Current Focus Areas
+- **GATE 2026 Preparation** - Intensive preparation for Data Science and AI specialization
+- **Computer Vision Projects** - Real-time object detection using YOLO and deep learning frameworks
+- **Cloud Data Engineering** - Building scalable data pipelines with AWS services
+- **Technical Writing** - Creating educational content on ML and data science concepts
 
 ## 🎨 Customization
 
@@ -343,13 +379,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Email**: your.email@example.com
-- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- **GitHub**: [Your GitHub](https://github.com/yourusername)
-- **Portfolio**: [Your Website](https://your-domain.com)
+- **Portfolio**: [https://himanshu.dev](https://himanshu.dev)
+- **GitHub**: [HRS0221](https://github.com/HRS0221)
+- **LinkedIn**: [Himanshu Salunke](https://linkedin.com/in/himanshu-salunke)
+- **Email**: [Contact Form](https://himanshu.dev/contact)
+
+### 🎯 Professional Focus
+- **AI/ML Engineering** - Computer Vision, Deep Learning, Data Science
+- **Full-Stack Development** - React, TypeScript, Node.js, Python
+- **Data Engineering** - AWS, ETL Pipelines, Analytics
+- **Technical Writing** - ML Concepts, Data Science Education
 
 ---
 
 ⭐ **Star this repository** if you found it helpful!
 
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [Himanshu Salunke](https://github.com/HRS0221)
