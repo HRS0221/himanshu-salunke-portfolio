@@ -5,8 +5,8 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "functions": {
-    "src/api/**/*.ts": {
-      "runtime": "nodejs18.x"
+    "api/**/*.ts": {
+      "runtime": "nodejs20.x"
     }
   },
   "headers": [
