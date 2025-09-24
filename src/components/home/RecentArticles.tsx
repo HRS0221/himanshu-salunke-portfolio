@@ -99,14 +99,16 @@ const ArticleCard: React.FC<{ article: any; index: number }> = ({ article, index
             </div>
 
             {/* Read More Link */}
-            <Link
-              to={`/articles/${article.id}`}
+            <a
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={incrementView}
               className="inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 dark:text-white dark:hover:text-blue-300 font-semibold text-sm transition-all duration-200 hover:gap-2 group"
             >
               <span>Read Article</span>
               <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-            </Link>
+            </a>
           </div>
         </motion.article>
   )

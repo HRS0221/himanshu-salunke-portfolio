@@ -55,27 +55,27 @@ export const GlobalSearch: React.FC = () => {
     },
     {
       id: '5',
-      title: 'React 19 Features',
+      title: 'Machine Learning Fundamentals',
       type: 'article',
-      url: '/articles/react-19-features',
-      description: 'Exploring the latest features in React 19',
-      category: 'React'
+      url: 'https://www.linkedin.com/pulse/what-machine-learning-himanshu-salunke-dwgef/',
+      description: 'A comprehensive introduction to machine learning concepts',
+      category: 'Machine Learning'
     },
     {
       id: '6',
-      title: 'TypeScript Best Practices',
+      title: 'Linear Regression Guide',
       type: 'article',
-      url: '/articles/typescript-best-practices',
-      description: 'Advanced TypeScript patterns and techniques',
-      category: 'TypeScript'
+      url: 'https://www.linkedin.com/pulse/what-regression-machine-learning-himanshu-salunke-m0zff/',
+      description: 'Master linear regression from basics to advanced concepts',
+      category: 'Machine Learning'
     },
     {
       id: '7',
-      title: 'Web Performance',
+      title: 'Gradient Descent',
       type: 'article',
-      url: '/articles/web-performance',
-      description: 'Optimization strategies for modern web applications',
-      category: 'Performance'
+      url: 'https://www.linkedin.com/pulse/what-gradient-descent-machine-learning-himanshu-salunke-ray0f/',
+      description: 'Comprehensive guide to gradient descent optimization algorithm',
+      category: 'Machine Learning'
     },
     {
       id: '8',
@@ -169,7 +169,12 @@ export const GlobalSearch: React.FC = () => {
   }, [isOpen])
 
   const handleResultClick = (result: SearchResult) => {
-    navigate(result.url)
+    // Check if it's an external link (starts with http)
+    if (result.url.startsWith('http')) {
+      window.open(result.url, '_blank', 'noopener,noreferrer')
+    } else {
+      navigate(result.url)
+    }
     setIsOpen(false)
     setSearchTerm('')
     setResults([])

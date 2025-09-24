@@ -28,7 +28,7 @@ const About = lazy(() => import('./pages/About.tsx'))
 const Work = lazy(() => import('./pages/Work.tsx'))
 const Project = lazy(() => import('./pages/Project.tsx'))
 const Articles = lazy(() => import('./pages/Articles.tsx'))
-const Article = lazy(() => import('./pages/Article.tsx'))
+// Article page removed - articles are external LinkedIn posts
 const Contact = lazy(() => import('./pages/Contact.tsx'))
 const Developer = lazy(() => import('./pages/Developer.tsx'))
 const NotFound = lazy(() => import('./pages/NotFound.tsx'))
@@ -80,7 +80,6 @@ const AppContent: React.FC = () => {
                   <Route path="/work/:slug" element={<Project />} />
                   <Route path="/projects/:slug" element={<Project />} />
                   <Route path="/articles" element={<Articles />} />
-                  <Route path="/articles/:slug" element={<Article />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/developer" element={<Developer />} />
                   <Route path="*" element={<NotFound />} />

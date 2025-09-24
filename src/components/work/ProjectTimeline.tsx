@@ -79,7 +79,7 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ projects }) => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
+      className="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700 backdrop-blur-sm"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -97,10 +97,10 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ projects }) => {
       {/* Timeline */}
       <div className="relative">
         {/* Timeline Line */}
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-secondary-500 to-primary-500"></div>
+        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-secondary-500 to-primary-500"></div>
 
         {/* Milestones */}
-        <div className="space-y-8">
+        <div className="space-y-6">
           {milestones.map((milestone, index) => (
             <motion.div
               key={index}
@@ -111,13 +111,13 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ projects }) => {
             >
               {/* Timeline Dot */}
               <div className="relative z-10 flex-shrink-0">
-                <div className={`w-4 h-4 rounded-full ${getStatusColor(milestone.status)} border-4 border-white dark:border-neutral-800 shadow-lg`}></div>
-                <div className="absolute inset-0 w-4 h-4 rounded-full bg-primary-500 animate-ping opacity-20"></div>
+                <div className="w-8 h-8 rounded-full bg-primary-500 border-4 border-white dark:border-neutral-900 shadow-lg"></div>
+                <div className="absolute inset-0 w-8 h-8 rounded-full bg-primary-500 animate-ping opacity-20"></div>
               </div>
 
               {/* Content */}
               <motion.div
-                className="flex-1 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
+                className="flex-1 bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-sm hover:shadow-lg border border-neutral-200 dark:border-neutral-700 transition-all duration-300"
                 whileHover={{ y: -2, scale: 1.01 }}
               >
                 {/* Header */}
@@ -157,12 +157,19 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ projects }) => {
               </motion.div>
             </motion.div>
           ))}
+          
+          {/* Timeline Ending Dot */}
+          <div className="relative flex items-start gap-6">
+            <div className="relative z-10 flex-shrink-0">
+              <div className="w-8 h-8 rounded-full bg-primary-500 border-4 border-white dark:border-neutral-900 shadow-lg"></div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Summary */}
       <motion.div
-        className="mt-8 p-6 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl"
+        className="mt-8 p-6 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/30 dark:to-secondary-900/30 rounded-xl border border-primary-200/50 dark:border-primary-700/30"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
