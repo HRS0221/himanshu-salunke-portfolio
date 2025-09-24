@@ -90,9 +90,12 @@ const fetchGitHubStats = async (username: string): Promise<GitHubStats> => {
   }
 }
 
-// LeetCode GraphQL API
+// LeetCode API - Using multiple approaches
 const fetchLeetCodeStats = async (username: string): Promise<LeetCodeStats> => {
   try {
+    console.log('🔍 Fetching LeetCode stats for:', username)
+    
+    // Try approach 1: Direct GraphQL with proper headers
     const query = `
       query getUserProfile($username: String!) {
         matchedUser(username: $username) {
@@ -113,10 +116,14 @@ const fetchLeetCodeStats = async (username: string): Promise<LeetCodeStats> => {
       }
     `
 
-    const response = await fetch('https://leetcode.com/graphql', {
+    const response = await fetch('https://leetcode.com/graphql/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Referer': 'https://leetcode.com/',
+        'Origin': 'https://leetcode.com'
       },
       body: JSON.stringify({
         query,
@@ -124,16 +131,28 @@ const fetchLeetCodeStats = async (username: string): Promise<LeetCodeStats> => {
       })
     })
 
+    console.log('LeetCode API response status:', response.status)
+
     if (!response.ok) {
-      throw new Error('Failed to fetch LeetCode data')
+      console.error('LeetCode API error:', response.status, response.statusText)
+      throw new Error(`Failed to fetch LeetCode data: ${response.status}`)
     }
 
     const data = await response.json()
+    console.log('LeetCode API response data:', data)
+    
+    // Check for GraphQL errors
+    if (data.errors) {
+      console.error('LeetCode GraphQL errors:', data.errors)
+      throw new Error(`GraphQL errors: ${data.errors.map((e: any) => e.message).join(', ')}`)
+    }
+    
     const user = data.data?.matchedUser
     const contestRanking = data.data?.userContestRanking
 
     if (!user) {
-      throw new Error('User not found')
+      console.log('LeetCode user not found in GraphQL response')
+      throw new Error('User not found in LeetCode API')
     }
 
     const submissions = user.submitStats?.acSubmissionNum || []
@@ -141,6 +160,8 @@ const fetchLeetCodeStats = async (username: string): Promise<LeetCodeStats> => {
     const easySolved = submissions.find((s: any) => s.difficulty === 'Easy')?.count || 0
     const mediumSolved = submissions.find((s: any) => s.difficulty === 'Medium')?.count || 0
     const hardSolved = submissions.find((s: any) => s.difficulty === 'Hard')?.count || 0
+
+    console.log('LeetCode stats parsed:', { totalSolved, easySolved, mediumSolved, hardSolved })
 
     return {
       totalSolved,
@@ -153,6 +174,34 @@ const fetchLeetCodeStats = async (username: string): Promise<LeetCodeStats> => {
       error: null
     }
   } catch (error) {
+    console.error('LeetCode fetch error:', error)
+    
+    // Try approach 2: Alternative API endpoint
+    try {
+      console.log('🔄 Trying alternative LeetCode API...')
+      
+      const altResponse = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`)
+      
+      if (altResponse.ok) {
+        const altData = await altResponse.json()
+        console.log('Alternative API data:', altData)
+        
+        return {
+          totalSolved: altData.totalSolved || 0,
+          easySolved: altData.easySolved || 0,
+          mediumSolved: altData.mediumSolved || 0,
+          hardSolved: altData.hardSolved || 0,
+          ranking: altData.ranking || 0,
+          contestRating: altData.contestRating || 0,
+          isLoading: false,
+          error: null
+        }
+      }
+    } catch (altError) {
+      console.error('Alternative API also failed:', altError)
+    }
+    
+    // If all approaches fail, return error state
     return {
       totalSolved: 0,
       easySolved: 0,

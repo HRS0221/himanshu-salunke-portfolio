@@ -160,12 +160,14 @@ export const TechStack: React.FC = () => {
           
           <div className="flex flex-wrap gap-3 justify-center">
             {Object.entries(githubStats.languages)
+              .filter(([language, bytes]) => language && language !== 'null' && bytes > 0) // Filter out null/empty languages
               .sort(([,a], [,b]) => b - a)
               .slice(0, 8)
               .map(([language, bytes]) => {
                 const IconComponent = languageIconMap[language] || SiGithub
                 const color = languageColorMap[language] || 'text-gray-500'
-                const percentage = Math.round((bytes / Object.values(githubStats.languages).reduce((a, b) => a + b, 0)) * 100)
+                const totalBytes = Object.values(githubStats.languages).reduce((a, b) => a + b, 0)
+                const percentage = totalBytes > 0 ? Math.round((bytes / totalBytes) * 100) : 0
                 
                 return (
                   <motion.div

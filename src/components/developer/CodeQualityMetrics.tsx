@@ -208,6 +208,56 @@ const CodeQualityMetrics: React.FC = () => {
         ))}
       </div>
 
+      {/* Formula Display */}
+      <motion.div
+        className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200 dark:border-blue-700"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="text-2xl">🧮</div>
+          <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+            My Code Quality Score Formula
+          </h3>
+        </div>
+        
+        <div className="bg-white dark:bg-neutral-800 rounded-lg p-4 mb-4">
+          <div className="font-mono text-sm text-neutral-700 dark:text-neutral-300 mb-2">
+            Score = min(100, max(60, (Stars × 2) + (Forks × 3) + (Watchers × 1) + (Languages × 5)))
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div className="text-center">
+              <div className="text-yellow-600 dark:text-yellow-400 font-semibold">⭐ Stars</div>
+              <div className="text-neutral-600 dark:text-neutral-400">× 2 points</div>
+              <div className="text-xs text-neutral-500 dark:text-neutral-500">Community recognition</div>
+            </div>
+            <div className="text-center">
+              <div className="text-green-600 dark:text-green-400 font-semibold">🍴 Forks</div>
+              <div className="text-neutral-600 dark:text-neutral-400">× 3 points</div>
+              <div className="text-xs text-neutral-500 dark:text-neutral-500">Code reusability</div>
+            </div>
+            <div className="text-center">
+              <div className="text-blue-600 dark:text-blue-400 font-semibold">👀 Watchers</div>
+              <div className="text-neutral-600 dark:text-neutral-400">× 1 point</div>
+              <div className="text-xs text-neutral-500 dark:text-neutral-500">Project interest</div>
+            </div>
+            <div className="text-center">
+              <div className="text-purple-600 dark:text-purple-400 font-semibold">🌐 Languages</div>
+              <div className="text-neutral-600 dark:text-neutral-400">× 5 points</div>
+              <div className="text-xs text-neutral-500 dark:text-neutral-500">Technical versatility</div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="text-sm text-neutral-600 dark:text-neutral-400">
+          <strong>Your Current Values:</strong> {githubStats.isLoading ? 'Loading...' : 
+            `${totalStars} stars (${totalStars * 2} pts) + ${totalForks} forks (${totalForks * 3} pts) + ${totalWatchers} watchers (${totalWatchers * 1} pts) + ${languagesCount} languages (${languagesCount * 5} pts) = ${Math.round(Math.min(100, Math.max(60, (totalStars * 2) + (totalForks * 3) + (totalWatchers * 1) + (languagesCount * 5))))}/100`
+          }
+        </div>
+      </motion.div>
+
       {/* Summary */}
       <motion.div
         className="mt-8 p-6 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl"

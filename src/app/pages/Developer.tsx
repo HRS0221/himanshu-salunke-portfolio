@@ -49,7 +49,7 @@ const getSocialPlatforms = (socialStats: any): SocialPlatform[] => [
     color: 'from-blue-600 to-blue-700',
     description: 'Professional networking & ML articles 📝',
     stats: [
-      { label: 'Followers', value: socialStats.linkedin.isLoading ? 'Loading...' : `${((socialStats.linkedin.followers || 0) / 1000).toFixed(1)}k` },
+      { label: 'Followers', value: '23k+' },
       { label: 'Articles', value: socialStats.linkedin.isLoading ? 'Loading...' : `${socialStats.linkedin.articles || 0}+` },
       { label: 'Newsletter', value: 'Active' }
     ]

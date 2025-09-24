@@ -369,7 +369,7 @@ const LiveDashboard: React.FC = () => {
                 setIsLoadingCommits(false)
               }
             }}
-            className="flex items-center gap-2 px-3 py-1.5 text-sm bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-lg hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 text-sm bg-white dark:bg-neutral-700 text-neutral-700 dark:text-white rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-600 transition-colors border border-neutral-200 dark:border-neutral-600 shadow-sm hover:shadow-md"
             disabled={isLoadingCommits}
           >
             <svg className={`w-4 h-4 ${isLoadingCommits ? 'animate-spin' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
