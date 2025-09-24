@@ -192,9 +192,9 @@ const Work: React.FC = () => {
                   />
                   {project.featured && (
                     <div className="absolute top-4 left-4">
-                      <Tag variant="primary" size="sm">
-                        Featured
-                      </Tag>
+                      <div className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm">
+                        ⭐ Featured
+                      </div>
                     </div>
                   )}
                   <div className="absolute top-4 right-4">
