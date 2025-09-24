@@ -131,9 +131,17 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <motion.span 
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent bg-[length:200%_auto]"
+              className="bg-clip-text text-transparent"
+              style={{
+                background: 'linear-gradient(90deg, hsla(210, 90%, 80%, 1) 0%, hsla(212, 93%, 49%, 1) 100%)',
+                backgroundSize: '200% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                MozBackgroundClip: 'text',
+                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#9FCCFA", endColorstr="#0974F1", GradientType=1)'
+              }}
               animate={{ backgroundPosition: ['0% 50%', '200% 50%', '0% 50%'] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
             >
               Hello, I'm
             </motion.span>
@@ -147,9 +155,17 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <motion.span 
-              className="bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600 bg-clip-text text-transparent bg-[length:200%_auto]"
+              className="bg-clip-text text-transparent"
+              style={{
+                background: 'linear-gradient(90deg, hsla(210, 90%, 80%, 1) 0%, hsla(212, 93%, 49%, 1) 100%)',
+                backgroundSize: '200% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                MozBackgroundClip: 'text',
+                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#9FCCFA", endColorstr="#0974F1", GradientType=1)'
+              }}
               animate={{ backgroundPosition: ['0% 50%', '200% 50%', '0% 50%'] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
             >
               Himanshu Salunke
             </motion.span>
@@ -172,9 +188,17 @@ export const Hero: React.FC = () => {
               🚀
             </motion.span>
             <motion.span 
-              className="mx-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-[length:200%_auto]"
+              className="mx-2 bg-clip-text text-transparent"
+              style={{
+                background: 'linear-gradient(90deg, hsla(210, 90%, 80%, 1) 0%, hsla(212, 93%, 49%, 1) 100%)',
+                backgroundSize: '200% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                MozBackgroundClip: 'text',
+                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#9FCCFA", endColorstr="#0974F1", GradientType=1)'
+              }}
               animate={{ backgroundPosition: ['0% 50%', '200% 50%', '0% 50%'] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'linear' }}
             >
               Aspiring Data Scientist
             </motion.span>
@@ -188,9 +212,17 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <motion.span 
-              className="bg-gradient-to-r from-slate-600 via-gray-600 to-slate-600 bg-clip-text text-transparent bg-[length:200%_auto]"
+              className="bg-clip-text text-transparent"
+              style={{
+                background: 'linear-gradient(90deg, hsla(210, 90%, 80%, 1) 0%, hsla(212, 93%, 49%, 1) 100%)',
+                backgroundSize: '200% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                MozBackgroundClip: 'text',
+                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#9FCCFA", endColorstr="#0974F1", GradientType=1)'
+              }}
               animate={{ backgroundPosition: ['0% 50%', '200% 50%', '0% 50%'] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
             >
               Building the future, one line of code at a time. Passionate about creating intelligent solutions 
               that solve real-world problems with Python, Machine Learning, and cutting-edge AI technologies.

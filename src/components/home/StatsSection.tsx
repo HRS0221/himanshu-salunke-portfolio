@@ -14,25 +14,25 @@ interface Stat {
 // Unique impact metrics for homepage only
 const getStats = (unifiedStats: any): Stat[] => [
   {
-    value: unifiedStats.isLoading ? 0 : unifiedStats.yearsExperience,
-    suffix: '+',
-    label: 'Years of Innovation',
-    description: 'Building intelligent solutions and pushing boundaries',
-    icon: '🚀'
-  },
-  {
     value: unifiedStats.isLoading ? 0 : unifiedStats.projectsCompleted,
     suffix: '+',
     label: 'Successful Deployments',
-    description: 'Projects that made a real impact in the world',
+    description: 'Projects completed and deployed successfully',
     icon: '✨'
   },
   {
-    value: 100,
+    value: 26,
+    suffix: '+',
+    label: 'Freelancing Projects',
+    description: 'AI/ML solutions delivered for diverse clients',
+    icon: '💼'
+  },
+  {
+    value: 90,
     suffix: '%',
     label: 'Client Satisfaction',
     description: 'Dedicated to exceeding expectations every time',
-    icon: '💯'
+    icon: '⭐'
   }
 ]
 

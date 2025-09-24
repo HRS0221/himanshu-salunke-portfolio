@@ -9,15 +9,12 @@ import { ImageWithShimmer } from '../../components/ui/ImageWithShimmer'
 import { formatDate } from '../../utils/formatDate'
 import { fetchAllProjects } from '../../utils/projectAPI'
 import { type Project } from '../../utils/clientMdx'
-import { useUnifiedStats } from '../../hooks/useUnifiedStats'
-import ProjectImpactMetrics from '../../components/work/ProjectImpactMetrics'
 import ProjectCategories from '../../components/work/ProjectCategories'
 import ProjectTimeline from '../../components/work/ProjectTimeline'
 
 const Work: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([])
   const [loading, setLoading] = useState(true)
-  const unifiedStats = useUnifiedStats()
 
   // Load projects from MDX files
   useEffect(() => {
@@ -40,7 +37,7 @@ const Work: React.FC = () => {
   const [selectedStatus, setSelectedStatus] = useState('All')
   const [sortBy, setSortBy] = useState<'date' | 'title' | 'featured' | 'readTime' | 'views' | 'likes'>('date')
 
-  const categories = ['All', 'Computer Vision', 'Deep Learning', 'Data Engineering', 'Data Analysis']
+  const categories = ['All', 'Computer Vision', 'Deep Learning', 'Data Analysis', 'Data Engineering']
   const statuses = ['All', 'Completed', 'In Progress', 'Planning']
 
   const sortOptions = [
@@ -137,15 +134,6 @@ const Work: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Project Impact Metrics */}
-          <motion.div
-            className="mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <ProjectImpactMetrics />
-          </motion.div>
 
           {/* Project Categories */}
           <motion.div

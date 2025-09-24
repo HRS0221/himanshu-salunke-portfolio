@@ -142,13 +142,13 @@ const MissionValues: React.FC = () => {
       </div>
 
       {/* Personal Philosophy */}
-      <motion.div
+      {/* <motion.div
         className="mt-12 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.0 }}
       >
-        <div className="bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-600">
+        <div className="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl p-8 border border-primary-200 dark:border-primary-800">
           <div className="text-3xl mb-4">💭</div>
           <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
             Personal Philosophy
@@ -159,7 +159,7 @@ const MissionValues: React.FC = () => {
             I believe in building with purpose, learning with passion, and growing with integrity."
           </p>
         </div>
-      </motion.div>
+      </motion.div> */}
     </motion.section>
   )
 }

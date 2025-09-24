@@ -295,7 +295,9 @@ export const Timeline: React.FC = () => {
           <div className="relative flex items-start gap-6">
             <div className="relative z-10 flex-shrink-0">
               <div className={`w-8 h-8 rounded-full border-4 border-white dark:border-neutral-900 ${
-                color.includes('primary') ? 'bg-primary-500' : 'bg-secondary-500'
+                color.includes('primary') ? 'bg-primary-500' : 
+                color.includes('emerald') ? 'bg-emerald-500' : 
+                color.includes('blue') ? 'bg-blue-500' : 'bg-secondary-500'
               }`} />
             </div>
             <div className="flex-1 min-w-0">

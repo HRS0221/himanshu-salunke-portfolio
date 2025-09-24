@@ -303,6 +303,27 @@ const Project: React.FC = () => {
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-neutral-50 to-white dark:from-neutral-900 dark:to-neutral-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            {/* Back Button */}
+            <motion.div
+              className="mb-8"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Link to="/work">
+                <Button 
+                  variant="outline" 
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium"
+                  aria-label="Back to all projects"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Back to Projects
+                </Button>
+              </Link>
+            </motion.div>
+
             <motion.div
               className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}

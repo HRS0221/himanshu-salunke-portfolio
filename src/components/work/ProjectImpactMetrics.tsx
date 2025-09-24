@@ -19,56 +19,56 @@ const ProjectImpactMetrics: React.FC = () => {
     {
       title: 'Total Projects',
       value: unifiedStats.isLoading ? '...' : unifiedStats.projectsCompleted,
-      description: 'Projects completed across all categories',
+      description: 'Personal projects built to learn and explore new technologies',
       icon: '🚀',
       color: 'from-blue-500 to-blue-600',
       trend: 'up',
-      trendValue: '+2 this month'
+      trendValue: 'Always growing'
     },
     {
-      title: 'Success Rate',
-      value: '100%',
-      description: 'Projects delivered on time and meeting requirements',
-      icon: '✅',
-      color: 'from-green-500 to-green-600',
-      trend: 'stable',
-      trendValue: 'Maintained'
-    },
-    {
-      title: 'Technologies Used',
+      title: 'Technologies Explored',
       value: '25+',
-      description: 'Different technologies and frameworks mastered',
+      description: 'Different technologies and frameworks I\'ve worked with',
       icon: '🛠️',
       color: 'from-purple-500 to-purple-600',
       trend: 'up',
-      trendValue: '+5 new'
+      trendValue: 'Learning more'
     },
     {
-      title: 'Code Quality',
-      value: 'A+',
-      description: 'Maintained through best practices and code reviews',
-      icon: '🏆',
+      title: 'Learning Focus',
+      value: 'AI/ML',
+      description: 'Primary focus on artificial intelligence and machine learning',
+      icon: '🤖',
+      color: 'from-green-500 to-green-600',
+      trend: 'stable',
+      trendValue: 'Passionate'
+    },
+    {
+      title: 'Project Types',
+      value: 'Diverse',
+      description: 'From web apps to data analysis and computer vision',
+      icon: '🎯',
       color: 'from-yellow-500 to-orange-500',
       trend: 'up',
-      trendValue: '+10%'
+      trendValue: 'Exploring'
     },
     {
-      title: 'Client Satisfaction',
-      value: '100%',
-      description: 'Positive feedback and repeat collaborations',
-      icon: '😊',
+      title: 'GitHub Activity',
+      value: 'Active',
+      description: 'Regular commits and open source contributions',
+      icon: '📈',
       color: 'from-pink-500 to-rose-500',
-      trend: 'stable',
-      trendValue: 'Excellent'
+      trend: 'up',
+      trendValue: 'Consistent'
     },
     {
-      title: 'Innovation Score',
-      value: '95/100',
-      description: 'Cutting-edge solutions and creative problem solving',
+      title: 'Innovation Drive',
+      value: 'High',
+      description: 'Always experimenting with cutting-edge technologies',
       icon: '💡',
       color: 'from-indigo-500 to-indigo-600',
       trend: 'up',
-      trendValue: '+5 points'
+      trendValue: 'Curious'
     }
   ]
 
@@ -108,10 +108,10 @@ const ProjectImpactMetrics: React.FC = () => {
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
-          📊 Project Impact Metrics
+          📊 Project Overview
         </h2>
         <p className="text-neutral-600 dark:text-neutral-400">
-          Measuring the success and impact of my development work
+          A snapshot of my personal projects and learning journey
         </p>
       </div>
 
@@ -171,13 +171,14 @@ const ProjectImpactMetrics: React.FC = () => {
         <div className="flex items-center gap-3 mb-3">
           <div className="text-2xl">🎯</div>
           <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
-            Project Philosophy
+            Learning Philosophy
           </h3>
         </div>
         <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-          Every project I work on is designed to solve real problems, deliver exceptional value, 
-          and push the boundaries of what's possible with technology. Quality, innovation, and 
-          user satisfaction are at the core of everything I build.
+          Each project represents a step in my learning journey, exploring new technologies, 
+          solving interesting problems, and building practical solutions. I believe in 
+          hands-on learning through building real projects that challenge my skills and 
+          expand my knowledge in AI/ML and software development.
         </p>
       </motion.div>
     </motion.div>

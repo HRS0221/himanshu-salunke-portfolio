@@ -82,7 +82,7 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
           {categories.map((category) => (
             <span
               key={category}
-              className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium rounded-full"
+              className="px-3 py-1 bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 text-sm font-medium rounded-full border border-neutral-200 dark:border-neutral-600"
             >
               {category}
             </span>
