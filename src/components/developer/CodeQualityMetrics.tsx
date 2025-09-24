@@ -88,62 +88,92 @@ const MetricCard: React.FC<MetricCardProps> = ({
 }
 
 const CodeQualityMetrics: React.FC = () => {
-  const githubStats = useGitHubStats()
+  const githubStats = useGitHubStats('HRS0221')
+
+  // Calculate real metrics based on GitHub data
+  const totalStars = githubStats.stars || 0
+  const totalForks = githubStats.forks || 0
+  const totalWatchers = githubStats.watchers || 0
+  const languagesCount = Object.keys(githubStats.languages || {}).length
+  
+  // Calculate quality score based on real metrics
+  const getQualityScore = () => {
+    if (githubStats.isLoading) return '...'
+    const score = Math.min(100, Math.max(60, 
+      (totalStars * 2) + 
+      (totalForks * 3) + 
+      (totalWatchers * 1) + 
+      (languagesCount * 5)
+    ))
+    return `${Math.round(score)}/100`
+  }
+
+  const getLanguageDiversity = () => {
+    if (githubStats.isLoading) return '...'
+    return `${languagesCount}+ languages`
+  }
+
+  const getLastActivity = () => {
+    if (githubStats.isLoading || !githubStats.lastCommit) return '...'
+    const lastCommit = new Date(githubStats.lastCommit)
+    const daysAgo = Math.floor((Date.now() - lastCommit.getTime()) / (1000 * 60 * 60 * 24))
+    return daysAgo === 0 ? 'Today' : `${daysAgo} days ago`
+  }
 
   const metrics = [
     {
-      title: 'Code Quality Score',
-      value: 'A+',
-      description: 'Maintained through consistent coding practices, comprehensive testing, and code reviews',
-      icon: '🏆',
+      title: 'GitHub Stars',
+      value: githubStats.isLoading ? '...' : totalStars,
+      description: 'Total stars received across all repositories, indicating code quality and community recognition',
+      icon: '⭐',
       color: 'from-yellow-500 to-orange-500',
       trend: 'up' as const,
-      trendValue: '+5%'
+      trendValue: 'Live'
     },
     {
-      title: 'Test Coverage',
-      value: '85%',
-      description: 'Comprehensive test coverage across all major components and critical paths',
-      icon: '🧪',
+      title: 'Repository Forks',
+      value: githubStats.isLoading ? '...' : totalForks,
+      description: 'Number of times repositories have been forked, showing code reusability and adoption',
+      icon: '🍴',
       color: 'from-green-500 to-emerald-500',
       trend: 'up' as const,
-      trendValue: '+12%'
+      trendValue: 'Live'
     },
     {
-      title: 'Code Reviews',
-      value: githubStats.isLoading ? '...' : `${githubStats.pullRequests || 0}+`,
-      description: 'Active participation in code review processes and collaborative development',
-      icon: '👥',
+      title: 'Language Diversity',
+      value: getLanguageDiversity(),
+      description: 'Number of programming languages used across projects, showing versatility and adaptability',
+      icon: '🌐',
       color: 'from-blue-500 to-cyan-500',
       trend: 'stable' as const,
-      trendValue: 'Active'
+      trendValue: 'Live'
     },
     {
-      title: 'Documentation',
-      value: '90%',
-      description: 'Well-documented code with clear comments, README files, and API documentation',
-      icon: '📚',
+      title: 'Last Activity',
+      value: getLastActivity(),
+      description: 'Time since last commit, indicating active development and consistent contribution',
+      icon: '🕒',
       color: 'from-purple-500 to-pink-500',
-      trend: 'up' as const,
-      trendValue: '+8%'
+      trend: 'stable' as const,
+      trendValue: 'Live'
     },
     {
-      title: 'Performance Score',
-      value: '92/100',
-      description: 'Optimized code with focus on performance, efficiency, and scalability',
-      icon: '⚡',
+      title: 'Code Quality Score',
+      value: getQualityScore(),
+      description: 'Calculated based on stars, forks, watchers, and language diversity from GitHub data',
+      icon: '🏆',
       color: 'from-red-500 to-orange-500',
       trend: 'up' as const,
-      trendValue: '+3%'
+      trendValue: 'Live'
     },
     {
-      title: 'Security Practices',
-      value: 'A',
-      description: 'Following security best practices, input validation, and secure coding standards',
-      icon: '🔒',
+      title: 'Repository Watchers',
+      value: githubStats.isLoading ? '...' : totalWatchers,
+      description: 'Number of users watching repositories for updates, indicating project interest and engagement',
+      icon: '👀',
       color: 'from-indigo-500 to-purple-500',
       trend: 'stable' as const,
-      trendValue: 'Maintained'
+      trendValue: 'Live'
     }
   ]
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { 
   SiReact, SiTypescript, SiJavascript, SiPython, SiFastapi, SiNodedotjs, SiFlask,
@@ -9,6 +9,7 @@ import {
 import { 
   FaBrain, FaRobot, FaChartLine, FaCogs, FaServer, FaChartBar, FaJava, FaDatabase
 } from 'react-icons/fa'
+import { useGitHubStats } from '../../hooks/useGitHubStats'
 
 interface Skill {
   name: string
@@ -90,6 +91,38 @@ const categoryLabels = {
 
 export const TechStack: React.FC = () => {
   const categories = Object.keys(categoryLabels) as Array<keyof typeof categoryLabels>
+  const githubStats = useGitHubStats('HRS0221')
+  
+  // Language mapping for GitHub languages to our skill icons
+  const languageIconMap: { [key: string]: React.ComponentType<{ size?: number; className?: string }> } = {
+    'TypeScript': SiTypescript,
+    'JavaScript': SiJavascript,
+    'Python': SiPython,
+    'Java': FaJava,
+    'React': SiReact,
+    'HTML': SiReact, // Using React icon as placeholder
+    'CSS': SiSass,
+    'Shell': SiGit,
+    'Dockerfile': SiDocker,
+    'SQL': FaDatabase,
+    'Jupyter Notebook': SiJupyter,
+    'Markdown': SiGithub
+  }
+
+  const languageColorMap: { [key: string]: string } = {
+    'TypeScript': 'text-blue-600',
+    'JavaScript': 'text-yellow-500',
+    'Python': 'text-yellow-500',
+    'Java': 'text-red-500',
+    'React': 'text-blue-500',
+    'HTML': 'text-orange-500',
+    'CSS': 'text-pink-500',
+    'Shell': 'text-green-500',
+    'Dockerfile': 'text-blue-500',
+    'SQL': 'text-blue-500',
+    'Jupyter Notebook': 'text-orange-500',
+    'Markdown': 'text-gray-500'
+  }
   
   return (
     <motion.section
@@ -107,6 +140,83 @@ export const TechStack: React.FC = () => {
           From AI/ML to web development, here's what I work with daily.
         </p>
       </div>
+
+      {/* Live GitHub Language Usage */}
+      {githubStats.languages && Object.keys(githubStats.languages).length > 0 && (
+        <motion.div
+          className="mb-12 bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="text-center mb-6">
+            <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+              📊 Live GitHub Language Usage
+            </h3>
+            <p className="text-neutral-600 dark:text-neutral-400">
+              Real-time data from my GitHub repositories
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap gap-3 justify-center">
+            {Object.entries(githubStats.languages)
+              .sort(([,a], [,b]) => b - a)
+              .slice(0, 8)
+              .map(([language, bytes]) => {
+                const IconComponent = languageIconMap[language] || SiGithub
+                const color = languageColorMap[language] || 'text-gray-500'
+                const percentage = Math.round((bytes / Object.values(githubStats.languages).reduce((a, b) => a + b, 0)) * 100)
+                
+                return (
+                  <motion.div
+                    key={language}
+                    className="group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-600 hover:shadow-lg hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                  >
+                    <IconComponent size={16} className={color} />
+                    <span className="text-sm font-medium text-neutral-900 dark:text-white">
+                      {language}
+                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                      <span className="text-xs font-semibold text-green-600 dark:text-green-400">
+                        {percentage}%
+                      </span>
+                    </div>
+                    
+                    {/* Hover tooltip */}
+                    <motion.div
+                      className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10 shadow-lg"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                    >
+                      <div className="w-20 bg-neutral-700 dark:bg-neutral-300 rounded-full h-1.5 mb-1">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"
+                          initial={{ width: 0 }}
+                          animate={{ width: `${percentage}%` }}
+                          transition={{ duration: 0.8, delay: 0.1 }}
+                        />
+                      </div>
+                      <div className="text-center">
+                        {bytes.toLocaleString()} bytes
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                )
+              })}
+          </div>
+          
+          {githubStats.isLoading && (
+            <div className="text-center text-neutral-500 dark:text-neutral-400">
+              Loading GitHub language data...
+            </div>
+          )}
+        </motion.div>
+      )}
       
       <div className="space-y-12">
         {categories.map((category, categoryIndex) => {

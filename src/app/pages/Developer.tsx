@@ -150,7 +150,7 @@ const Developer: React.FC = () => {
             </p>
             <div className="mt-6 flex items-center justify-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
               <span>Live data • Last updated:</span>
-              <span className="font-mono">{new Date().toLocaleDateString()}</span>
+              <span className="font-mono">{new Date().toLocaleString()}</span>
             </div>
           </motion.div>
 
