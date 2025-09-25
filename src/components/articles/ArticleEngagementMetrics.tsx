@@ -171,7 +171,7 @@ const ArticleEngagementMetrics: React.FC = () => {
                 <div>
                   <h4 className="font-semibold text-neutral-900 dark:text-white">
                     {article.title}
-                  </h4>
+                  </h4> 
                   <div className="flex items-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
                     <span>⏱️ {article.readTime} min read</span>
                     <span>📅 {new Date(article.date).toLocaleDateString()}</span>

@@ -9,7 +9,7 @@ const CollaborationOpportunities: React.FC = () => {
       icon: '🤖',
       color: 'from-purple-500 to-purple-600',
       duration: '2-6 months',
-      budget: '$$$',
+      budget: '₹₹₹',
       availability: 'Available',
       skills: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy'],
       examples: [
@@ -20,44 +20,12 @@ const CollaborationOpportunities: React.FC = () => {
       ]
     },
     {
-      title: 'Web Development',
-      description: 'Full-stack web applications with modern frameworks and best practices',
-      icon: '🌐',
-      color: 'from-blue-500 to-blue-600',
-      duration: '1-4 months',
-      budget: '$$',
-      availability: 'Available',
-      skills: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL'],
-      examples: [
-        'E-commerce platforms',
-        'SaaS applications',
-        'Portfolio websites',
-        'API development'
-      ]
-    },
-    {
-      title: 'Data Engineering',
-      description: 'Data pipelines, ETL processes, and scalable data infrastructure',
-      icon: '📊',
-      color: 'from-green-500 to-green-600',
-      duration: '3-8 months',
-      budget: '$$$',
-      availability: 'Available',
-      skills: ['Apache Airflow', 'Docker', 'Kubernetes', 'AWS', 'GCP', 'Apache Kafka'],
-      examples: [
-        'Real-time data processing',
-        'Data warehouse design',
-        'ETL pipeline development',
-        'Cloud data solutions'
-      ]
-    },
-    {
       title: 'Technical Writing',
       description: 'Technical documentation, tutorials, and educational content creation',
       icon: '📝',
       color: 'from-orange-500 to-orange-600',
       duration: '1-3 months',
-      budget: '$',
+      budget: '₹',
       availability: 'Available',
       skills: ['Technical Writing', 'Documentation', 'Tutorial Creation', 'API Docs'],
       examples: [
@@ -73,7 +41,7 @@ const CollaborationOpportunities: React.FC = () => {
       icon: '💡',
       color: 'from-indigo-500 to-indigo-600',
       duration: '1-12 months',
-      budget: '$$',
+      budget: '₹₹',
       availability: 'Available',
       skills: ['System Design', 'Code Review', 'Architecture', 'Best Practices'],
       examples: [
@@ -147,7 +115,7 @@ const CollaborationOpportunities: React.FC = () => {
       </div>
 
       {/* Opportunities Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {opportunities.map((opportunity, index) => (
           <motion.div
             key={opportunity.title}

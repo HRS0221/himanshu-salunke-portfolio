@@ -9,7 +9,7 @@ const ProjectInquiryTypes: React.FC = () => {
       icon: '🤖',
       color: 'from-purple-500 to-purple-600',
       duration: '2-6 months',
-      budget: '$5,000 - $25,000',
+      budget: '₹4,00,000 - ₹20,00,000',
       complexity: 'High',
       requirements: [
         'Clear project objectives and data requirements',
@@ -26,34 +26,12 @@ const ProjectInquiryTypes: React.FC = () => {
       timeline: '2-4 weeks for initial consultation'
     },
     {
-      title: 'Web Application',
-      description: 'Full-stack web applications with modern frameworks',
-      icon: '🌐',
-      color: 'from-blue-500 to-blue-600',
-      duration: '1-4 months',
-      budget: '$3,000 - $15,000',
-      complexity: 'Medium',
-      requirements: [
-        'Detailed feature specifications',
-        'UI/UX design requirements',
-        'Target platform and devices',
-        'Integration requirements'
-      ],
-      deliverables: [
-        'Responsive web application',
-        'Source code and documentation',
-        'Deployment setup',
-        'User manual and training'
-      ],
-      timeline: '1-2 weeks for project planning'
-    },
-    {
       title: 'Data Engineering',
       description: 'Data pipelines, ETL processes, and data infrastructure',
       icon: '📊',
       color: 'from-green-500 to-green-600',
       duration: '3-8 months',
-      budget: '$8,000 - $30,000',
+      budget: '₹6,50,000 - ₹25,00,000',
       complexity: 'High',
       requirements: [
         'Data source specifications',
@@ -75,7 +53,7 @@ const ProjectInquiryTypes: React.FC = () => {
       icon: '💡',
       color: 'from-orange-500 to-orange-600',
       duration: '1-12 months',
-      budget: '$100 - $200/hour',
+      budget: '₹8,000 - ₹15,000/hour',
       complexity: 'Variable',
       requirements: [
         'Current system documentation',
@@ -97,7 +75,7 @@ const ProjectInquiryTypes: React.FC = () => {
       icon: '📱',
       color: 'from-indigo-500 to-indigo-600',
       duration: '2-6 months',
-      budget: '$5,000 - $20,000',
+      budget: '₹4,00,000 - ₹16,00,000',
       complexity: 'Medium-High',
       requirements: [
         'App concept and wireframes',
@@ -208,7 +186,7 @@ const ProjectInquiryTypes: React.FC = () => {
       </div>
 
       {/* Inquiry Types Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div className="grid gap-4 md:gap-6 mb-12 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {inquiryTypes.map((inquiry, index) => (
           <motion.div
             key={inquiry.title}
@@ -317,7 +295,7 @@ const ProjectInquiryTypes: React.FC = () => {
           🚀 Project Process
         </h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
           {processSteps.map((step, index) => (
             <motion.div
               key={step.step}

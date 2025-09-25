@@ -181,7 +181,7 @@ const AvailabilityStatus: React.FC = () => {
         <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4 text-center">
           Weekly Schedule
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {schedule.map((day, index) => (
             <motion.div
               key={day.day}

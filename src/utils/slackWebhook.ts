@@ -17,7 +17,7 @@ export class SlackWebhook {
   private webhookUrl: string;
 
   constructor() {
-    this.webhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL || '';
+    this.webhookUrl = import.meta.env.SLACK_WEBHOOK_URL || '';
   }
 
   private createContactMessage(data: ContactFormData): SlackMessage {
