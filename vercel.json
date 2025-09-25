@@ -1,12 +1,4 @@
 {
-  "functions": {
-    "api/og/[slug].tsx": {
-      "runtime": "edge"
-    },
-    "api/og/page.tsx": {
-      "runtime": "edge"
-    }
-  },
   "headers": [
     {
       "source": "/api/og/(.*)",

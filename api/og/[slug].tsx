@@ -1,13 +1,10 @@
 import { ImageResponse } from '@vercel/og'
+import { VercelRequest, VercelResponse } from '@vercel/node'
 import React from 'react'
 
-export const config = {
-  runtime: 'edge',
-}
-
-export default async function handler(req: Request) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    const { searchParams } = new URL(req.url)
+    const { searchParams } = new URL(req.url || '')
     const slug = searchParams.get('slug')
     const title = searchParams.get('title')
     const description = searchParams.get('description')
@@ -16,10 +13,10 @@ export default async function handler(req: Request) {
     const tags = searchParams.get('tags')
 
     if (!title) {
-      return new Response('Title is required', { status: 400 })
+      return res.status(400).json({ error: 'Title is required' })
     }
 
-    return new ImageResponse(
+    const imageResponse = new ImageResponse(
       (
         <div
           style={{
@@ -187,10 +184,10 @@ export default async function handler(req: Request) {
         height: 630,
       }
     )
+
+    return imageResponse
   } catch (e: any) {
     console.log(`${e.message}`)
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    })
+    return res.status(500).json({ error: 'Failed to generate the image' })
   }
 }
