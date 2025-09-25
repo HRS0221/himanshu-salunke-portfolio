@@ -116,6 +116,7 @@ function getAllProjects() {
       
       return {
         ...frontmatter,
+        slug: frontmatter.id, // Add slug field for frontend compatibility
         content,
         readingTime: Math.ceil(content.split(' ').length / 200)
       };

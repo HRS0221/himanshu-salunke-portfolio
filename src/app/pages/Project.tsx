@@ -105,6 +105,13 @@ const Project: React.FC = () => {
     loadProject()
   }, [loadProject])
 
+  // Load navigation and related projects when project loads
+  useEffect(() => {
+    if (project && project.slug) {
+      loadNavigationAndRelated(project.slug)
+    }
+  }, [project, loadNavigationAndRelated])
+
   // Ensure page starts at top when project loads
   useEffect(() => {
     // Immediate scroll reset
