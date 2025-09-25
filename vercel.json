@@ -4,6 +4,11 @@
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
@@ -52,6 +57,10 @@
     {
       "source": "/robots.txt",
       "destination": "/api/robots"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
     }
   ],
   "redirects": [
