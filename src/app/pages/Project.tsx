@@ -227,7 +227,7 @@ const Project: React.FC = () => {
         <meta property="og:title" content={metaData?.title || `${project.title} - ${SITE_CONFIG.name}`} />
         <meta property="og:description" content={metaData?.description || project.summary} />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={metaData?.image || project.coverImage} />
+        <meta property="og:image" content={`${SITE_CONFIG.url}/api/og/${project.slug}?title=${encodeURIComponent(project.title)}&description=${encodeURIComponent(project.summary)}&type=project&date=${project.date}&tags=${encodeURIComponent(project.techStack.join(','))}`} />
         <meta property="og:url" content={metaData?.url || getCurrentUrl()} />
         <meta property="og:site_name" content={SITE_CONFIG.name} />
         <meta property="article:published_time" content={metaData?.date || project.date} />
@@ -240,7 +240,7 @@ const Project: React.FC = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={metaData?.title || `${project.title} - ${SITE_CONFIG.name}`} />
         <meta name="twitter:description" content={metaData?.description || project.summary} />
-        <meta name="twitter:image" content={metaData?.image || project.coverImage} />
+        <meta name="twitter:image" content={`${SITE_CONFIG.url}/api/og/${project.slug}?title=${encodeURIComponent(project.title)}&description=${encodeURIComponent(project.summary)}&type=project&date=${project.date}&tags=${encodeURIComponent(project.techStack.join(','))}`} />
         <meta name="twitter:creator" content={metaData?.twitterHandle || SITE_CONFIG.twitterHandle} />
         
         {/* Additional SEO */}

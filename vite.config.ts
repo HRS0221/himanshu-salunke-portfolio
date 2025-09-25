@@ -79,4 +79,5 @@ export default defineConfig({
     include: ['framer-motion'],
     exclude: ['framer-motion/dom']
   },
+  assetsInclude: ['**/*.wasm'],
 })
