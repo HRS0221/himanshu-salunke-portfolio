@@ -4,7 +4,7 @@ A modern, interactive portfolio website showcasing AI/ML engineering projects, d
 
 **Live Demo**: [https://himanshu.dev](https://himanshu.dev) | **GitHub**: [HRS0221](https://github.com/HRS0221) | **Node.js**: 22.x
 
-## ✨ Features
+## ✨ Features.
 
 ### 🎨 Core Features
 - **Modern Tech Stack**: React 18, TypeScript 5.x, Vite 7, Tailwind CSS 3.x
