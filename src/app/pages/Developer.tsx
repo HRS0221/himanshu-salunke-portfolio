@@ -67,32 +67,32 @@ const getSocialPlatforms = (socialStats: any): SocialPlatform[] => [
       { label: 'Ranking', value: socialStats.leetcode.isLoading ? 'Loading...' : socialStats.leetcode.ranking || 'N/A' }
     ]
   },
-  {
-    name: 'CodeChef',
-    icon: SiCodechef,
-    url: 'https://www.codechef.com/users/hr0221',
-    username: 'hr0221',
-    color: 'from-red-500 to-red-600',
-    description: 'Competitive programming adventures 🏆',
-    stats: [
-      { label: 'Problems Solved', value: socialStats.codechef.isLoading ? 'Loading...' : socialStats.codechef.problemsSolved || 'N/A' },
-      { label: 'Rating', value: socialStats.codechef.isLoading ? 'Loading...' : socialStats.codechef.rating || 'N/A' },
-      { label: 'Stars', value: socialStats.codechef.isLoading ? 'Loading...' : socialStats.codechef.stars || 'N/A' }
-    ]
-  },
-  {
-    name: 'X (Twitter)',
-    icon: SiX,
-    url: 'https://x.com/Wiser_0221',
-    username: 'Wiser_0221',
-    color: 'from-black to-gray-800',
-    description: 'Thoughts, updates & tech discussions 🐦',
-    stats: [
-      { label: 'Followers', value: 'Loading...' },
-      { label: 'Following', value: 'Loading...' },
-      { label: 'Tweets', value: 'Loading...' }
-    ]
-  }
+  // {
+  //   name: 'CodeChef',
+  //   icon: SiCodechef,
+  //   url: 'https://www.codechef.com/users/hr0221',
+  //   username: 'hr0221',
+  //   color: 'from-red-500 to-red-600',
+  //   description: 'Competitive programming adventures 🏆',
+  //   stats: [
+  //     { label: 'Problems Solved', value: socialStats.codechef.isLoading ? 'Loading...' : socialStats.codechef.problemsSolved || 'N/A' },
+  //     { label: 'Rating', value: socialStats.codechef.isLoading ? 'Loading...' : socialStats.codechef.rating || 'N/A' },
+  //     { label: 'Stars', value: socialStats.codechef.isLoading ? 'Loading...' : socialStats.codechef.stars || 'N/A' }
+  //   ]
+  // },
+  // {
+  //   name: 'X (Twitter)',
+  //   icon: SiX,
+  //   url: 'https://x.com/Wiser_0221',
+  //   username: 'Wiser_0221',
+  //   color: 'from-black to-gray-800',
+  //   description: 'Thoughts, updates & tech discussions 🐦',
+  //   stats: [
+  //     { label: 'Followers', value: socialStats.twitter.isLoading ? 'Loading...' : `${socialStats.twitter.followers > 1000 ? `${Math.floor(socialStats.twitter.followers / 1000)}k+` : `${socialStats.twitter.followers}+`}` },
+  //     { label: 'Following', value: socialStats.twitter.isLoading ? 'Loading...' : `${socialStats.twitter.following}+` },
+  //     { label: 'Tweets', value: socialStats.twitter.isLoading ? 'Loading...' : `${socialStats.twitter.tweets}+` }
+  //   ]
+  // }
 ]
 
 const Developer: React.FC = () => {
