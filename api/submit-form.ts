@@ -1,23 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { VercelRequest, VercelResponse } from '@vercel/node';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-const app = express();
-const PORT = process.env.PORT || 3002;
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Serve static files from the dist directory
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// API endpoint for contact form submission
-app.post('/api/submit-form', async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
@@ -97,13 +85,4 @@ app.post('/api/submit-form', async (req, res) => {
     console.error('❌ Failed to process request:', error);
     res.status(500).json({ error: 'Failed to process request.' });
   }
-});
-
-// Simple health check endpoint
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Server is running' });
-});
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+}

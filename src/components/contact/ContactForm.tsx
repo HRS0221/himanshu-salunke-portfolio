@@ -19,9 +19,6 @@ const contactFormSchema = z.object({
   email: z.string()
     .email('Please enter a valid email address')
     .max(255, 'Email must be less than 255 characters'),
-  subject: z.string()
-    .min(5, 'Subject must be at least 5 characters')
-    .max(200, 'Subject must be less than 200 characters'),
   message: z.string()
     .min(10, 'Message must be at least 10 characters'),
   honeypot: z.string().optional(), // Anti-spam field
@@ -63,7 +60,6 @@ export const ContactForm: React.FC = () => {
       const slackSuccess = await slackWebhook.sendContactNotification({
         name: data.name,
         email: data.email,
-        subject: data.subject,
         message: data.message,
       })
 
@@ -223,28 +219,6 @@ export const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Subject Field */}
-        <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
-            Subject *
-          </label>
-          <input
-            type="text"
-            id="subject"
-            {...register('subject')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
-              errors.subject 
-                ? 'border-red-500 dark:border-red-400' 
-                : 'border-neutral-300 dark:border-neutral-600'
-            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400`}
-            placeholder="What's this about?"
-          />
-          {errors.subject && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-              {errors.subject.message}
-            </p>
-          )}
-        </div>
 
         {/* Message Field */}
         <div>

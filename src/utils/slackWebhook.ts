@@ -4,24 +4,24 @@ interface SlackMessage {
   attachments?: any[];
 }
 
-interface ContactFormData {
+export interface ContactFormData {
   name: string;
   email: string;
-  subject: string;
   message: string;
-  company?: string;
-  phone?: string;
 }
 
 export class SlackWebhook {
   private webhookUrl: string;
 
   constructor() {
-    this.webhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL || '';
+    // Use Express server in development, Vercel API route in production
+    this.webhookUrl = import.meta.env.DEV 
+      ? 'http://localhost:3002/api/submit-form'
+      : '/api/submit-form';
   }
 
   private createContactMessage(data: ContactFormData): SlackMessage {
-    const { name, email, subject, message, company, phone } = data;
+    const { name, email, message } = data;
 
     return {
       text: `New contact form submission from ${name}`,
@@ -30,83 +30,66 @@ export class SlackWebhook {
           type: 'header',
           text: {
             type: 'plain_text',
-            text: '📧 New Contact Form Submission'
-          }
+            text: '📬 New Portfolio Message',
+            emoji: true,
+          },
+        },
+        {
+          type: 'divider',
         },
         {
           type: 'section',
           fields: [
             {
               type: 'mrkdwn',
-              text: `*Name:*\n${name}`
+              text: `*From:*\n${name}`,
             },
             {
               type: 'mrkdwn',
-              text: `*Email:*\n${email}`
+              text: `*Email:*\n${email}`,
             },
-            {
-              type: 'mrkdwn',
-              text: `*Subject:*\n${subject}`
-            },
-            {
-              type: 'mrkdwn',
-              text: `*Company:*\n${company || 'Not provided'}`
-            }
-          ]
+          ],
         },
         {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `*Message:*\n${message}`
-          }
+            text: `*Message:*\n${message}`,
+          },
         },
-        ...(phone ? [{
-          type: 'section',
-          text: {
-            type: 'mrkdwn',
-            text: `*Phone:*\n${phone}`
-          }
-        }] : []),
         {
           type: 'context',
           elements: [
             {
-              type: 'mrkdwn',
-              text: `📅 ${new Date().toLocaleString()} | 🌐 Portfolio Contact Form`
-            }
-          ]
-        }
-      ]
+              type: 'plain_text',
+              text: `Received on: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })}`,
+              emoji: true,
+            },
+          ],
+        },
+      ],
     };
   }
 
   async sendContactNotification(data: ContactFormData): Promise<boolean> {
-    if (!this.webhookUrl) {
-      console.warn('Slack webhook URL not configured');
-      return false;
-    }
-
     try {
-      const message = this.createContactMessage(data);
-      
       const response = await fetch(this.webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(message),
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
-        console.log('✅ Slack notification sent successfully');
+        console.log('✅ Contact form submitted successfully');
         return true;
       } else {
-        console.error('❌ Failed to send Slack notification:', response.statusText);
+        console.error('❌ Failed to submit contact form:', response.statusText);
         return false;
       }
     } catch (error) {
-      console.error('❌ Error sending Slack notification:', error);
+      console.error('❌ Error submitting contact form:', error);
       return false;
     }
   }
