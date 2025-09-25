@@ -21,9 +21,12 @@ const Work: React.FC = () => {
     const loadProjects = async () => {
       try {
         const projectsData = await fetchAllProjects()
+        console.log('🔍 Work page - Loaded projects:', projectsData)
+        console.log('🔍 Work page - Projects count:', projectsData.length)
+        console.log('🔍 Work page - First project:', projectsData[0])
         setProjects(projectsData)
       } catch (error) {
-        console.error('Error loading projects:', error)
+        console.error('❌ Work page - Error loading projects:', error)
       } finally {
         setLoading(false)
       }
@@ -50,10 +53,25 @@ const Work: React.FC = () => {
   ]
 
   const filteredProjects = useMemo(() => {
+    console.log('🔍 Work page state:', {
+      loading,
+      projectsCount: projects.length,
+      searchTerm,
+      selectedCategory,
+      selectedStatus,
+      sortBy
+    })
+    
     const filtered = projects.filter(project => {
+      // Safety checks for undefined properties
+      if (!project || !project.title || !project.summary || !project.techStack) {
+        console.warn('❌ Project missing required properties:', project)
+        return false
+      }
+
       const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            project.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           project.techStack.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()))
+                           project.techStack.some(tech => tech && tech.toLowerCase().includes(searchTerm.toLowerCase()))
       
       const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory
       const matchesStatus = selectedStatus === 'All' || project.status === selectedStatus
@@ -65,24 +83,25 @@ const Work: React.FC = () => {
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'title':
-          return a.title.localeCompare(b.title)
+          return (a.title || '').localeCompare(b.title || '')
         case 'featured':
           return (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
         case 'readTime':
           // For projects, sort by tech stack length (complexity indicator)
-          return a.techStack.length - b.techStack.length
+          return (a.techStack?.length || 0) - (b.techStack?.length || 0)
         case 'views':
           // For projects, sort by number of metrics (engagement indicator)
           return (b.metrics?.length || 0) - (a.metrics?.length || 0)
         case 'likes':
           // For projects, sort by tech stack length (popularity indicator)
-          return b.techStack.length - a.techStack.length
+          return (b.techStack?.length || 0) - (a.techStack?.length || 0)
         case 'date':
         default:
-          return new Date(b.date).getTime() - new Date(a.date).getTime()
+          return new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime()
       }
     })
 
+    console.log('✅ Work page - Filtered projects:', filtered.length)
     return filtered
   }, [searchTerm, selectedCategory, selectedStatus, sortBy, projects])
 

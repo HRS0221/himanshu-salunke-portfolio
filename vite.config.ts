@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { imagetools } from 'vite-imagetools'
 import mdx from '@mdx-js/rollup'
 import remarkGfm from 'remark-gfm'
+import remarkFrontmatter from 'remark-frontmatter'
 // import rehypeShiki from 'rehype-shiki' // TODO: Fix type declarations
 // import { shiki } from 'shiki' // TODO: Use shiki for syntax highlighting
 
@@ -28,7 +29,7 @@ export default defineConfig({
       },
     }),
     mdx({
-      remarkPlugins: [remarkGfm],
+      remarkPlugins: [remarkGfm, remarkFrontmatter],
       // TODO: Re-enable rehypeShiki when type declarations are fixed
       // rehypePlugins: [
       //   [
