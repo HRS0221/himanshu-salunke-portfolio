@@ -4,12 +4,10 @@ import { motion } from 'framer-motion'
 import { Button } from '../../components/ui/Button'
 import { SearchAndFilter } from '../../components/ui/SearchAndFilter'
 import { ArticleCard } from '../../components/articles/ArticleCard'
-import { useArticleStatistics } from '../../hooks/useArticleStatistics'
 import { useUnifiedStats } from '../../hooks/useUnifiedStats'
 import { articles } from '../../data/articles'
 import ArticleEngagementMetrics from '../../components/articles/ArticleEngagementMetrics'
 import ArticleCategories from '../../components/articles/ArticleCategories'
-import WritingJourney from '../../components/articles/WritingJourney'
 
 
 const categories = ['All', 'Machine Learning', 'Deep Learning', 'Reinforcement Learning']
@@ -18,26 +16,23 @@ const statuses = ['All', 'Featured', 'Regular']
 const sortOptions = [
   { value: 'date', label: 'Latest', icon: '🕒' },
   { value: 'title', label: 'Title', icon: '🔤' },
-  { value: 'readTime', label: 'Read Time', icon: '⏱️' },
-  { value: 'views', label: 'Most Viewed', icon: '👁️' },
-  { value: 'likes', label: 'Most Liked', icon: '❤️' }
+  { value: 'readTime', label: 'Read Time', icon: '⏱️' }
 ]
 
 const Articles: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedStatus, setSelectedStatus] = useState('All')
-  const [sortBy, setSortBy] = useState<'date' | 'title' | 'readTime' | 'views' | 'likes'>('date')
+  const [sortBy, setSortBy] = useState<'date' | 'title' | 'readTime'>('date')
   
-  // Get dynamic statistics from localStorage
-  const { totalLikes, totalViews, getArticleLikes, getArticleViews } = useArticleStatistics(articles)
   const unifiedStats = useUnifiedStats()
 
   const filteredArticles = useMemo(() => {
     const filtered = articles.filter(article => {
       const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+                           article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                           article.author.toLowerCase().includes(searchTerm.toLowerCase())
       
       const matchesCategory = selectedCategory === 'All' || article.category === selectedCategory
       const matchesStatus = selectedStatus === 'All' || 
@@ -54,10 +49,6 @@ const Articles: React.FC = () => {
           return a.title.localeCompare(b.title)
         case 'readTime':
           return a.readTime - b.readTime
-        case 'views':
-          return getArticleViews(b.id) - getArticleViews(a.id)
-        case 'likes':
-          return getArticleLikes(b.id) - getArticleLikes(a.id)
         case 'date':
         default:
           return new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -65,15 +56,15 @@ const Articles: React.FC = () => {
     })
 
     return filtered
-  }, [searchTerm, selectedCategory, selectedStatus, sortBy, getArticleLikes, getArticleViews])
+  }, [searchTerm, selectedCategory, selectedStatus, sortBy])
 
   return (
     <>
       <Helmet>
         <title>Articles - Portfolio</title>
-        <meta name="description" content="Read my latest articles on web development, AI/ML, performance optimization, and modern software engineering practices." />
-        <meta property="og:title" content="Articles - Portfolio" />
-        <meta property="og:description" content="Read my latest articles on web development, AI/ML, performance optimization, and modern software engineering practices." />
+        <meta name="description" content="Comprehensive articles on Machine Learning, Deep Learning, and Reinforcement Learning. Explore AI/ML concepts, algorithms, and practical applications." />
+        <meta property="og:title" content="Knowledge Hub - AI/ML Articles" />
+        <meta property="og:description" content="Comprehensive articles on Machine Learning, Deep Learning, and Reinforcement Learning. Explore AI/ML concepts, algorithms, and practical applications." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -92,8 +83,8 @@ const Articles: React.FC = () => {
               </span>
             </h1>
             <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-              Deep insights, practical tutorials, and thought leadership on AI/ML, web development, 
-              and cutting-edge technologies. Learn from real-world experience and industry best practices.
+              Comprehensive articles on Machine Learning, Deep Learning, and Reinforcement Learning. 
+              Explore fundamental concepts, advanced techniques, and practical applications in AI/ML.
             </p>
           </motion.div>
 
@@ -124,9 +115,39 @@ const Articles: React.FC = () => {
               selectedStatus={selectedStatus}
               onStatusChange={setSelectedStatus}
               sortBy={sortBy}
-              onSortChange={(value) => setSortBy(value as 'date' | 'title' | 'readTime' | 'views' | 'likes')}
+              onSortChange={(value) => setSortBy(value as 'date' | 'title' | 'readTime')}
               sortOptions={sortOptions}
             />
+          </motion.div>
+
+          {/* Results Counter */}
+          <motion.div
+            className="mb-6"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                {filteredArticles.length === articles.length 
+                  ? `Showing all ${articles.length} articles`
+                  : `Showing ${filteredArticles.length} of ${articles.length} articles`
+                }
+              </p>
+              {(searchTerm || selectedCategory !== 'All' || selectedStatus !== 'All') && (
+                <button
+                  onClick={() => {
+                    setSearchTerm('')
+                    setSelectedCategory('All')
+                    setSelectedStatus('All')
+                    setSortBy('date')
+                  }}
+                  className="text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium transition-colors"
+                >
+                  Clear filters
+                </button>
+              )}
+            </div>
           </motion.div>
 
           {/* Articles Grid */}
@@ -178,10 +199,6 @@ const Articles: React.FC = () => {
           )}
 
 
-          {/* Writing Journey */}
-          <motion.div className="mt-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.8 }}>
-            <WritingJourney />
-          </motion.div>
         </div>
       </div>
     </>

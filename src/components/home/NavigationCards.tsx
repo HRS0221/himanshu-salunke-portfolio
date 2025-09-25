@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useUnifiedStats } from '../../hooks/useUnifiedStats'
+import { articles } from '../../data/articles'
 
 interface NavigationCardProps {
   title: string
@@ -111,6 +112,10 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
 
 export const NavigationCards: React.FC = () => {
   const unifiedStats = useUnifiedStats()
+  
+  // Calculate unique categories dynamically
+  const uniqueCategories = [...new Set(articles.map(article => article.category))]
+  const categoryCount = uniqueCategories.length
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -127,7 +132,7 @@ export const NavigationCards: React.FC = () => {
         gradient="bg-gradient-to-br from-blue-500/5 to-purple-500/5"
         stats={{
           primary: { value: unifiedStats.isLoading ? "..." : unifiedStats.projectsCompleted.toString(), label: "Projects" },
-          secondary: { value: "4", label: "Featured" }
+          secondary: { value: "4", label: "Categories" }
         }}
         categories={['Computer Vision', 'Deep Learning', 'Data Analysis', 'Data Engineering']}
         buttonText="View Projects"
@@ -153,7 +158,7 @@ export const NavigationCards: React.FC = () => {
           primary: { value: "2+", label: "Years Learning" },
           secondary: { value: "5+", label: "Achievements" }
         }}
-        categories={['Education', 'Timeline', 'Skills', 'Goals']}
+        categories={['Education', 'Timeline', 'Achievements', 'Goals']}
         buttonText="My Story"
         buttonIcon={
           <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -175,9 +180,9 @@ export const NavigationCards: React.FC = () => {
         gradient="bg-gradient-to-br from-orange-500/5 to-red-500/5"
         stats={{
           primary: { value: unifiedStats.isLoading ? "..." : unifiedStats.technologiesMastered.toString() + "+", label: "Technologies" },
-          secondary: { value: unifiedStats.isLoading ? "..." : unifiedStats.githubRepositories.toString() + "+", label: "Repositories" }
+          secondary: { value: unifiedStats.isLoading ? "..." : unifiedStats.githubStars.toString() + "+", label: "GitHub Stars" }
         }}
-        categories={['Python', 'React', 'TypeScript', 'AI/ML']}
+        categories={['Python', 'React', 'TypeScript', 'Machine Learning']}
         buttonText="View Skills"
         buttonIcon={
           <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -199,9 +204,9 @@ export const NavigationCards: React.FC = () => {
         gradient="bg-gradient-to-br from-purple-500/5 to-pink-500/5"
         stats={{
           primary: { value: unifiedStats.isLoading ? "..." : unifiedStats.totalArticles.toString(), label: "Articles" },
-          secondary: { value: unifiedStats.isLoading ? "..." : unifiedStats.totalViews > 1000 ? `${Math.floor(unifiedStats.totalViews / 1000)}k+` : `${unifiedStats.totalViews}+`, label: "Views" }
+          secondary: { value: unifiedStats.isLoading ? "..." : categoryCount.toString(), label: "Categories" }
         }}
-        categories={['Machine Learning', 'React', 'TypeScript', 'Web Dev']}
+        categories={['Machine Learning', 'Deep Learning', 'Reinforcement Learning', 'Tutorials']}
         buttonText="Read Articles"
         buttonIcon={
           <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">

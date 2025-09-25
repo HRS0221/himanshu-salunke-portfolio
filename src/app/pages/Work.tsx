@@ -38,7 +38,7 @@ const Work: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedStatus, setSelectedStatus] = useState('All')
-  const [sortBy, setSortBy] = useState<'date' | 'title' | 'featured' | 'readTime' | 'views' | 'likes'>('date')
+  const [sortBy, setSortBy] = useState<'date' | 'title' | 'featured' | 'readTime'>('date')
 
   const categories = ['All', 'Computer Vision', 'Deep Learning', 'Data Analysis', 'Data Engineering']
   const statuses = ['All', 'Completed', 'In Progress', 'Planning']
@@ -47,9 +47,7 @@ const Work: React.FC = () => {
     { value: 'date', label: 'Latest', icon: '🕒' },
     { value: 'title', label: 'Title', icon: '🔤' },
     { value: 'featured', label: 'Featured', icon: '⭐' },
-    { value: 'readTime', label: 'Read Time', icon: '⏱️' },
-    { value: 'views', label: 'Most Viewed', icon: '👁️' },
-    { value: 'likes', label: 'Most Liked', icon: '❤️' }
+    { value: 'readTime', label: 'Read Time', icon: '⏱️' }
   ]
 
   const filteredProjects = useMemo(() => {
@@ -89,12 +87,6 @@ const Work: React.FC = () => {
         case 'readTime':
           // For projects, sort by tech stack length (complexity indicator)
           return (a.techStack?.length || 0) - (b.techStack?.length || 0)
-        case 'views':
-          // For projects, sort by number of metrics (engagement indicator)
-          return (b.metrics?.length || 0) - (a.metrics?.length || 0)
-        case 'likes':
-          // For projects, sort by tech stack length (popularity indicator)
-          return (b.techStack?.length || 0) - (a.techStack?.length || 0)
         case 'date':
         default:
           return new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime()
@@ -181,7 +173,7 @@ const Work: React.FC = () => {
               selectedStatus={selectedStatus}
               onStatusChange={setSelectedStatus}
               sortBy={sortBy}
-              onSortChange={(value) => setSortBy(value as 'date' | 'title' | 'featured' | 'readTime' | 'views' | 'likes')}
+              onSortChange={(value) => setSortBy(value as 'date' | 'title' | 'featured' | 'readTime')}
               sortOptions={sortOptions}
             />
           </motion.div>

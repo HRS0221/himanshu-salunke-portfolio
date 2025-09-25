@@ -19,8 +19,6 @@ interface UnifiedStats {
   
   // Article Stats
   totalArticles: number
-  totalViews: number
-  totalLikes: number
   
   // Loading States
   isLoading: boolean
@@ -38,15 +36,12 @@ export const useUnifiedStats = (): UnifiedStats => {
     linkedinFollowers: 0,
     leetcodeSolved: 0,
     totalArticles: 0,
-    totalViews: 0,
-    totalLikes: 0,
     isLoading: true,
     error: null
   })
 
   const profileStats = useProfileStats()
   const socialStats = useSocialStats()
-  const { totalViews, totalLikes } = useArticleStatistics(articles)
 
   useEffect(() => {
     setStats({
@@ -64,14 +59,12 @@ export const useUnifiedStats = (): UnifiedStats => {
       
       // Article Stats
       totalArticles: articles.length,
-      totalViews,
-      totalLikes,
       
       // Loading States
       isLoading: profileStats.isLoading || socialStats.github.isLoading,
       error: socialStats.github.error
     })
-  }, [profileStats, socialStats, totalViews, totalLikes])
+  }, [profileStats, socialStats])
 
   return stats
 }

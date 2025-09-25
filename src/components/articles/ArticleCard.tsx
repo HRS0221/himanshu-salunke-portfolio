@@ -2,9 +2,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Tag } from '../ui/Tag'
 import { ImageWithShimmer } from '../ui/ImageWithShimmer'
-import { LikeButton } from '../ui/LikeButton'
-import { useArticleLikes } from '../../hooks/useArticleLikes'
-import { useArticleViews } from '../../hooks/useArticleViews'
 import { formatRelativeTime } from '../../utils/formatDate'
 
 interface Article {
@@ -18,8 +15,6 @@ interface Article {
   readTime: number
   category: string
   featured: boolean
-  views: number
-  likes: number
   link: string
 }
 
@@ -29,8 +24,6 @@ interface ArticleCardProps {
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
-  const { likes, isLiked, isAnimating, toggleLike } = useArticleLikes(article.id, article.likes)
-  const { views, incrementView } = useArticleViews(article.id, article.views)
 
   return (
     <motion.article
@@ -49,8 +42,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
         />
         {article.featured && (
           <div className="absolute top-4 left-4">
-            <div className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-sm border border-white/20 dark:border-neutral-600/50 rounded-full px-3 py-1.5 text-sm font-semibold text-primary-600 dark:text-white shadow-lg">
-              Featured
+            <div className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm">
+              ⭐ Featured
             </div>
           </div>
         )}
@@ -95,36 +88,13 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
           <span>{formatRelativeTime(article.date)}</span>
         </div>
 
-        {/* Stats */}
-        <div className="flex items-center justify-between text-sm mb-4">
-          <div className="flex items-center space-x-6">
-            {/* Views */}
-            <span className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 transition-all duration-200 hover:bg-blue-100 dark:hover:bg-blue-900/30 group">
-              <svg className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <span className="font-medium">{views.toLocaleString()}</span>
-            </span>
-            
-            {/* Interactive Like Button */}
-            <div className="relative">
-              <LikeButton
-                likes={likes}
-                isLiked={isLiked}
-                isAnimating={isAnimating}
-                onToggle={toggleLike}
-              />
-            </div>
-          </div>
-        </div>
 
         {/* Read More Link */}
         <a
           href={article.link}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={incrementView}
+          onClick={() => {}}
           className="inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 dark:text-white dark:hover:text-blue-300 font-semibold text-sm transition-all duration-200 hover:gap-2 group"
         >
           <span>Read Article</span>

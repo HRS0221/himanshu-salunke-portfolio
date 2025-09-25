@@ -1,75 +1,53 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { useArticleStatistics } from '../../hooks/useArticleStatistics'
 import { articles } from '../../data/articles'
 
 const ArticleEngagementMetrics: React.FC = () => {
-  const { totalViews, totalLikes, getArticleViews, getArticleLikes } = useArticleStatistics(articles)
+  // Calculate dynamic metrics
+  const avgReadTime = Math.round(articles.reduce((sum, article) => sum + article.readTime, 0) / articles.length * 10) / 10
+  const featuredCount = articles.filter(article => article.featured).length
 
   const metrics = [
     {
-      title: 'Total Articles',
+      title: 'Articles Published',
       value: articles.length,
       description: 'Published articles across all categories',
       icon: '📝',
       color: 'from-blue-500 to-blue-600',
       trend: 'up',
-      trendValue: '+2 this month'
+      trendValue: `+${articles.length} published on LinkedIn`
     },
     {
-      title: 'Total Views',
-      value: totalViews.toLocaleString(),
-      description: 'Cumulative views across all articles',
-      icon: '👁️',
+      title: 'Words Written',
+      value: articles.reduce((sum, article) => sum + (article.readTime * 200), 0).toLocaleString(),
+      description: 'Total words across all articles',
+      icon: '✍️',
       color: 'from-green-500 to-green-600',
       trend: 'up',
-      trendValue: '+15% this week'
-    },
-    {
-      title: 'Total Likes',
-      value: totalLikes.toLocaleString(),
-      description: 'Reader engagement and appreciation',
-      icon: '❤️',
-      color: 'from-red-500 to-pink-500',
-      trend: 'up',
-      trendValue: '+8% this week'
+      trendValue: 'Comprehensive content'
     },
     {
       title: 'Avg. Read Time',
-      value: '8.5 min',
-      description: 'Average time readers spend on articles',
+      value: `${avgReadTime} min`,
+      description: 'Average reading time per article',
       icon: '⏱️',
       color: 'from-purple-500 to-purple-600',
       trend: 'stable',
-      trendValue: 'Consistent'
+      trendValue: 'Optimal length'
     },
     {
-      title: 'Engagement Rate',
-      value: '12.5%',
-      description: 'Likes per view ratio',
-      icon: '📊',
+      title: 'Publishing',
+      value: 'Weekly',
+      description: 'Content publication frequency',
+      icon: '📅',
       color: 'from-orange-500 to-orange-600',
-      trend: 'up',
-      trendValue: '+2.1%'
-    },
-    {
-      title: 'Featured Articles',
-      value: articles.filter(a => a.featured).length,
-      description: 'Highlighted and recommended content',
-      icon: '⭐',
-      color: 'from-yellow-500 to-yellow-600',
       trend: 'stable',
-      trendValue: 'Quality content'
+      trendValue: 'Consistent schedule'
     }
   ]
 
   const topArticles = articles
-    .map(article => ({
-      ...article,
-      views: getArticleViews(article.id),
-      likes: getArticleLikes(article.id)
-    }))
-    .sort((a, b) => b.views - a.views)
+    .filter(article => article.featured)
     .slice(0, 3)
 
   const getTrendIcon = (trend: string) => {
@@ -187,30 +165,44 @@ const ArticleEngagementMetrics: React.FC = () => {
               transition={{ duration: 0.3, delay: 1.0 + index * 0.1 }}
             >
               <div className="flex items-center gap-4">
-                <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                  #{index + 1}
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white text-lg font-bold shadow-sm border border-primary-400/20">
+                  {index + 1}
                 </div>
                 <div>
                   <h4 className="font-semibold text-neutral-900 dark:text-white">
                     {article.title}
                   </h4>
                   <div className="flex items-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
-                    <span>👁️ {article.views.toLocaleString()} views</span>
-                    <span>❤️ {article.likes} likes</span>
                     <span>⏱️ {article.readTime} min read</span>
+                    <span>📅 {new Date(article.date).toLocaleDateString()}</span>
                   </div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-sm font-semibold text-primary-600 dark:text-primary-400">
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-sm border border-primary-400/20">
                   {article.category}
-                </div>
-                <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                  {new Date(article.date).toLocaleDateString()}
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+      </motion.div>
+
+      {/* Personal Quote */}
+      <motion.div
+        className="mt-8 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.4 }}
+      >
+        <div className="bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-600">
+          <blockquote className="text-lg italic text-neutral-700 dark:text-neutral-300 mb-4">
+            "Writing is not just about sharing knowledge. It's about learning, growing, and connecting with 
+            a community of passionate developers."
+          </blockquote>
+          <footer className="text-sm text-neutral-500 dark:text-neutral-400">
+            — Himanshu Kishor Salunke
+          </footer>
         </div>
       </motion.div>
     </motion.div>

@@ -11,8 +11,6 @@ export const articles = [
     readTime: 8,
     category: 'Machine Learning',
     featured: true,
-    views: 1250,
-    likes: 89,
     link: 'https://www.linkedin.com/pulse/what-machine-learning-himanshu-salunke-dwgef/'
   },
   {
@@ -26,8 +24,6 @@ export const articles = [
     readTime: 6,
     category: 'Machine Learning',
     featured: false,
-    views: 980,
-    likes: 67,
     link: 'https://www.linkedin.com/pulse/what-hypothesis-inductive-bias-machine-learning-himanshu-salunke-yvqzf/'
   },
   {
@@ -41,8 +37,6 @@ export const articles = [
     readTime: 12,
     category: 'Machine Learning',
     featured: true,
-    views: 2100,
-    likes: 156,
     link: 'https://www.linkedin.com/pulse/what-regression-machine-learning-himanshu-salunke-m0zff/'
   },
   {
@@ -56,8 +50,6 @@ export const articles = [
     readTime: 7,
     category: 'Machine Learning',
     featured: false,
-    views: 850,
-    likes: 54,
     link: 'https://www.linkedin.com/pulse/what-least-mean-square-lms-machine-learning-himanshu-salunke-mtp3f/'
   },
   {
@@ -71,8 +63,6 @@ export const articles = [
     readTime: 10,
     category: 'Machine Learning',
     featured: true,
-    views: 1800,
-    likes: 134,
     link: 'https://www.linkedin.com/pulse/what-gradient-descent-machine-learning-himanshu-salunke-ray0f/'
   },
   {
@@ -86,8 +76,6 @@ export const articles = [
     readTime: 9,
     category: 'Machine Learning',
     featured: false,
-    views: 1200,
-    likes: 89,
     link: 'https://www.linkedin.com/pulse/what-lasso-ridge-regression-machine-learning-himanshu-salunke-eg3ff/'
   },
   {
@@ -101,8 +89,6 @@ export const articles = [
     readTime: 8,
     category: 'Machine Learning',
     featured: false,
-    views: 950,
-    likes: 72,
     link: 'https://www.linkedin.com/pulse/what-polynomial-regression-machine-learning-himanshu-salunke-xfqgc/'
   },
   {
@@ -116,8 +102,6 @@ export const articles = [
     readTime: 11,
     category: 'Machine Learning',
     featured: true,
-    views: 1650,
-    likes: 118,
     link: 'https://www.linkedin.com/pulse/what-logistic-regression-machine-learning-himanshu-salunke-266zf/'
   },
   {
@@ -131,8 +115,6 @@ export const articles = [
     readTime: 9,
     category: 'Machine Learning',
     featured: false,
-    views: 1100,
-    likes: 78,
     link: 'https://www.linkedin.com/pulse/maximum-likelihood-estimation-machine-learning-himanshu-salunke-igcbc/'
   },
   {
@@ -146,8 +128,6 @@ export const articles = [
     readTime: 15,
     category: 'Machine Learning',
     featured: false,
-    views: 1800,
-    likes: 134,
     link: 'https://www.linkedin.com/pulse/decision-tree-machine-learning-himanshu-salunke-y02mf/'
   },
   {
@@ -161,8 +141,6 @@ export const articles = [
     readTime: 10,
     category: 'Machine Learning',
     featured: false,
-    views: 1350,
-    likes: 92,
     link: 'https://www.linkedin.com/pulse/cart-machine-learning-himanshu-salunke-jh3xf/'
   },
   {
@@ -176,8 +154,6 @@ export const articles = [
     readTime: 8,
     category: 'Machine Learning',
     featured: false,
-    views: 1450,
-    likes: 105,
     link: 'https://www.linkedin.com/pulse/overfitting-underfitting-machine-learning-himanshu-salunke-aba5c/'
   },
   {
@@ -191,8 +167,6 @@ export const articles = [
     readTime: 16,
     category: 'Machine Learning',
     featured: true,
-    views: 2200,
-    likes: 178,
     link: 'https://www.linkedin.com/pulse/ensemble-methods-bagging-boosting-random-forest-xgboost-salunke-0j60f/'
   },
   {
@@ -206,8 +180,6 @@ export const articles = [
     readTime: 13,
     category: 'Machine Learning',
     featured: false,
-    views: 1200,
-    likes: 88,
     link: 'https://www.linkedin.com/pulse/bayesian-learning-dive-probabilistic-modeling-himanshu-salunke-clctf/'
   },
   {
@@ -221,8 +193,6 @@ export const articles = [
     readTime: 14,
     category: 'Machine Learning',
     featured: false,
-    views: 1200,
-    likes: 87,
     link: 'https://www.linkedin.com/pulse/support-vector-machine-svm-learning-himanshu-salunke-u0r1f/'
   },
   {
@@ -236,8 +206,6 @@ export const articles = [
     readTime: 11,
     category: 'Machine Learning',
     featured: false,
-    views: 1600,
-    likes: 112,
     link: 'https://www.linkedin.com/pulse/k-means-clustering-centroid-inertia-convergence-more-himanshu-salunke-0rkxf/'
   },
   {
@@ -251,8 +219,6 @@ export const articles = [
     readTime: 12,
     category: 'Machine Learning',
     featured: false,
-    views: 1300,
-    likes: 95,
     link: 'https://www.linkedin.com/pulse/adaptive-hierarchical-clustering-gaussian-mixture-models-salunke-e8b0f/'
   },
   {
@@ -266,8 +232,6 @@ export const articles = [
     readTime: 12,
     category: 'Deep Learning',
     featured: false,
-    views: 1100,
-    likes: 76,
     link: 'https://www.linkedin.com/pulse/biological-neural-network-artificial-himanshu-salunke-slypf/'
   },
   {
@@ -281,8 +245,6 @@ export const articles = [
     readTime: 9,
     category: 'Deep Learning',
     featured: false,
-    views: 1400,
-    likes: 98,
     link: 'https://www.linkedin.com/pulse/terminologies-ann-activation-function-weights-bias-learning-salunke-7dgnf/'
   },
   {
@@ -296,8 +258,6 @@ export const articles = [
     readTime: 10,
     category: 'Deep Learning',
     featured: false,
-    views: 1150,
-    likes: 82,
     link: 'https://www.linkedin.com/pulse/mcculloch-pitts-neuron-hebb-network-himanshu-salunke-amaof/'
   },
   {
@@ -311,8 +271,6 @@ export const articles = [
     readTime: 12,
     category: 'Deep Learning',
     featured: false,
-    views: 1550,
-    likes: 108,
     link: 'https://www.linkedin.com/pulse/power-perceptron-training-rule-gradient-descent-delta-salunke-nd5nc/'
   },
   {
@@ -326,8 +284,6 @@ export const articles = [
     readTime: 11,
     category: 'Deep Learning',
     featured: false,
-    views: 1350,
-    likes: 94,
     link: 'https://www.linkedin.com/pulse/multilayer-network-threshold-unit-feedforward-himanshu-salunke-tti5f/'
   },
   {
@@ -341,8 +297,6 @@ export const articles = [
     readTime: 14,
     category: 'Deep Learning',
     featured: true,
-    views: 2100,
-    likes: 165,
     link: 'https://www.linkedin.com/pulse/backpropagation-algorithm-convergence-local-minima-space-salunke-4ekze/'
   },
   {
@@ -356,8 +310,6 @@ export const articles = [
     readTime: 13,
     category: 'Deep Learning',
     featured: false,
-    views: 1700,
-    likes: 125,
     link: 'https://www.linkedin.com/pulse/regularization-parameter-norm-penalties-dataset-noise-salunke-oyg7f/'
   },
   {
@@ -371,8 +323,6 @@ export const articles = [
     readTime: 15,
     category: 'Deep Learning',
     featured: false,
-    views: 1850,
-    likes: 142,
     link: 'https://www.linkedin.com/pulse/training-deep-models-neural-network-optimization-basic-salunke-mghwf/'
   },
   {
@@ -386,8 +336,6 @@ export const articles = [
     readTime: 16,
     category: 'Deep Learning',
     featured: true,
-    views: 2400,
-    likes: 198,
     link: 'https://www.linkedin.com/pulse/convolution-network-sparse-interactions-parameter-sharing-salunke-vpywf/'
   },
   {
@@ -401,8 +349,6 @@ export const articles = [
     readTime: 14,
     category: 'Deep Learning',
     featured: false,
-    views: 1950,
-    likes: 156,
     link: 'https://www.linkedin.com/pulse/recurrent-neural-network-bidirectional-rnn-deep-networks-salunke-9f66f/'
   },
   {
@@ -416,8 +362,6 @@ export const articles = [
     readTime: 11,
     category: 'Deep Learning',
     featured: false,
-    views: 1250,
-    likes: 89,
     link: 'https://www.linkedin.com/pulse/unsupervised-learning-kohonen-self-organizing-feature-salunke-cj6tf/'
   },
   {
@@ -431,8 +375,6 @@ export const articles = [
     readTime: 12,
     category: 'Machine Learning',
     featured: false,
-    views: 1100,
-    likes: 78,
     link: 'https://www.linkedin.com/pulse/linear-factor-methods-probabilistic-pca-analysis-sparse-salunke-mibdf/'
   },
   {
@@ -446,8 +388,6 @@ export const articles = [
     readTime: 13,
     category: 'Deep Learning',
     featured: false,
-    views: 1450,
-    likes: 102,
     link: 'https://www.linkedin.com/pulse/undercomplete-autoencoders-regularized-stochastic-encoders-salunke-zhfaf/'
   },
   {
@@ -461,8 +401,6 @@ export const articles = [
     readTime: 15,
     category: 'Deep Learning',
     featured: true,
-    views: 2200,
-    likes: 185,
     link: 'https://www.linkedin.com/pulse/generative-adversarial-networks-gan-vs-discriminative-salunke-lskif/'
   },
   {
@@ -476,8 +414,6 @@ export const articles = [
     readTime: 14,
     category: 'Deep Learning',
     featured: false,
-    views: 1800,
-    likes: 134,
     link: 'https://www.linkedin.com/pulse/explaining-interpreting-black-box-white-models-shap-shapley-salunke-cjldf/'
   },
   {
@@ -491,8 +427,6 @@ export const articles = [
     readTime: 12,
     category: 'Reinforcement Learning',
     featured: false,
-    views: 1600,
-    likes: 118,
     link: 'https://www.linkedin.com/pulse/reinforcement-learning-elements-vs-supervised-policy-based-salunke-ykhff/'
   },
   {
@@ -506,8 +440,6 @@ export const articles = [
     readTime: 11,
     category: 'Reinforcement Learning',
     featured: false,
-    views: 1300,
-    likes: 95,
     link: 'https://www.linkedin.com/pulse/bandit-problems-value-action-based-methods-greedy-problem-salunke-xonef/'
   },
   {
@@ -521,8 +453,6 @@ export const articles = [
     readTime: 13,
     category: 'Reinforcement Learning',
     featured: false,
-    views: 1200,
-    likes: 87,
     link: 'https://www.linkedin.com/pulse/linear-reward-penalty-algorithm-parameterized-policy-himanshu-salunke-mwtif/'
   },
   {
@@ -536,8 +466,6 @@ export const articles = [
     readTime: 10,
     category: 'Reinforcement Learning',
     featured: false,
-    views: 1150,
-    likes: 82,
     link: 'https://www.linkedin.com/pulse/immediate-full-reinforcement-learning-agents-goals-rewards-salunke-njx4f/'
   },
   {
@@ -551,8 +479,6 @@ export const articles = [
     readTime: 14,
     category: 'Reinforcement Learning',
     featured: true,
-    views: 2000,
-    likes: 158,
     link: 'https://www.linkedin.com/pulse/markov-decision-process-property-finite-value-bellmans-salunke-dfzof/'
   },
   {
@@ -566,8 +492,6 @@ export const articles = [
     readTime: 15,
     category: 'Reinforcement Learning',
     featured: false,
-    views: 1750,
-    likes: 132,
     link: 'https://www.linkedin.com/pulse/policy-evaluation-improvement-iteration-value-dynamic-salunke-ci9af/'
   },
   {
@@ -581,8 +505,6 @@ export const articles = [
     readTime: 13,
     category: 'Reinforcement Learning',
     featured: false,
-    views: 1550,
-    likes: 115,
     link: 'https://www.linkedin.com/pulse/monte-carlo-method-over-dynamic-programming-control-more-salunke-drcuf/'
   },
   {
@@ -596,8 +518,6 @@ export const articles = [
     readTime: 14,
     category: 'Reinforcement Learning',
     featured: false,
-    views: 1650,
-    likes: 124,
     link: 'https://www.linkedin.com/pulse/temporal-difference-learning-methods-over-monte-carlo-salunke-qbcmf/'
   },
   {
@@ -611,8 +531,6 @@ export const articles = [
     readTime: 12,
     category: 'Reinforcement Learning',
     featured: false,
-    views: 1400,
-    likes: 98,
     link: 'https://www.linkedin.com/pulse/function-approximation-tabular-implementation-gradient-salunke-q4nqf/'
   },
   {
@@ -626,8 +544,6 @@ export const articles = [
     readTime: 16,
     category: 'Reinforcement Learning',
     featured: true,
-    views: 2300,
-    likes: 189,
     link: 'https://www.linkedin.com/pulse/deep-learning-reinforcement-training-workflow-more-himanshu-salunke-s7cgf/'
   }
 ]

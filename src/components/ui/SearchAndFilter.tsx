@@ -51,9 +51,7 @@ export const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
     { value: 'date', label: 'Latest', icon: '🕒' },
     { value: 'title', label: 'Title', icon: '🔤' },
     { value: 'featured', label: 'Featured', icon: '⭐' },
-    { value: 'readTime', label: 'Read Time', icon: '⏱️' },
-    { value: 'views', label: 'Most Viewed', icon: '👁️' },
-    { value: 'likes', label: 'Most Liked', icon: '❤️' }
+    { value: 'readTime', label: 'Read Time', icon: '⏱️' }
   ]
   
   const sortOptions = customSortOptions || defaultSortOptions

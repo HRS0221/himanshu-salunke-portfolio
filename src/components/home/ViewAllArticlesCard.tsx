@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useArticleStatistics } from '../../hooks/useArticleStatistics'
 import { articles } from '../../data/articles'
 
 export const ViewAllArticlesCard: React.FC = () => {
-  const { totalViews, totalLikes } = useArticleStatistics(articles)
 
   return (
     <motion.div
@@ -39,7 +37,7 @@ export const ViewAllArticlesCard: React.FC = () => {
         </p>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-1 gap-4 mb-6">
           <div className="text-center">
             <div className="text-2xl font-bold text-green-600 dark:text-green-500">
               {articles.length}+
@@ -48,19 +46,11 @@ export const ViewAllArticlesCard: React.FC = () => {
               Articles
             </div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-teal-600 dark:text-teal-500">
-              {Math.round(totalViews / 1000)}k+
-            </div>
-            <div className="text-sm text-neutral-500 dark:text-neutral-400">
-              Views
-            </div>
-          </div>
         </div>
 
         {/* Categories */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {['Machine Learning', 'React', 'Performance', 'Best Practices'].map((category) => (
+          {['Machine Learning', 'Deep Learning', 'Reinforcement Learning'].map((category) => (
             <span
               key={category}
               className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium rounded-full"

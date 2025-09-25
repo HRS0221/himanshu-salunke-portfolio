@@ -6,81 +6,36 @@ const ArticleCategories: React.FC = () => {
   const categories = [
     {
       name: 'Machine Learning',
-      description: 'Deep dives into ML algorithms, model training, and AI applications',
+      description: 'Fundamental ML concepts, algorithms, and practical applications',
       icon: '🤖',
       color: 'from-purple-500 to-purple-600',
       articleCount: articles.filter(a => a.category === 'Machine Learning').length,
-      totalViews: articles
-        .filter(a => a.category === 'Machine Learning')
-        .reduce((sum, article) => sum + (article.views || 0), 0),
-      tags: ['Neural Networks', 'Deep Learning', 'Computer Vision', 'NLP'],
+      tags: ['Supervised Learning', 'Unsupervised Learning', 'Classification', 'Regression'],
       featured: true
     },
     {
       name: 'Deep Learning',
-      description: 'Advanced neural network architectures and training techniques',
+      description: 'Advanced neural networks, architectures, and training techniques',
       icon: '🧠',
       color: 'from-blue-500 to-blue-600',
       articleCount: articles.filter(a => a.category === 'Deep Learning').length,
-      totalViews: articles
-        .filter(a => a.category === 'Deep Learning')
-        .reduce((sum, article) => sum + (article.views || 0), 0),
-      tags: ['TensorFlow', 'PyTorch', 'CNN', 'RNN'],
+      tags: ['Neural Networks', 'CNN', 'RNN', 'Transformers'],
       featured: true
     },
     {
       name: 'Reinforcement Learning',
-      description: 'Exploring RL algorithms and their real-world applications',
+      description: 'RL algorithms, policies, and real-world applications',
       icon: '🎮',
       color: 'from-green-500 to-green-600',
       articleCount: articles.filter(a => a.category === 'Reinforcement Learning').length,
-      totalViews: articles
-        .filter(a => a.category === 'Reinforcement Learning')
-        .reduce((sum, article) => sum + (article.views || 0), 0),
       tags: ['Q-Learning', 'Policy Gradient', 'Multi-Agent', 'Game Theory'],
-      featured: false
-    },
-    {
-      name: 'Web Development',
-      description: 'Modern web development practices and frameworks',
-      icon: '🌐',
-      color: 'from-orange-500 to-orange-600',
-      articleCount: articles.filter(a => a.category === 'Web Development').length,
-      totalViews: articles
-        .filter(a => a.category === 'Web Development')
-        .reduce((sum, article) => sum + (article.views || 0), 0),
-      tags: ['React', 'TypeScript', 'Performance', 'Best Practices'],
-      featured: false
-    },
-    {
-      name: 'Data Science',
-      description: 'Data analysis, visualization, and statistical methods',
-      icon: '📊',
-      color: 'from-indigo-500 to-indigo-600',
-      articleCount: articles.filter(a => a.category === 'Data Science').length,
-      totalViews: articles
-        .filter(a => a.category === 'Data Science')
-        .reduce((sum, article) => sum + (article.views || 0), 0),
-      tags: ['Pandas', 'Matplotlib', 'Statistics', 'EDA'],
-      featured: false
-    },
-    {
-      name: 'Tutorials',
-      description: 'Step-by-step guides and practical tutorials',
-      icon: '📚',
-      color: 'from-pink-500 to-pink-600',
-      articleCount: articles.filter(a => a.category === 'Tutorials').length,
-      totalViews: articles
-        .filter(a => a.category === 'Tutorials')
-        .reduce((sum, article) => sum + (article.views || 0), 0),
-      tags: ['How-to', 'Guides', 'Step-by-step', 'Practical'],
-      featured: false
+      featured: true
     }
   ]
 
-  const getEngagementLevel = (views: number) => {
-    if (views > 1000) return { level: 'High', color: 'text-green-600 dark:text-green-400' }
-    if (views > 500) return { level: 'Medium', color: 'text-yellow-600 dark:text-yellow-400' }
+  const getEngagementLevel = (articleCount: number) => {
+    if (articleCount > 15) return { level: 'High', color: 'text-green-600 dark:text-green-400' }
+    if (articleCount > 10) return { level: 'Medium', color: 'text-yellow-600 dark:text-yellow-400' }
     return { level: 'Growing', color: 'text-blue-600 dark:text-blue-400' }
   }
 
@@ -104,7 +59,7 @@ const ArticleCategories: React.FC = () => {
       {/* Categories Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((category, index) => {
-          const engagement = getEngagementLevel(category.totalViews)
+          const engagement = getEngagementLevel(category.articleCount) // Use article count as engagement indicator
           
           return (
             <motion.div
@@ -181,11 +136,11 @@ const ArticleCategories: React.FC = () => {
 
                 {/* Stats */}
                 <div className="flex items-center justify-between">
-                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                    {category.totalViews.toLocaleString()}
+                  <div className="text-2xl font-bold text-primary-600 dark:text-white bg-primary-100 dark:bg-primary-900 px-3 py-1 rounded-lg">
+                    {category.articleCount}
                   </div>
                   <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                    total views
+                    articles
                   </div>
                 </div>
               </div>

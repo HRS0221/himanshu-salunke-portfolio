@@ -15,17 +15,17 @@ const WritingJourney: React.FC = () => {
     },
     {
       date: '2024-03',
-      title: '1000+ Views Milestone',
-      description: 'Reached my first major milestone with cumulative views across articles',
+      title: 'First Article Series',
+      description: 'Published my first comprehensive article series on machine learning fundamentals',
       icon: '📈',
       color: 'from-blue-500 to-blue-600',
       articles: 3,
-      achievement: 'Growing Audience'
+      achievement: 'Content Creation'
     },
     {
       date: '2024-06',
       title: 'Featured on Dev.to',
-      description: 'One of my articles was featured on the Dev.to homepage, reaching 5k+ views',
+      description: 'One of my articles was featured on the Dev.to homepage',
       icon: '⭐',
       color: 'from-yellow-500 to-orange-500',
       articles: 5,
@@ -33,12 +33,12 @@ const WritingJourney: React.FC = () => {
     },
     {
       date: '2024-09',
-      title: '10k+ Total Views',
-      description: 'Crossed the 10,000 total views milestone across all published content',
+      title: 'Deep Learning Series',
+      description: 'Completed comprehensive deep learning article series covering neural networks',
       icon: '🎯',
       color: 'from-purple-500 to-purple-600',
       articles: 8,
-      achievement: 'Major Milestone'
+      achievement: 'Expertise'
     },
     {
       date: '2024-12',
@@ -68,8 +68,8 @@ const WritingJourney: React.FC = () => {
     favoriteTopics: ['Machine Learning', 'React', 'TypeScript'],
     writingGoals: [
       'Publish 2 articles per month',
-      'Reach 50k total views by end of 2025',
-      'Write a comprehensive ML tutorial series',
+      'Complete comprehensive ML tutorial series',
+      'Write advanced deep learning content',
       'Contribute to open source documentation'
     ]
   }
@@ -99,8 +99,8 @@ const WritingJourney: React.FC = () => {
       {/* Timeline */}
       <div className="relative mb-12">
         {/* Timeline Line */}
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-secondary-500 to-primary-500"></div>
-
+        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-secondary-500 to-primary-500"></div>
+        
         <div className="space-y-8">
           {milestones.map((milestone, index) => (
             <motion.div
@@ -112,13 +112,13 @@ const WritingJourney: React.FC = () => {
             >
               {/* Timeline Dot */}
               <div className="relative z-10 flex-shrink-0">
-                <div className="w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-neutral-900 shadow-lg"></div>
-                <div className="absolute inset-0 w-4 h-4 rounded-full bg-primary-500 animate-ping opacity-20"></div>
+                <div className="w-8 h-8 rounded-full bg-primary-500 border-4 border-white dark:border-neutral-900 shadow-lg"></div>
+                <div className="absolute inset-0 w-8 h-8 rounded-full bg-primary-500 animate-ping opacity-20"></div>
               </div>
 
               {/* Content */}
               <motion.div
-                className="flex-1 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
+                className="flex-1 bg-white dark:bg-neutral-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-neutral-200 dark:border-neutral-700 shadow-sm"
                 whileHover={{ y: -2, scale: 1.01 }}
               >
                 <div className="flex items-center gap-3 mb-3">
