@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // API endpoint for contact form submission
 app.post('/api/submit-form', async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, subject, message } = req.body;
 
     // Check if the Slack Webhook URL is set up correctly
     const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
@@ -55,6 +55,10 @@ app.post('/api/submit-form', async (req, res) => {
             {
               type: 'mrkdwn',
               text: `*Email:*\n${email}`,
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Subject:*\n${subject}`,
             },
           ],
         },

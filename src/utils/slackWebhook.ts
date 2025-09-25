@@ -7,6 +7,7 @@ interface SlackMessage {
 export interface ContactFormData {
   name: string;
   email: string;
+  subject: string;
   message: string;
 }
 
@@ -21,7 +22,7 @@ export class SlackWebhook {
   }
 
   private createContactMessage(data: ContactFormData): SlackMessage {
-    const { name, email, message } = data;
+    const { name, email, subject, message } = data;
 
     return {
       text: `New contact form submission from ${name}`,
@@ -47,6 +48,10 @@ export class SlackWebhook {
             {
               type: 'mrkdwn',
               text: `*Email:*\n${email}`,
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Subject:*\n${subject}`,
             },
           ],
         },

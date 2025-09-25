@@ -7,7 +7,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { name, email, message } = req.body;
+    const { name, email, subject, message } = req.body;
 
     // Check if the Slack Webhook URL is set up correctly
     const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
@@ -41,6 +41,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             {
               type: 'mrkdwn',
               text: `*Email:*\n${email}`,
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Subject:*\n${subject}`,
             },
           ],
         },
