@@ -228,6 +228,7 @@ export const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMenu}
+              onMouseEnter={() => setIsMenuOpen(true)}
               className="rounded-lg p-2 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white md:hidden bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
