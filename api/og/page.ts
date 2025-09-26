@@ -5,13 +5,9 @@ import React from 'react'
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const { searchParams } = new URL(req.url || '')
-    const title = searchParams.get('title')
-    const description = searchParams.get('description')
+    const title = searchParams.get('title') || 'Himanshu\'s Portfolio'
+    const description = searchParams.get('description') || 'Aspiring Data Scientist'
     const type = searchParams.get('type') || 'website'
-
-    if (!title) {
-      return res.status(400).json({ error: 'Title is required' })
-    }
 
     const imageResponse = new ImageResponse(
       React.createElement('div', {
@@ -130,7 +126,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return imageResponse
   } catch (e: any) {
-    console.log(`${e.message}`)
+    console.log(`OG Image Error: ${e.message}`)
     return res.status(500).json({ error: 'Failed to generate the image' })
   }
 }
