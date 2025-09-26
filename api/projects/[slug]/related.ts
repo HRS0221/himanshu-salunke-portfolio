@@ -36,13 +36,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     
     // Find related projects based on tech stack overlap
     const relatedProjects = projects
-      .filter(project => 
+      .filter((project: any) => 
         project.slug !== slug && 
         project.techStack && 
         currentProject.techStack &&
         project.techStack.some((tech: string) => currentProject.techStack.includes(tech))
       )
-      .sort((a, b) => {
+      .sort((a: any, b: any) => {
         // Sort by number of matching technologies
         const aMatches = a.techStack.filter((tech: string) => currentProject.techStack.includes(tech)).length
         const bMatches = b.techStack.filter((tech: string) => currentProject.techStack.includes(tech)).length

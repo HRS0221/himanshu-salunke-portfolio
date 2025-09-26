@@ -23,8 +23,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     
     // Filter featured projects and sort by date
     const featuredProjects = projects
-      .filter(project => project.featured === true)
-      .sort((a, b) => {
+      .filter((project: any) => project.featured === true)
+      .sort((a: any, b: any) => {
         const dateA = new Date(a.date || '2024-01-01')
         const dateB = new Date(b.date || '2024-01-01')
         return dateB.getTime() - dateA.getTime()

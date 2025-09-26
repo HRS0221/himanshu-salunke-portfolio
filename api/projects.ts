@@ -22,7 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     })
     
     // Sort by date (newest first)
-    const sortedProjects = projects.sort((a, b) => {
+    const sortedProjects = projects.sort((a: any, b: any) => {
       const dateA = new Date(a.date || '2024-01-01')
       const dateB = new Date(b.date || '2024-01-01')
       return dateB.getTime() - dateA.getTime()

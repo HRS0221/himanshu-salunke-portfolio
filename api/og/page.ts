@@ -1,5 +1,6 @@
 import { ImageResponse } from '@vercel/og'
 import { VercelRequest, VercelResponse } from '@vercel/node'
+import React from 'react'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
