@@ -59,7 +59,7 @@ export function generateProjectMetadata(project: any) {
     openGraph: {
       title: `${project.title} - Portfolio`,
       description: project.summary,
-      image: `${process.env.NODE_ENV === 'production' ? 'https://your-domain.com' : 'http://localhost:3000'}/api/og/${project.slug}?title=${encodeURIComponent(project.title)}&description=${encodeURIComponent(project.summary)}&type=project&date=${project.date}&tags=${encodeURIComponent(project.techStack.join(','))}`,
+      image: `${process.env.NODE_ENV === 'production' ? 'https://himanshu-salunke.vercel.app' : 'http://localhost:3000'}/api/og/${project.slug}?title=${encodeURIComponent(project.title)}&description=${encodeURIComponent(project.summary)}&type=project&date=${project.date}&tags=${encodeURIComponent(project.techStack.join(','))}`,
       type: 'article',
       publishedTime: project.date,
       authors: ['Himanshu'],
@@ -69,7 +69,7 @@ export function generateProjectMetadata(project: any) {
       card: 'summary_large_image',
       title: `${project.title} - Portfolio`,
       description: project.summary,
-      image: `${process.env.NODE_ENV === 'production' ? 'https://your-domain.com' : 'http://localhost:3000'}/api/og/${project.slug}?title=${encodeURIComponent(project.title)}&description=${encodeURIComponent(project.summary)}&type=project&date=${project.date}&tags=${encodeURIComponent(project.techStack.join(','))}`
+      image: `${process.env.NODE_ENV === 'production' ? 'https://himanshu-salunke.vercel.app' : 'http://localhost:3000'}/api/og/${project.slug}?title=${encodeURIComponent(project.title)}&description=${encodeURIComponent(project.summary)}&type=project&date=${project.date}&tags=${encodeURIComponent(project.techStack.join(','))}`
     }
   }
 }

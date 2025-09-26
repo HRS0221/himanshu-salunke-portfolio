@@ -104,7 +104,7 @@ async function sendEmailNotification(data: ContactFormData): Promise<boolean> {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Portfolio Contact Form <noreply@your-domain.com>',
+        from: 'Portfolio Contact Form <noreply@himanshu-salunke.vercel.app>',
         to: ['your-email@example.com'], // Replace with your email
         subject: `New Contact Form Submission: ${data.subject}`,
         html: `

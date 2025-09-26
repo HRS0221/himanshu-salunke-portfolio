@@ -2,10 +2,10 @@
 export const SITE_CONFIG = {
   name: "Himanshu's Portfolio",
   author: "Himanshu",
-  twitterHandle: "@yourusername", // Update this with actual Twitter handle
+  twitterHandle: "@Wiser_0221",
   description: "Portfolio showcasing modern web development projects and AI/ML solutions",
   url: process.env.NODE_ENV === 'production' 
-    ? 'https://your-domain.com' // Update with actual domain
+    ? 'https://himanshu-salunke.vercel.app' // Update with actual domain
     : 'http://localhost:3000',
   themeColor: "#3b82f6",
   language: "en"

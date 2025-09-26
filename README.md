@@ -1,91 +1,131 @@
-# 🚀 Himanshu Salunke's Portfolio Website
+# 🚀 Himanshu's Portfolio Website
 
-A modern, interactive portfolio website showcasing AI/ML engineering projects, data science solutions, and full-stack development expertise. Built with React, TypeScript, and cutting-edge web technologies featuring 3D animations, real-time GitHub integration, and advanced user experience enhancements.
+A modern, responsive portfolio website showcasing AI/ML projects, technical expertise, and professional journey. Built with React, TypeScript, and cutting-edge web technologies.
 
-**Live Demo**: [https://himanshu.dev](https://himanshu.dev) | **GitHub**: [HRS0221](https://github.com/HRS0221) | **Node.js**: 22.x
+![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
+![React](https://img.shields.io/badge/React-18.3.1-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue)
+![Vite](https://img.shields.io/badge/Vite-7.1.2-purple)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.17-cyan)
 
-## ✨ Features.
+## 🌟 Features
 
-### 🎨 Core Features
-- **Modern Tech Stack**: React 18, TypeScript 5.x, Vite 7, Tailwind CSS 3.x
-- **Interactive 3D Hero**: React Three Fiber with animated blob and particle background
-- **AI/ML Project Showcase**: Featured projects including Computer Vision, Data Analysis, and Real-time Systems
-- **Recruiter Mode**: Toggle to filter recruiter-relevant content and highlight professional achievements
-- **Dynamic Focus Tracker**: Real-time view of GATE 2026 preparation, Computer Vision projects, and learning goals
-- **Progress Tracker**: Gamified scroll progress with exploration percentage
-- **Technical Writing**: Educational content on ML concepts and data science
+### 🎨 **Modern Design & UX**
+- **Responsive Design**: Mobile-first approach with seamless cross-device experience
+- **Dark/Light Mode**: Automatic theme switching with system preference detection
+- **Smooth Animations**: Framer Motion powered micro-interactions and page transitions
+- **Accessibility**: WCAG 2.1 compliant with keyboard navigation and screen reader support
+- **Performance Optimized**: Lazy loading, code splitting, and optimized asset delivery
 
-### 🎭 Advanced Animations
-- **Page Transitions**: Smooth transitions between routes with Framer Motion
-- **Micro-interactions**: Card tilts, staggered reveals, spring counters, hover 3D effects
-- **Particle System**: Interactive particle background with Three.js
-- **Floating Elements**: Subtle floating animations for visual interest
-- **Magnetic Buttons**: Interactive buttons with magnetic hover effects
+### 📱 **Progressive Web App (PWA)**
+- **Service Worker**: Offline functionality and background sync
+- **App Manifest**: Installable on mobile devices
+- **Push Notifications**: Real-time updates and engagement
+- **Caching Strategy**: Intelligent resource caching for fast loading
 
-### 📊 Dynamic Content
-- **GitHub Integration**: Real-time stats (stars, forks, commits) for AI/ML projects
-- **Tech Stack Visualization**: Animated progress bars showing proficiency in Python, React, Data Science tools
-- **MDX Content**: Rich project documentation with code examples and technical deep-dives
-- **Project Galleries**: Interactive showcases of Computer Vision, Data Analysis, and ETL projects
-- **Responsive Images**: WebP/AVIF optimization with lazy loading for project screenshots
-- **Theme System**: Dark/light mode with smooth transitions
+### 🔍 **Advanced Functionality**
+- **Global Search**: Real-time search across projects, articles, and content
+- **Dynamic OG Images**: Auto-generated social media previews using Vercel OG
+- **Analytics Integration**: Comprehensive user behavior tracking
+- **Contact Form**: Slack-integrated contact system with spam protection
+- **Newsletter Signup**: Email subscription management
 
-### 🎯 User Experience
-- **Accessibility**: WCAG AA compliant with keyboard navigation and screen reader support
-- **Performance**: Code splitting, lazy loading, and optimized Lighthouse scores
-- **SEO Optimized**: Meta tags, structured data, and sitemap generation
-- **Mobile First**: Responsive design with touch-friendly interactions
+### 🛠 **Technical Excellence**
+- **TypeScript**: Full type safety across the entire codebase
+- **Modern React**: Hooks, Context API, and functional components
+- **State Management**: Zustand for efficient state handling
+- **Form Handling**: React Hook Form with Zod validation
+- **MDX Support**: Rich content authoring with Markdown + JSX
 
-## 🛠️ Tech Stack
+## 🏗 Architecture Overview
 
-### Frontend
-- **React 18** - Modern React with hooks and concurrent features
-- **TypeScript 5.x** - Type-safe development
-- **Vite 7** - Fast build tool and dev server
-- **Tailwind CSS 3.x** - Utility-first styling
-- **Framer Motion 11+** - Advanced animations
-- **React Router v6** - Client-side routing
-- **React Three Fiber** - 3D graphics and animations
-- **MDX v3** - Rich content authoring
+### **Frontend Stack**
+```
+React 18.3.1 + TypeScript 5.8.3
+├── Vite 7.1.2 (Build Tool)
+├── Tailwind CSS 3.4.17 (Styling)
+├── Framer Motion 11.15.0 (Animations)
+├── React Router DOM 6.28.0 (Routing)
+├── React Hook Form 7.48.2 (Forms)
+├── Zod 3.22.4 (Validation)
+├── Zustand 5.0.2 (State Management)
+└── MDX 3.1.1 (Content)
+```
 
-### AI/ML & Data Science
-- **Python** - Core programming language
-- **TensorFlow/PyTorch** - Deep learning frameworks
-- **OpenCV** - Computer vision processing
-- **Pandas/NumPy** - Data manipulation and analysis
-- **Scikit-learn** - Machine learning algorithms
-- **YOLO** - Real-time object detection
-- **AWS Services** - Cloud data engineering
+### **Backend & Deployment**
+```
+Vercel Serverless Functions
+├── Contact Form API (/api/submit-form)
+├── Projects API (/api/projects/*)
+├── OG Image Generation (/api/og/*)
+├── Newsletter API (/api/newsletter)
+└── Analytics Integration
+```
 
-### Development Tools
-- **ESLint** - Code linting with TypeScript support
-- **Prettier** - Code formatting with Tailwind plugin
-- **Husky** - Git hooks for pre-commit and pre-push
-- **lint-staged** - Run linters on staged files
-- **Commitlint** - Conventional commits enforcement
-- **Vitest** - Unit testing with React Testing Library
-- **Playwright** - E2E testing with cross-browser support
-- **GitHub Actions** - CI/CD pipeline with automated testing
-- **Lighthouse CI** - Performance auditing in CI/CD
+### **Development Tools**
+```
+Development Environment
+├── ESLint 9.35.0 (Linting)
+├── Prettier 3.6.2 (Formatting)
+├── Husky 9.1.7 (Git Hooks)
+├── Commitlint (Commit Messages)
+├── Vitest 3.2.4 (Testing)
+├── Playwright 1.55.0 (E2E Testing)
+└── Concurrently (Dev Server)
+```
 
-### Deployment
-- **Vercel** - Static site hosting
-- **Serverless Functions** - API endpoints
-- **Environment Variables** - Secure configuration
+## 📁 Project Structure
+
+```
+himanshu-portfolio-website/
+├── 📁 api/                          # Vercel Serverless Functions
+│   ├── 📁 og/                       # Open Graph Image Generation
+│   ├── 📁 projects/                # Projects API Endpoints
+│   ├── 📁 submit-form/              # Contact Form Handler
+│   └── 📁 newsletter/               # Newsletter Subscription
+├── 📁 public/                       # Static Assets
+│   ├── 📁 images/                   # Project & Article Images
+│   ├── 📄 manifest.json             # PWA Manifest
+│   ├── 📄 robots.txt                # SEO Configuration
+│   └── 📄 sw.js                     # Service Worker
+├── 📁 src/
+│   ├── 📁 app/                      # Main Application
+│   │   ├── 📄 App.tsx               # Root Component
+│   │   └── 📁 pages/                # Page Components
+│   ├── 📁 components/               # Reusable Components
+│   │   ├── 📁 ui/                   # UI Components
+│   │   ├── 📁 home/                 # Home Page Components
+│   │   ├── 📁 about/                # About Page Components
+│   │   ├── 📁 work/                 # Work Page Components
+│   │   ├── 📁 articles/             # Articles Components
+│   │   ├── 📁 contact/              # Contact Components
+│   │   └── 📁 seo/                 # SEO Components
+│   ├── 📁 data/                     # Content Data
+│   │   ├── 📁 projects/             # Project MDX Files
+│   │   └── 📁 articles/              # Article MDX Files
+│   ├── 📁 hooks/                    # Custom React Hooks
+│   ├── 📁 utils/                    # Utility Functions
+│   ├── 📁 context/                  # React Context Providers
+│   └── 📁 config/                   # Configuration Files
+├── 📄 vercel.json                   # Vercel Deployment Config
+├── 📄 vite.config.ts                # Vite Configuration
+├── 📄 tailwind.config.cjs           # Tailwind Configuration
+└── 📄 package.json                  # Dependencies & Scripts
+```
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+### **Prerequisites**
+- Node.js 22.x or higher
+- npm or yarn package manager
 - Git
 
-### Installation
+### **Installation**
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/HRS0221/himanshu-salunke-portfolio.git
-   cd himanshu-salunke-portfolio
+   git clone https://github.com/HRS0221/himanshu-portfolio-website.git
+   cd himanshu-portfolio-website
    ```
 
 2. **Install dependencies**
@@ -93,305 +133,213 @@ A modern, interactive portfolio website showcasing AI/ML engineering projects, d
    npm install
    ```
 
-3. **Set up environment variables**
+3. **Environment Setup**
    ```bash
-   cp .env.example .env.local
-   ```
-   
-   Edit `.env.local` with your values:
-   ```env
-   # Site Configuration
-   VITE_SITE_URL=https://himanshu.dev
-   VITE_SITE_NAME="Himanshu's Portfolio"
-   VITE_SITE_DESCRIPTION="AI/ML Engineer & Full-Stack Developer Portfolio"
-   
-   # GitHub Integration
-   VITE_GITHUB_TOKEN=your_github_token
-   VITE_GITHUB_USERNAME=HRS0221
-   
-   # Contact Form Integration
-   VITE_SLACK_WEBHOOK_URL=your_slack_webhook_url
-   VITE_RESEND_API_KEY=your_resend_api_key
-   
-   # Social Media
-   VITE_TWITTER_HANDLE=your_twitter_handle
-   VITE_LINKEDIN_URL=https://linkedin.com/in/your-profile
-   VITE_GITHUB_URL=https://github.com/HRS0221
-   
-   # Analytics
-   VITE_VERCEL_ANALYTICS=true
-   
-   # Development
-   NODE_ENV=development
-   VITE_DEV_SERVER_PORT=3000
+   cp .env.example .env
+   # Edit .env with your configuration
    ```
 
-4. **Set up Git hooks** (Optional but recommended)
+4. **Development Server**
    ```bash
-   # Husky is already configured, just ensure it's set up
-   npx husky install
-   ```
-
-5. **Start development server**
-   ```bash
+   # Start both frontend and backend
    npm run dev
+   
+   # Or start individually
+   npm run dev:frontend  # Frontend only (port 3000)
+   npm run dev:backend    # Backend only (port 5000)
    ```
 
-6. **Open your browser**
-   Navigate to `http://localhost:3000`
+5. **Build for Production**
+   ```bash
+   npm run build
+   npm run preview
+   ```
 
-## 📁 Project Structure
+## 🛠 Available Scripts
 
-```
-src/
-├── app/                    # Main app and routing
-│   ├── pages/             # Route components
-│   └── App.tsx            # App root with providers
-├── components/            # Reusable components
-│   ├── animations/        # Animation components
-│   ├── chatbot/          # AI chatbot widget
-│   ├── gamification/     # Progress tracker, easter eggs
-│   ├── header/           # Navigation header
-│   ├── home/             # Homepage sections
-│   ├── recruiter/        # Recruiter mode components
-│   ├── ui/               # Basic UI components
-│   └── work/             # Project-related components
-├── context/              # React contexts
-├── data/                 # Static data and MDX content
-├── hooks/                # Custom React hooks
-├── utils/                # Utility functions
-└── assets/               # Static assets
-```
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server with hot reload |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+| `npm run lint:fix` | Fix ESLint issues |
+| `npm run format` | Format code with Prettier |
+| `npm run typecheck` | Run TypeScript type checking |
+| `npm run test` | Run unit tests |
+| `npm run test:e2e` | Run end-to-end tests |
+| `npm run generate:sitemap` | Generate sitemap.xml |
 
-## 🚀 Featured Projects
+## 📊 Content Management
 
-### 🤖 AI/ML Projects
-- **Real-Time Height Measurement System** - Computer vision solution using OpenCV and YOLO for accurate height detection
-- **Moving Vehicle Number Plate Detection** - Advanced object detection and OCR for automated license plate recognition
-- **Sentiment Analysis with BERT** - Natural language processing model for social media sentiment analysis
-- **Exploratory Data Analysis - Iris Dataset** - Comprehensive data analysis and visualization of the classic Iris dataset
+### **Projects**
+Projects are managed through MDX files in `src/data/projects/`. Each project includes:
 
-### 📊 Data Engineering
-- **YouTube Data Engineering Pipeline** - ETL pipeline for processing and analyzing YouTube data using AWS services
-- **World Layoff Data Analysis** - Statistical analysis and visualization of global layoff trends
-- **Uplifting Happiness Index** - Data science project analyzing factors affecting happiness metrics
-
-### 🎯 Current Focus Areas
-- **GATE 2026 Preparation** - Intensive preparation for Data Science and AI specialization
-- **Computer Vision Projects** - Real-time object detection using YOLO and deep learning frameworks
-- **Cloud Data Engineering** - Building scalable data pipelines with AWS services
-- **Technical Writing** - Creating educational content on ML and data science concepts
-
-## 🎨 Customization
-
-### Adding New Projects
-
-1. **Create MDX file** in `src/data/projects/`
-   ```mdx
-   ---
-   title: "Your Project"
-   slug: "your-project"
-   date: "2025-01-15"
+```yaml
+---
+id: "project-slug"
+title: "Project Title"
+summary: "Brief description"
+category: "Computer Vision"
+coverImage: "/images/projects/cover.jpg"
+date: "2024-01-15"
+techStack: ["React", "TypeScript", "Python"]
    featured: true
-   category: "Web Development"
    status: "Completed"
-   coverImage: "/images/work/project-cover.webp"
-   summary: "Brief project description"
-   bullets:
-     - "Key feature 1"
-     - "Key feature 2"
-   techStack:
-     - "React"
-     - "TypeScript"
    metrics:
-     - label: "Performance"
-       value: "95%"
+  - label: "Accuracy"
+    value: "94.2%"
    githubUrl: "https://github.com/username/repo"
-   liveUrl: "https://your-project.com"
-   ---
-   
-   # Your Project
-   
-   Detailed project description with code examples...
-   ```
+liveUrl: "https://project-demo.com"
+---
+```
 
-2. **Add cover image** to `public/images/work/`
+### **Articles**
+Articles follow a similar MDX structure in `src/data/articles/`:
 
-### Adding New Articles
-
-1. **Create MDX file** in `src/data/articles/`
-   ```mdx
-   ---
-   title: "Your Article"
-   slug: "your-article"
-   date: "2025-01-15"
-   coverImage: "/images/articles/article-cover.webp"
-   tags:
-     - "React"
-     - "Tutorial"
-   author: "Your Name"
+```yaml
+---
+id: "article-slug"
+title: "Article Title"
+summary: "Article description"
+category: "Machine Learning"
+coverImage: "/images/articles/cover.jpg"
+date: "2024-01-15"
    readTime: 5
-   excerpt: "Article summary"
-   ---
-   
-   # Your Article
-   
-   Article content with code blocks and examples...
-   ```
-
-### Customizing Current Focus
-
-Edit `src/data/currentFocus.json`:
-```json
-[
-  {
-    "id": "your-focus",
-    "title": "Your Focus Area",
-    "description": "What you're working on",
-    "icon": "rocket",
-    "status": "active"
-  }
-]
+featured: true
+---
 ```
 
-## 🧪 Testing
+## 🔧 Configuration
 
-### Unit Tests
+### **Environment Variables**
 ```bash
-npm run test
+# Contact Form
+VITE_SLACK_WEBHOOK_URL=your_slack_webhook_url
+
+# Analytics (Optional)
+VITE_GA_TRACKING_ID=your_google_analytics_id
+
+# Site Configuration
+VITE_SITE_URL=https://himanshu-salunke.vercel.app
 ```
 
-### E2E Tests
-```bash
-npm run test:e2e
-```
+### **Site Configuration**
+Update `src/config/site.ts` with your information:
 
-### Test Coverage
-```bash
-npm run test:coverage
+```typescript
+export const SITE_CONFIG = {
+  name: "Your Portfolio Name",
+  author: "Your Name",
+  twitterHandle: "@HRS0221",
+  description: "Your portfolio description",
+  url: "https://himanshu-salunke.vercel.app",
+  themeColor: "#3b82f6",
+  language: "en"
+}
 ```
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### **Vercel (Recommended)**
 
-1. **Connect to Vercel**
-   - Push your code to GitHub
-   - Connect repository to Vercel
-   - Set environment variables in Vercel dashboard:
-     - `VERCEL_TOKEN` - Your Vercel API token
-     - `VERCEL_ORG_ID` - Your Vercel organization ID
-     - `VERCEL_PROJECT_ID` - Your Vercel project ID
+1. **Connect Repository**
+   - Import your GitHub repository to Vercel
+   - Configure build settings automatically
 
-2. **Automatic Deployment**
-   - GitHub Actions will automatically deploy on push to main branch
-   - Pull requests will create preview deployments
-   - Lighthouse CI will run performance audits
+2. **Environment Variables**
+   - Add environment variables in Vercel dashboard
+   - Set `VITE_SLACK_WEBHOOK_URL` for contact form
 
-3. **Manual Deploy**
+3. **Deploy**
+   - Push to main branch triggers automatic deployment
+   - Preview deployments for pull requests
+
+### **Other Platforms**
+
+The project can be deployed to any static hosting platform:
+
+- **Netlify**: Use `npm run build` and deploy `dist/` folder
+- **GitHub Pages**: Use GitHub Actions for automated deployment
+- **AWS S3 + CloudFront**: Upload build artifacts to S3 bucket
+
+## 🧪 Testing
+
+### **Unit Tests**
    ```bash
-   npm run build
-   ```
+npm run test              # Run tests
+npm run test:watch        # Watch mode
+npm run test:coverage     # Coverage report
+npm run test:ui           # UI mode
+```
 
-4. **Custom Domain** (Optional)
-   - Add domain in Vercel dashboard
-   - Update DNS settings
-
-### Manual Deployment
-
-1. **Build the project**
+### **End-to-End Tests**
    ```bash
-   npm run build
-   ```
+npm run test:e2e          # Run E2E tests
+npm run test:e2e:ui      # UI mode
+```
 
-2. **Deploy dist/ folder** to your hosting provider
+## 📈 Performance
 
-3. **Set up redirects** for SPA routing:
-   ```
-   /* /index.html 200
-   ```
+### **Core Web Vitals**
+- **LCP**: < 2.5s (Largest Contentful Paint)
+- **FID**: < 100ms (First Input Delay)
+- **CLS**: < 0.1 (Cumulative Layout Shift)
 
-## 🔧 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run lint:fix` - Fix ESLint errors
-- `npm run format` - Format code with Prettier
-- `npm run typecheck` - Run TypeScript checks
-- `npm run test` - Run unit tests
-- `npm run test:e2e` - Run E2E tests
-- `npm run generate:sitemap` - Generate sitemap.xml
-
-## 🎯 Performance
-
-### Lighthouse Scores
-- **Performance**: 95+
-- **Accessibility**: 100
-- **Best Practices**: 100
-- **SEO**: 100
-
-### Optimization Features
-- Code splitting and lazy loading
-- Image optimization (WebP/AVIF)
-- Font preloading
-- Service worker caching
-- Bundle analysis
+### **Optimization Features**
+- **Code Splitting**: Automatic route-based splitting
+- **Image Optimization**: WebP/AVIF with fallbacks
+- **Lazy Loading**: Images and components
+- **Service Worker**: Intelligent caching
+- **Bundle Analysis**: Optimized chunk sizes
 
 ## 🔒 Security
 
-- Environment variables for sensitive data
-- Content Security Policy headers
-- XSS protection
-- CSRF protection for forms
-- Rate limiting on API endpoints
+### **Implemented Security Measures**
+- **Rate Limiting**: Contact form protection
+- **Input Validation**: Zod schema validation
+- **CORS Configuration**: Proper cross-origin setup
+- **Content Security Policy**: XSS protection
+- **Environment Variables**: Secure configuration
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes using conventional commits: `git commit -m 'feat: add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+1. **Fork the repository**
+2. **Create feature branch**: `git checkout -b feature/amazing-feature`
+3. **Commit changes**: `git commit -m 'Add amazing feature'`
+4. **Push to branch**: `git push origin feature/amazing-feature`
+5. **Open Pull Request**
 
-### Commit Convention
-This project uses [Conventional Commits](https://www.conventionalcommits.org/):
-- `feat:` - New features
-- `fix:` - Bug fixes
-- `docs:` - Documentation changes
-- `style:` - Code style changes
-- `refactor:` - Code refactoring
-- `test:` - Test additions/changes
-- `chore:` - Build process or auxiliary tool changes
+### **Development Guidelines**
+- Follow TypeScript best practices
+- Use conventional commit messages
+- Write tests for new features
+- Update documentation
+- Ensure accessibility compliance
 
-## 📄 License
+## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- [React](https://reactjs.org/) - UI library
-- [Three.js](https://threejs.org/) - 3D graphics
-- [Framer Motion](https://www.framer.com/motion/) - Animations
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Vercel](https://vercel.com/) - Hosting
+- **React Team** for the amazing framework
+- **Vercel** for seamless deployment experience
+- **Tailwind CSS** for utility-first styling
+- **Framer Motion** for smooth animations
+- **Open Source Community** for inspiration and tools
 
 ## 📞 Contact
 
-- **Portfolio**: [https://himanshu.dev](https://himanshu.dev)
-- **GitHub**: [HRS0221](https://github.com/HRS0221)
-- **LinkedIn**: [Himanshu Salunke](https://linkedin.com/in/himanshu-salunke)
-- **Email**: [Contact Form](https://himanshu.dev/contact)
+**Himanshu** - [@HRS0221](https://twitter.com/HRS0221)
 
-### 🎯 Professional Focus
-- **AI/ML Engineering** - Computer Vision, Deep Learning, Data Science
-- **Full-Stack Development** - React, TypeScript, Node.js, Python
-- **Data Engineering** - AWS, ETL Pipelines, Analytics
-- **Technical Writing** - ML Concepts, Data Science Education
+- **Email**: contact.himanshusalunke@gmail.com
+- **LinkedIn**: [Connect with me](https://linkedin.com/in/yourprofile)
+- **GitHub**: [@HRS0221](https://github.com/HRS0221)
+- **Portfolio**: [https://himanshu-salunke.vercel.app](https://himanshu-salunke.vercel.app)
 
 ---
 
-⭐ **Star this repository** if you found it helpful!
+⭐ **Star this repository if you found it helpful!**
 
-Made with ❤️ by [Himanshu Salunke](https://github.com/HRS0221)
+🔗 **Live Demo**: [https://himanshu-salunke.vercel.app](https://himanshu-salunke.vercel.app)
