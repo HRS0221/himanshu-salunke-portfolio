@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../../context/ThemeContext'
@@ -33,6 +33,7 @@ export const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme()
   const { isRecruiterMode } = useRecruiterMode()
   const location = useLocation()
+  const menuRef = useRef<HTMLDivElement>(null)
   
   // Use recruiter mode for conditional rendering
   // const shouldShowRecruiterFeatures = isRecruiterMode // TODO: Implement recruiter-specific features
@@ -51,12 +52,30 @@ export const Header: React.FC = () => {
     setIsMenuOpen(false)
   }, [location])
 
+  // Handle click outside to close menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
   return (
     <motion.header
+      ref={menuRef}
       className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
         isRecruiterMode ? 'top-12' : 'top-0'
       } ${
