@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   name: "Himanshu's Portfolio",
   author: "Himanshu",
   twitterHandle: "@Wiser_0221",
-  description: "Portfolio showcasing modern web development projects and AI/ML solutions",
+  description: "Portfolio showcasing modern data science projects and AI/ML solutions",
   url: process.env.NODE_ENV === 'production' 
     ? 'https://himanshu-salunke.vercel.app' // Update with actual domain
     : 'http://localhost:3000',

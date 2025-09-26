@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
                 Himanshu Kishor Salunke
               </h3>
               <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-                AI/ML Engineer & Full-Stack Developer passionate about creating intelligent solutions 
+                Aspiring Data Scientist passionate about creating intelligent solutions 
                 that solve real-world problems. Building the future, one line of code at a time.
               </p>
               <div className="mt-3 flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">

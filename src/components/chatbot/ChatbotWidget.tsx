@@ -11,7 +11,7 @@ interface Message {
 
 const mockResponses = [
   "I'm an AI assistant for Himanshu's portfolio. I can help you learn about his projects, skills, and experience!",
-  "Himanshu specializes in AI/ML engineering and full-stack development. He works with React, TypeScript, Python, and TensorFlow.",
+  "Himanshu specializes in data science and machine learning. He works with React, TypeScript, Python, and TensorFlow.",
   "Some of his recent projects include machine learning applications, web dashboards, and mobile apps. Check out the Work section for more details!",
   "He has experience with AWS, Docker, and modern web technologies. Feel free to explore his GitHub or contact him directly.",
   "You can find his contact information in the Contact section, or connect with him on LinkedIn and GitHub."

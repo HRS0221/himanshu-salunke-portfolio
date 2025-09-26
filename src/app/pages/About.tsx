@@ -16,13 +16,13 @@ const About: React.FC = () => {
     <>
       <Helmet>
         <title>About - Himanshu's Portfolio</title>
-        <meta name="description" content="Learn more about Himanshu's background, skills, and experience as an AI/ML Engineer and Full-Stack Developer." />
+        <meta name="description" content="Learn more about Himanshu's background, skills, and experience as an Aspiring Data Scientist." />
         <meta property="og:title" content="About - Himanshu's Portfolio" />
-        <meta property="og:description" content="Learn more about Himanshu's background, skills, and experience as an AI/ML Engineer and Full-Stack Developer." />
+        <meta property="og:description" content="Learn more about Himanshu's background, skills, and experience as an Aspiring Data Scientist." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About - Himanshu's Portfolio" />
-        <meta name="twitter:description" content="Learn more about Himanshu's background, skills, and experience as an AI/ML Engineer and Full-Stack Developer." />
+        <meta name="twitter:description" content="Learn more about Himanshu's background, skills, and experience as an Aspiring Data Scientist." />
         
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
@@ -30,8 +30,8 @@ const About: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Himanshu",
-            "jobTitle": "AI/ML Engineer & Full-Stack Developer",
-            "description": "AI/ML Engineer and Full-Stack Developer passionate about creating intelligent solutions",
+            "jobTitle": "Aspiring Data Scientist",
+            "description": "Aspiring Data Scientist passionate about creating intelligent solutions",
             "url": "https://portfolio.example.com/about",
             "sameAs": [
               "https://github.com/himanshu",

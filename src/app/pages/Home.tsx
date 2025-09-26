@@ -11,14 +11,14 @@ const Home: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Himanshu's Portfolio - AI/ML Engineer & Full-Stack Developer</title>
-        <meta name="description" content="Portfolio of Himanshu, an AI/ML Engineer and Full-Stack Developer specializing in React, TypeScript, Python, and cutting-edge AI technologies. Explore my projects, articles, and get in touch." />
-        <meta property="og:title" content="Himanshu's Portfolio - AI/ML Engineer & Full-Stack Developer" />
-        <meta property="og:description" content="Portfolio of Himanshu, an AI/ML Engineer and Full-Stack Developer specializing in React, TypeScript, Python, and cutting-edge AI technologies." />
+        <title>Himanshu's Portfolio - Aspiring Data Scientist</title>
+        <meta name="description" content="Portfolio of Himanshu, an Aspiring Data Scientist specializing in React, TypeScript, Python, and cutting-edge AI technologies. Explore my projects, articles, and get in touch." />
+        <meta property="og:title" content="Himanshu's Portfolio - Aspiring Data Scientist" />
+        <meta property="og:description" content="Portfolio of Himanshu, an Aspiring Data Scientist specializing in React, TypeScript, Python, and cutting-edge AI technologies." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Himanshu's Portfolio - AI/ML Engineer & Full-Stack Developer" />
-        <meta name="twitter:description" content="Portfolio of Himanshu, an AI/ML Engineer and Full-Stack Developer specializing in React, TypeScript, Python, and cutting-edge AI technologies." />
+        <meta name="twitter:title" content="Himanshu's Portfolio - Aspiring Data Scientist" />
+        <meta name="twitter:description" content="Portfolio of Himanshu, an Aspiring Data Scientist specializing in React, TypeScript, Python, and cutting-edge AI technologies." />
         
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
@@ -26,8 +26,8 @@ const Home: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Himanshu",
-            "jobTitle": "AI/ML Engineer & Full-Stack Developer",
-            "description": "AI/ML Engineer and Full-Stack Developer specializing in React, TypeScript, Python, and cutting-edge AI technologies",
+            "jobTitle": "Aspiring Data Scientist",
+            "description": "Aspiring Data Scientist specializing in React, TypeScript, Python, and cutting-edge AI technologies",
             "url": "https://himanshu-portfolio.com",
             "sameAs": [
               "https://github.com/himanshu",

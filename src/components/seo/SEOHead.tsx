@@ -97,9 +97,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 // Pre-configured SEO components for different page types
 export const HomeSEO: React.FC = () => (
   <SEOHead
-    title="Himanshu - AI/ML Engineer & Full-Stack Developer"
-    description="AI/ML Engineer and Full-Stack Developer specializing in machine learning, data science, and modern web development. Building intelligent solutions and innovative applications."
-    keywords="AI Engineer, Machine Learning, Full-Stack Developer, Data Science, Python, React, TypeScript, Portfolio"
+    title="Himanshu - Aspiring Data Scientist"
+    description="Aspiring Data Scientist specializing in machine learning, data science, and modern web development. Building intelligent solutions and innovative applications."
+    keywords="Data Scientist, Machine Learning, Data Science, Python, React, TypeScript, Portfolio"
     ogType="website"
     canonical="/"
   />
@@ -107,8 +107,8 @@ export const HomeSEO: React.FC = () => (
 
 export const AboutSEO: React.FC = () => (
   <SEOHead
-    title="About Himanshu - AI/ML Engineer & Developer"
-    description="Learn about my journey as an AI/ML Engineer, my passion for technology, and how I build innovative solutions that make a difference."
+    title="About Himanshu - Aspiring Data Scientist"
+    description="Learn about my journey as an Aspiring Data Scientist, my passion for technology, and how I build innovative solutions that make a difference."
     keywords="About, AI Engineer, Machine Learning, Developer, Experience, Skills, Journey"
     ogType="profile"
     canonical="/about"

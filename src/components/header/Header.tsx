@@ -99,7 +99,7 @@ export const Header: React.FC = () => {
                 Himanshu
               </span>
               <div className="text-xs text-neutral-500 dark:text-neutral-400 -mt-1">
-                AI/ML Engineer
+                Aspiring Data Scientist
               </div>
             </div>
           </Link>
