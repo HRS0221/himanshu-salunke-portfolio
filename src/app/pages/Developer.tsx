@@ -51,7 +51,7 @@ const getSocialPlatforms = (socialStats: any): SocialPlatform[] => [
     stats: [
       { label: 'Followers', value: '23k+' },
       { label: 'Articles', value: socialStats.linkedin.isLoading ? 'Loading...' : `${socialStats.linkedin.articles || 0}+` },
-      { label: 'Newsletter', value: 'Active' }
+      // { label: 'Newsletter', value: 'Active' } // Commented out for now
     ]
   },
   {
