@@ -1,94 +1,15 @@
-import React, { Suspense, Component } from 'react'
-import type { ReactNode } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei'
-import * as THREE from 'three'
 import { Button } from '../ui/Button'
-import { ParticleBackground } from './ParticleBackground'
-
-
-
-// Custom ErrorBoundary component for React 18 compatibility
-interface ErrorBoundaryState {
-  hasError: boolean
-}
-
-interface ErrorBoundaryProps {
-  children: ReactNode
-  fallback: ReactNode
-}
-
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
-    super(props)
-    this.state = { hasError: false }
-  }
-
-  static getDerivedStateFromError(): ErrorBoundaryState {
-    return { hasError: true }
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo)
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return this.props.fallback
-    }
-
-    return this.props.children
-  }
-}
-
-// Animated blob component for 3D background
-const AnimatedBlob: React.FC = () => {
-  return (
-    <Sphere visible args={[1, 100, 200]} scale={2.4}>
-      <MeshDistortMaterial
-        color="#3b82f6"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0}
-      />
-    </Sphere>
-  )
-}
 
 export const Hero: React.FC = () => {
-  // Removed scrollToProjects function since recent projects section was removed
-  // Removed scrollToContact function since contact is on a separate page
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
+      {/* Lightweight Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900" />
       
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0">
-        <ErrorBoundary fallback={<div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900" />}>
-          <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900" />}>
-            <Canvas camera={{ position: [0, 0, 5] }}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[10, 10, 5]} intensity={1} />
-              <AnimatedBlob />
-              <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1} />
-            </Canvas>
-          </Suspense>
-        </ErrorBoundary>
-      </div>
-
-      {/* Particle Background */}
-      <ErrorBoundary fallback={null}>
-        <Suspense fallback={null}>
-          <ParticleBackground />
-        </Suspense>
-      </ErrorBoundary>
-      
-      {/* Animated background elements */}
+      {/* Simple animated background elements - CSS only */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-primary-200 dark:bg-primary-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl opacity-70"
@@ -112,6 +33,32 @@ export const Hero: React.FC = () => {
             duration: 25,
             repeat: Infinity,
             ease: "linear"
+          }}
+        />
+        
+        {/* Additional lightweight decorative elements */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-lg"
+          animate={{
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 blur-lg"
+          animate={{
+            y: [0, 20, 0],
+            scale: [1, 0.9, 1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
           }}
         />
       </div>

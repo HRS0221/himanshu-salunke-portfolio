@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
 import { motion } from 'framer-motion'
-import { useCursorInteraction } from './CustomCursor'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
@@ -26,7 +25,6 @@ export const Button: React.FC<ButtonProps> = memo(({
   rel,
   ...props
 }) => {
-  const { onMouseEnter, onMouseLeave } = useCursorInteraction()
   const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
   
   const variantClasses = {
@@ -48,8 +46,6 @@ export const Button: React.FC<ButtonProps> = memo(({
     className: classes,
     whileHover: { scale: 1.02 },
     whileTap: { scale: 0.98 },
-    onMouseEnter,
-    onMouseLeave,
   }
 
   if (as === 'a') {
