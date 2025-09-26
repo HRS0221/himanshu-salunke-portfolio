@@ -22,11 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           height: '100%',
           width: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#1e293b',
-          backgroundImage: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          backgroundColor: '#ffffff',
           fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
           position: 'relative',
         }
@@ -40,133 +36,303 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             left: 0,
             right: 0,
             bottom: 0,
-            opacity: 0.1,
-            backgroundImage: `
-              radial-gradient(circle at 25% 25%, white 2px, transparent 2px),
-              radial-gradient(circle at 75% 75%, white 2px, transparent 2px)
-            `,
-            backgroundSize: '60px 60px',
+            background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+            opacity: 0.8,
           }
         }),
         
-        // Main Content
+        // Decorative Elements
         React.createElement('div', {
-          key: 'main-content',
+          key: 'decorative-1',
+          style: {
+            position: 'absolute',
+            top: '-100px',
+            right: '-100px',
+            width: '300px',
+            height: '300px',
+            background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+            borderRadius: '50%',
+            opacity: 0.1,
+          }
+        }),
+        
+        React.createElement('div', {
+          key: 'decorative-2',
+          style: {
+            position: 'absolute',
+            bottom: '-150px',
+            left: '-150px',
+            width: '400px',
+            height: '400px',
+            background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
+            borderRadius: '50%',
+            opacity: 0.08,
+          }
+        }),
+
+        // Main Content Container
+        React.createElement('div', {
+          key: 'main-container',
           style: {
             display: 'flex',
-            flexDirection: 'column',
+            width: '100%',
+            height: '100%',
+            padding: '80px',
             alignItems: 'center',
-            justifyContent: 'center',
-            padding: '60px',
-            maxWidth: '900px',
-            textAlign: 'center',
+            justifyContent: 'space-between',
             position: 'relative',
             zIndex: 1,
           }
         }, [
-          // Type Badge
+          // Left Content
           React.createElement('div', {
-            key: 'type-badge',
+            key: 'left-content',
             style: {
-              display: 'inline-block',
-              backgroundColor: 'rgba(255, 255, 255, 0.2)',
-              padding: '8px 16px',
-              borderRadius: '20px',
-              fontSize: '14px',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              marginBottom: '24px',
-              backdropFilter: 'blur(10px)',
-              color: 'white',
+              display: 'flex',
+              flexDirection: 'column',
+              maxWidth: '700px',
+              gap: '24px',
             }
-          }, type === 'project' ? 'Project' : 'Article'),
+          }, [
+            // Type Badge
+            React.createElement('div', {
+              key: 'type-badge',
+              style: {
+                display: 'inline-block',
+                backgroundColor: '#8b5cf6',
+                color: 'white',
+                padding: '8px 20px',
+                borderRadius: '25px',
+                fontSize: '16px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                width: 'fit-content',
+              }
+            }, type === 'project' ? 'Project' : 'Article'),
 
-          // Title
-          React.createElement('h1', {
-            key: 'title',
-            style: {
-              fontSize: '64px',
-              fontWeight: 800,
-              lineHeight: 1.1,
-              marginBottom: '24px',
-              color: 'white',
-              textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-              margin: 0,
-            }
-          }, title),
+            // Title
+            React.createElement('h1', {
+              key: 'title',
+              style: {
+                fontSize: '64px',
+                fontWeight: 800,
+                lineHeight: 1.1,
+                color: '#1e293b',
+                margin: 0,
+                background: 'linear-gradient(135deg, #1e293b 0%, #8b5cf6 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }
+            }, title),
 
-          // Description
-          description && React.createElement('p', {
-            key: 'description',
-            style: {
-              fontSize: '24px',
-              lineHeight: 1.4,
-              opacity: 0.9,
-              marginBottom: '32px',
-              fontWeight: 400,
-              color: 'white',
-              margin: 0,
-            }
-          }, description),
+            // Description
+            description && React.createElement('p', {
+              key: 'description',
+              style: {
+                fontSize: '24px',
+                lineHeight: 1.4,
+                color: '#64748b',
+                margin: 0,
+                fontWeight: 400,
+              }
+            }, description),
 
-          // Meta Information
+            // Meta Information
+            React.createElement('div', {
+              key: 'meta-info',
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                gap: '24px',
+                marginTop: '16px',
+              }
+            }, [
+              date && React.createElement('div', {
+                key: 'date',
+                style: {
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '18px',
+                  color: '#64748b',
+                  fontWeight: 500,
+                }
+              }, `📅 ${new Date(date).toLocaleDateString()}`)
+            ]),
+
+            // Tags
+            tags && React.createElement('div', {
+              key: 'tags',
+              style: {
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '12px',
+                marginTop: '16px',
+              }
+            }, tags.split(',').slice(0, 4).map((tag: string, index: number) =>
+              React.createElement('span', {
+                key: index,
+                style: {
+                  backgroundColor: '#e2e8f0',
+                  color: '#475569',
+                  padding: '6px 16px',
+                  borderRadius: '20px',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                }
+              }, tag.trim())
+            )),
+
+            // Author Info
+            React.createElement('div', {
+              key: 'author-info',
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                marginTop: '24px',
+              }
+            }, [
+              React.createElement('div', {
+                key: 'author-avatar',
+                style: {
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '20px',
+                  fontWeight: 700,
+                  color: 'white',
+                }
+              }, 'HS'),
+              
+              React.createElement('div', {
+                key: 'author-details',
+                style: {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '2px',
+                }
+              }, [
+                React.createElement('div', {
+                  key: 'author-name',
+                  style: {
+                    fontSize: '18px',
+                    fontWeight: 600,
+                    color: '#1e293b',
+                  }
+                }, 'Himanshu Salunke'),
+                
+                React.createElement('div', {
+                  key: 'author-title',
+                  style: {
+                    fontSize: '14px',
+                    color: '#64748b',
+                  }
+                }, 'Aspiring Data Scientist')
+              ])
+            ])
+          ]),
+
+          // Right Side - Project Visual
           React.createElement('div', {
-            key: 'meta-info',
+            key: 'right-content',
             style: {
               display: 'flex',
               alignItems: 'center',
-              gap: '24px',
-              fontSize: '18px',
-              opacity: 0.8,
-              color: 'white',
-              marginBottom: '24px',
-            }
-          }, [
-            date && React.createElement('div', {
-              key: 'date',
-              style: { display: 'flex', alignItems: 'center', gap: '8px' }
-            }, `📅 ${new Date(date).toLocaleDateString()}`)
-          ]),
-
-          // Tags
-          tags && React.createElement('div', {
-            key: 'tags',
-            style: {
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '12px',
               justifyContent: 'center',
             }
-          }, tags.split(',').slice(0, 5).map((tag: string, index: number) =>
-            React.createElement('span', {
-              key: index,
+          }, [
+            React.createElement('div', {
+              key: 'project-visual',
               style: {
-                backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                padding: '6px 12px',
-                borderRadius: '12px',
-                fontSize: '14px',
-                fontWeight: 500,
-                backdropFilter: 'blur(10px)',
-                color: 'white',
+                width: '300px',
+                height: '300px',
+                borderRadius: '20px',
+                background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                position: 'relative',
+                overflow: 'hidden',
               }
-            }, tag.trim())
-          ))
+            }, [
+              // Project Icon/Visual
+              React.createElement('div', {
+                key: 'project-icon',
+                style: {
+                  width: '200px',
+                  height: '200px',
+                  borderRadius: '15px',
+                  background: 'linear-gradient(135deg, #f1f5f9, #e2e8f0)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '60px',
+                  fontWeight: 700,
+                  color: '#8b5cf6',
+                }
+              }, '💻'),
+              
+              // Decorative overlay
+              React.createElement('div', {
+                key: 'overlay',
+                style: {
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1))',
+                }
+              })
+            ])
+          ])
         ]),
 
-        // Logo
+        // Bottom Brand
         React.createElement('div', {
-          key: 'logo',
+          key: 'bottom-brand',
           style: {
             position: 'absolute',
-            bottom: '60px',
-            right: '60px',
-            fontSize: '24px',
-            fontWeight: 700,
-            opacity: 0.7,
-            color: 'white',
+            bottom: '40px',
+            right: '80px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
           }
-        }, "Himanshu's Portfolio")
+        }, [
+          React.createElement('div', {
+            key: 'brand-icon',
+            style: {
+              width: '40px',
+              height: '40px',
+              borderRadius: '8px',
+              background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '20px',
+              fontWeight: 700,
+              color: 'white',
+            }
+          }, 'HS'),
+          
+          React.createElement('div', {
+            key: 'brand-text',
+            style: {
+              fontSize: '18px',
+              fontWeight: 600,
+              color: '#64748b',
+            }
+          }, 'himanshu-salunke.vercel.app')
+        ])
       ]),
       {
         width: 1200,
