@@ -67,11 +67,35 @@ export const Footer: React.FC = () => {
                 that solve real-world problems. Building the future, one line of code at a time.
               </p>
               <div className="mt-3 flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
-                <span>📍 Maharashtra, India</span>
+                <span>💡 Always learning & growing</span>
                 <span>•</span>
-                <span>🎓 B.Tech Data Science</span>
+                <span>🎯 Focused on innovation</span>
                 <span>•</span>
-                <span>🚀 Preparing for GATE 2026</span>
+                <span>🚀 Open to opportunities</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Skills */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-sm font-semibold text-neutral-900 dark:text-white">
+                Core Skills
+              </h4>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {['Python', 'React', 'TypeScript', 'Machine Learning', 'Data Science', 'AI'].map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-2 py-1 text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -81,7 +105,7 @@ export const Footer: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
               <h4 className="text-sm font-semibold text-neutral-900 dark:text-white">
@@ -113,7 +137,7 @@ export const Footer: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
               <h4 className="text-sm font-semibold text-neutral-900 dark:text-white">
@@ -157,8 +181,12 @@ export const Footer: React.FC = () => {
                 ))}
               </div>
               <div className="mt-4 text-xs text-neutral-500 dark:text-neutral-400">
-                <p>Ready to collaborate?</p>
+                <p>💬 Ready to collaborate?</p>
                 <p className="mt-1">Let's build something amazing together!</p>
+                <div className="mt-2 flex items-center gap-1">
+                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  <span>Available for projects</span>
+                </div>
               </div>
             </motion.div>
           </div>
