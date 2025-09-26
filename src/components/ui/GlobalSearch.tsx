@@ -250,7 +250,7 @@ export const GlobalSearch: React.FC = () => {
             {/* Search Modal */}
             <motion.div
               ref={modalRef}
-              className="fixed top-20 sm:top-24 left-1/2 transform -translate-x-1/2 w-[calc(100vw-1rem)] sm:w-full max-w-lg mx-2 sm:mx-4 z-[70]"
+              className="fixed top-20 sm:top-24 left-4 right-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 max-w-lg mx-auto z-[70]"
               initial={{ opacity: 0, scale: 0.95, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
