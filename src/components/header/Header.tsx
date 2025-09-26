@@ -61,8 +61,8 @@ export const Header: React.FC = () => {
         isRecruiterMode ? 'top-12' : 'top-0'
       } ${
         isScrolled
-          ? 'bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md shadow-sm border-b border-neutral-200/20 dark:border-neutral-800/20'
-          : 'bg-transparent'
+          ? 'bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md shadow-sm border-b border-neutral-200/20 dark:border-neutral-800/20'
+          : 'bg-white/80 dark:bg-neutral-950/80 backdrop-blur-sm md:bg-transparent md:dark:bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -95,10 +95,10 @@ export const Header: React.FC = () => {
               </svg>
             </motion.div>
             <div className="hidden sm:block">
-              <span className="bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent text-xl font-bold">
+              <span className="bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent text-xl font-bold drop-shadow-sm">
                 Himanshu
               </span>
-              <div className="text-xs text-neutral-500 dark:text-neutral-400 -mt-1">
+              <div className="text-xs text-neutral-500 dark:text-neutral-400 -mt-1 drop-shadow-sm">
                 Aspiring Data Scientist
               </div>
             </div>
@@ -199,7 +199,7 @@ export const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMenu}
-              className="rounded-lg p-2 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white md:hidden"
+              className="rounded-lg p-2 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white md:hidden bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
               whileHover={{ scale: 1.05 }}
@@ -230,7 +230,7 @@ export const Header: React.FC = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="md:hidden"
+              className="md:hidden bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md border-t border-neutral-200/20 dark:border-neutral-800/20"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
