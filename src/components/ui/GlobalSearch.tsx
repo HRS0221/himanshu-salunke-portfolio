@@ -227,7 +227,7 @@ export const GlobalSearch: React.FC = () => {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -250,7 +250,7 @@ export const GlobalSearch: React.FC = () => {
             {/* Search Modal */}
             <motion.div
               ref={modalRef}
-              className="fixed top-16 sm:top-20 left-1/2 transform -translate-x-1/2 w-[calc(100vw-2rem)] sm:w-full max-w-lg mx-4 z-50"
+              className="fixed top-20 sm:top-24 left-1/2 transform -translate-x-1/2 w-[calc(100vw-1rem)] sm:w-full max-w-lg mx-2 sm:mx-4 z-[70]"
               initial={{ opacity: 0, scale: 0.95, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
