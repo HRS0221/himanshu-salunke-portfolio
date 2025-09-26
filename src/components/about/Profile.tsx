@@ -149,7 +149,7 @@ export const Profile: React.FC = () => {
               whileTap={{ scale: 0.95 }}
             >
               <a 
-                href="/resume.pdf" 
+                href="/Himanshu_Salunke_Resume.pdf" 
                 download="Himanshu_Salunke_Resume.pdf"
                 className="inline-block"
               >
