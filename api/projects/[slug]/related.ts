@@ -40,6 +40,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         project.slug !== slug && 
         project.techStack && 
         currentProject.techStack &&
+        Array.isArray(project.techStack) &&
+        Array.isArray(currentProject.techStack) &&
         project.techStack.some((tech: string) => currentProject.techStack.includes(tech))
       )
       .sort((a: any, b: any) => {
