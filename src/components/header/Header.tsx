@@ -52,7 +52,7 @@ export const Header: React.FC = () => {
     setIsMenuOpen(false)
   }, [location])
 
-  // Handle click outside to close menu
+  // Handle click outside and mouse leave to close menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -60,12 +60,22 @@ export const Header: React.FC = () => {
       }
     }
 
+    const handleMouseLeave = () => {
+      setIsMenuOpen(false)
+    }
+
     if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside)
+      if (menuRef.current) {
+        menuRef.current.addEventListener('mouseleave', handleMouseLeave)
+      }
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
+      if (menuRef.current) {
+        menuRef.current.removeEventListener('mouseleave', handleMouseLeave)
+      }
     }
   }, [isMenuOpen])
 
@@ -129,7 +139,7 @@ export const Header: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`text-sm font-medium transition-colors duration-200 relative group ${
+                className={`text-sm font-medium transition-all duration-200 relative group hover:scale-105 ${
                   location.pathname === item.href
                     ? 'text-primary-500'
                     : 'text-neutral-600 hover:text-primary-500 dark:text-neutral-300 dark:hover:text-primary-400'
@@ -161,7 +171,7 @@ export const Header: React.FC = () => {
             <motion.a
               href="/Himanshu_Salunke_Resume.pdf"
               download="Himanshu_Salunke_Resume.pdf"
-              className="hidden sm:flex items-center gap-2 px-3 py-2 bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+              className="hidden sm:flex items-center gap-2 px-3 py-2 bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               title="Download Resume"
@@ -218,7 +228,7 @@ export const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMenu}
-              className="rounded-lg p-2 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white md:hidden bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm"
+              className="rounded-lg p-2 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white md:hidden bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
               whileHover={{ scale: 1.05 }}
@@ -260,9 +270,9 @@ export const Header: React.FC = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`block rounded-lg px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                    className={`block rounded-lg px-3 py-2 text-base font-medium transition-all duration-200 hover:scale-102 active:scale-98 ${
                       location.pathname === item.href
-                        ? 'bg-primary-100 text-primary-500 dark:bg-primary-900 dark:text-primary-400'
+                        ? 'bg-primary-100 text-primary-500 dark:bg-primary-900 dark:text-primary-400 shadow-sm'
                         : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white'
                     }`}
                   >
@@ -279,7 +289,7 @@ export const Header: React.FC = () => {
                 <motion.a
                   href="/Himanshu_Salunke_Resume.pdf"
                   download="Himanshu_Salunke_Resume.pdf"
-                  className="flex items-center gap-2 px-3 py-2 mt-4 bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+                  className="flex items-center gap-2 px-3 py-2 mt-4 bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-102 active:scale-98 shadow-sm hover:shadow-md"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
