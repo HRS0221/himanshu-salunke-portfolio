@@ -29,7 +29,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     })
     
     // Find current project
-    const currentProject = projects.find(project => project.slug === slug)
+    const currentProject = projects.find(project => project.slug === slug) as any
     if (!currentProject) {
       return res.status(404).json({ error: 'Project not found' })
     }
