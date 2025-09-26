@@ -227,7 +227,7 @@ export const GlobalSearch: React.FC = () => {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60]"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -250,7 +250,7 @@ export const GlobalSearch: React.FC = () => {
             {/* Search Modal */}
             <motion.div
               ref={modalRef}
-              className="fixed top-16 sm:top-20 left-1/2 transform -translate-x-1/2 w-full max-w-lg mx-4 z-[70]"
+              className="fixed top-16 sm:top-20 left-1/2 transform -translate-x-1/2 w-[calc(100vw-2rem)] sm:w-full max-w-lg mx-4 z-50"
               initial={{ opacity: 0, scale: 0.95, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
@@ -259,9 +259,9 @@ export const GlobalSearch: React.FC = () => {
             >
               <div className="bg-white/90 dark:bg-neutral-800/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-neutral-200/20 dark:border-neutral-700/30 overflow-hidden">
                 {/* Search Input */}
-                <div className="p-4 border-b border-neutral-200/30 dark:border-neutral-700/30">
+                <div className="p-3 sm:p-4 border-b border-neutral-200/30 dark:border-neutral-700/30">
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
                       <motion.svg
                         className="h-5 w-5 text-neutral-400 transition-colors duration-300"
                         fill="none"
@@ -278,13 +278,13 @@ export const GlobalSearch: React.FC = () => {
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Search projects, articles, pages..."
-                      className="w-full pl-12 pr-12 py-3 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 border-2 border-neutral-200/50 dark:border-neutral-600/50 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 dark:focus:border-primary-400 transition-all duration-300 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 shadow-lg focus:shadow-xl"
+                      className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-2.5 sm:py-3 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 border-2 border-neutral-200/50 dark:border-neutral-600/50 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 dark:focus:border-primary-400 transition-all duration-300 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 shadow-lg focus:shadow-xl"
                       autoFocus
                     />
                     {searchTerm && (
                       <motion.button
                         onClick={() => setSearchTerm('')}
-                        className="absolute inset-y-0 right-0 pr-4 flex items-center"
+                        className="absolute inset-y-0 right-0 pr-3 sm:pr-4 flex items-center"
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
@@ -302,7 +302,7 @@ export const GlobalSearch: React.FC = () => {
                 </div>
 
                 {/* Search Results */}
-                <div className="max-h-64 overflow-y-auto">
+                <div className="max-h-48 sm:max-h-64 overflow-y-auto">
                   {isLoading ? (
                     <div className="p-6 text-center">
                       <motion.div
