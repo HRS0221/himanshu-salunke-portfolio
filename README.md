@@ -119,6 +119,7 @@ himanshu-portfolio-website/
 - Node.js 22.x or higher
 - npm or yarn package manager
 - Git
+- Google Gemini API key (for AI chatbot)
 
 ### **Installation**
 
@@ -132,6 +133,18 @@ himanshu-portfolio-website/
    ```bash
    npm install
    ```
+
+3. **Set up environment variables**
+   ```bash
+   # Create environment file
+   echo "GEMINI_API_KEY=your_gemini_api_key_here" > .env.local
+   ```
+   
+   **To get a Gemini API key:**
+   - Go to [Google AI Studio](https://aistudio.google.com/)
+   - Sign in with your Google account
+   - Create a new API key
+   - Copy the key and add it to your `.env.local` file
 
 3. **Environment Setup**
    ```bash

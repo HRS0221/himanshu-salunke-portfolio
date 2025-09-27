@@ -56,7 +56,7 @@ export const ChatbotWidget: React.FC = () => {
     setError(null)
 
     try {
-      const response = await fetch('/api/chatbot', {
+      const response = await fetch('/api/projects?chatbot=true', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

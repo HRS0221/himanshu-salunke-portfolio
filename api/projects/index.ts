@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { readFileSync, readdirSync } from 'fs'
+import { readdirSync, readFileSync } from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 
@@ -13,7 +13,7 @@ interface ChatRequest {
   conversationHistory: ChatMessage[]
 }
 
-const GEMINI_API_KEY = 'AIzaSyAqCxkDDoXlPKIMRRH6jszsxKg2E0mrOAk'
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent'
 
 // Function to get dynamic portfolio data
@@ -55,7 +55,7 @@ async function getPortfolioData() {
       }
     })
 
-    // Skills data (from TechStack component)
+    // Skills data from TechStack component
     const skillsData = [
       // AI/ML & Data Science
       { name: 'Python', level: 95, category: 'ai-ml' },
@@ -165,112 +165,178 @@ RESPONSE GUIDELINES:
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
-
-  try {
-    const { message, conversationHistory }: ChatRequest = req.body
-
-    if (!message || typeof message !== 'string') {
-      return res.status(400).json({ error: 'Message is required' })
-    }
-
-    // Generate dynamic portfolio context
-    const portfolioContext = await generatePortfolioContext()
-
-    // Prepare the conversation context
-    const systemMessage = {
-      role: 'system',
-      content: portfolioContext
-    }
-
-    // Build the conversation with context
-    const conversation = [
-      systemMessage,
-      ...conversationHistory.slice(-10), // Keep last 10 messages for context
-      {
-        role: 'user',
-        content: message
+  // Handle chatbot requests
+  if (req.method === 'POST' && (req.url?.includes('chatbot') || req.query.chatbot === 'true')) {
+    try {
+      // Check if API key is configured
+      if (!GEMINI_API_KEY) {
+        console.error('GEMINI_API_KEY environment variable is not set')
+        return res.status(500).json({ 
+          error: 'AI service configuration error',
+          fallback: "I'm having trouble connecting to the AI service right now. Please try again later or explore the portfolio directly!"
+        })
       }
-    ]
 
-    // Prepare the request for Gemini API
-    const geminiRequest = {
-      contents: [{
-        parts: [{
-          text: conversation.map(msg => 
-            msg.role === 'system' 
-              ? `System: ${msg.content}` 
-              : `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`
-          ).join('\n\n')
-        }]
-      }],
-      generationConfig: {
-        temperature: 0.7,
-        topK: 40,
-        topP: 0.95,
-        maxOutputTokens: 1024,
-      },
-      safetySettings: [
+      const { message, conversationHistory }: ChatRequest = req.body
+
+      if (!message || typeof message !== 'string') {
+        return res.status(400).json({ error: 'Message is required' })
+      }
+
+      // Generate dynamic portfolio context
+      const portfolioContext = await generatePortfolioContext()
+
+      // Prepare the conversation context
+      const systemMessage = {
+        role: 'system',
+        content: portfolioContext
+      }
+
+      // Build the conversation with context
+      const conversation = [
+        systemMessage,
+        ...conversationHistory.slice(-10), // Keep last 10 messages for context
         {
-          category: "HARM_CATEGORY_HARASSMENT",
-          threshold: "BLOCK_MEDIUM_AND_ABOVE"
-        },
-        {
-          category: "HARM_CATEGORY_HATE_SPEECH",
-          threshold: "BLOCK_MEDIUM_AND_ABOVE"
-        },
-        {
-          category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-          threshold: "BLOCK_MEDIUM_AND_ABOVE"
-        },
-        {
-          category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-          threshold: "BLOCK_MEDIUM_AND_ABOVE"
+          role: 'user',
+          content: message
         }
       ]
-    }
 
-    const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(geminiRequest)
-    })
+      // Prepare the request for Gemini API
+      const geminiRequest = {
+        contents: [{
+          parts: [{
+            text: conversation.map(msg => 
+              msg.role === 'system' 
+                ? `System: ${msg.content}` 
+                : `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`
+            ).join('\n\n')
+          }]
+        }],
+        generationConfig: {
+          temperature: 0.7,
+          topK: 40,
+          topP: 0.95,
+          maxOutputTokens: 1024,
+        },
+        safetySettings: [
+          {
+            category: "HARM_CATEGORY_HARASSMENT",
+            threshold: "BLOCK_MEDIUM_AND_ABOVE"
+          },
+          {
+            category: "HARM_CATEGORY_HATE_SPEECH",
+            threshold: "BLOCK_MEDIUM_AND_ABOVE"
+          },
+          {
+            category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            threshold: "BLOCK_MEDIUM_AND_ABOVE"
+          },
+          {
+            category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+            threshold: "BLOCK_MEDIUM_AND_ABOVE"
+          }
+        ]
+      }
 
-    if (!response.ok) {
-      const errorData = await response.json()
-      console.error('Gemini API error:', errorData)
+      const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(geminiRequest)
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        console.error('Gemini API error:', errorData)
+        return res.status(500).json({ 
+          error: 'AI service temporarily unavailable',
+          fallback: "I'm having trouble connecting to the AI service right now. Please try again in a moment or feel free to explore the portfolio directly!"
+        })
+      }
+
+      const data = await response.json()
+      
+      if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+        console.error('Unexpected Gemini response:', data)
+        return res.status(500).json({ 
+          error: 'AI service returned unexpected response',
+          fallback: "I'm having trouble processing your request right now. Please try again or explore the portfolio sections for more information!"
+        })
+      }
+
+      const aiResponse = data.candidates[0].content.parts[0].text
+
+      return res.status(200).json({ 
+        response: aiResponse,
+        timestamp: new Date().toISOString()
+      })
+
+    } catch (error) {
+      console.error('Chatbot API error:', error)
       return res.status(500).json({ 
-        error: 'AI service temporarily unavailable',
-        fallback: "I'm having trouble connecting to the AI service right now. Please try again in a moment or feel free to explore the portfolio directly!"
+        error: 'Internal server error',
+        fallback: "I'm experiencing some technical difficulties. Please try again later or explore the portfolio directly!"
       })
     }
+  }
 
-    const data = await response.json()
+  // Original projects API functionality
+  try {
+    const { featured, slug } = req.query
     
-    if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
-      console.error('Unexpected Gemini response:', data)
-      return res.status(500).json({ 
-        error: 'AI service returned unexpected response',
-        fallback: "I'm having trouble processing your request right now. Please try again or explore the portfolio sections for more information!"
-      })
+    const projectsDir = join(process.cwd(), 'src/data/projects')
+    const files = readdirSync(projectsDir).filter(file => file.endsWith('.mdx'))
+    
+    const projects = files.map(file => {
+      const filePath = join(projectsDir, file)
+      const fileContent = readFileSync(filePath, 'utf8')
+      const { data: frontmatter, content } = matter(fileContent)
+      
+      return {
+        ...frontmatter,
+        slug: frontmatter.id,
+        content,
+        readingTime: Math.ceil(content.split(' ').length / 200)
+      }
+    })
+    
+    // Handle specific project by slug
+    if (slug && typeof slug === 'string') {
+      const project = projects.find(p => p.slug === slug)
+      if (!project) {
+        return res.status(404).json({ error: 'Project not found' })
+      }
+      res.setHeader('Cache-Control', 'public, max-age=3600')
+      return res.status(200).json(project)
     }
-
-    const aiResponse = data.candidates[0].content.parts[0].text
-
-    return res.status(200).json({ 
-      response: aiResponse,
-      timestamp: new Date().toISOString()
+    
+    // Handle featured projects filter
+    if (featured === 'true') {
+      const featuredProjects = projects
+        .filter((project: any) => project.featured === true)
+        .sort((a: any, b: any) => {
+          const dateA = new Date(a.date || '2024-01-01')
+          const dateB = new Date(b.date || '2024-01-01')
+          return dateB.getTime() - dateA.getTime()
+        })
+      
+      res.setHeader('Cache-Control', 'public, max-age=3600')
+      return res.status(200).json(featuredProjects)
+    }
+    
+    // Return all projects sorted by date
+    const sortedProjects = projects.sort((a: any, b: any) => {
+      const dateA = new Date(a.date || '2024-01-01')
+      const dateB = new Date(b.date || '2024-01-01')
+      return dateB.getTime() - dateA.getTime()
     })
-
+    
+    res.setHeader('Cache-Control', 'public, max-age=3600')
+    res.status(200).json(sortedProjects)
   } catch (error) {
-    console.error('Chatbot API error:', error)
-    return res.status(500).json({ 
-      error: 'Internal server error',
-      fallback: "I'm experiencing some technical difficulties. Please try again later or explore the portfolio directly!"
-    })
+    console.error('Error fetching projects:', error)
+    res.status(500).json({ error: 'Failed to fetch projects' })
   }
 }

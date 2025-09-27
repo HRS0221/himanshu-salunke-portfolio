@@ -1,10 +1,177 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { ImageResponse } from '@vercel/og'
+import React from 'react'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const { title, description, type, date, tags } = req.query
+  const { title, description, type, date, tags, format } = req.query
 
   if (!title) {
     return res.status(400).json({ error: 'Title is required' })
+  }
+
+  // Use React-based OG image if format is 'react' or not specified
+  if (format !== 'html') {
+    try {
+      const imageResponse = new ImageResponse(
+        React.createElement('div', {
+          style: {
+            height: '100%',
+            width: '100%',
+            display: 'flex',
+            backgroundColor: '#ffffff',
+            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+            position: 'relative',
+          }
+        }, [
+          // Background Pattern
+          React.createElement('div', {
+            key: 'bg-pattern',
+            style: {
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+              opacity: 0.8,
+            }
+          }),
+          
+          // Main Content Container
+          React.createElement('div', {
+            key: 'main-container',
+            style: {
+              display: 'flex',
+              width: '100%',
+              height: '100%',
+              padding: '80px',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              position: 'relative',
+              zIndex: 1,
+            }
+          }, [
+            // Left Content
+            React.createElement('div', {
+              key: 'left-content',
+              style: {
+                display: 'flex',
+                flexDirection: 'column',
+                maxWidth: '700px',
+                gap: '24px',
+              }
+            }, [
+              // Type Badge
+              React.createElement('div', {
+                key: 'type-badge',
+                style: {
+                  display: 'inline-block',
+                  backgroundColor: '#8b5cf6',
+                  color: 'white',
+                  padding: '8px 20px',
+                  borderRadius: '25px',
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  width: 'fit-content',
+                }
+              }, type === 'project' ? 'Project' : 'Article'),
+
+              // Title
+              React.createElement('h1', {
+                key: 'title',
+                style: {
+                  fontSize: '64px',
+                  fontWeight: 800,
+                  lineHeight: 1.1,
+                  color: '#1e293b',
+                  margin: 0,
+                  background: 'linear-gradient(135deg, #1e293b 0%, #8b5cf6 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }
+              }, title),
+
+              // Description
+              description && React.createElement('p', {
+                key: 'description',
+                style: {
+                  fontSize: '24px',
+                  lineHeight: 1.4,
+                  color: '#64748b',
+                  margin: 0,
+                  fontWeight: 400,
+                }
+              }, description),
+
+              // Author Info
+              React.createElement('div', {
+                key: 'author-info',
+                style: {
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  marginTop: '24px',
+                }
+              }, [
+                React.createElement('div', {
+                  key: 'author-avatar',
+                  style: {
+                    width: '50px',
+                    height: '50px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '20px',
+                    fontWeight: 700,
+                    color: 'white',
+                  }
+                }, 'HS'),
+                
+                React.createElement('div', {
+                  key: 'author-details',
+                  style: {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2px',
+                  }
+                }, [
+                  React.createElement('div', {
+                    key: 'author-name',
+                    style: {
+                      fontSize: '18px',
+                      fontWeight: 600,
+                      color: '#1e293b',
+                    }
+                  }, 'Himanshu Salunke'),
+                  
+                  React.createElement('div', {
+                    key: 'author-title',
+                    style: {
+                      fontSize: '14px',
+                      color: '#64748b',
+                    }
+                  }, 'Aspiring Data Scientist')
+                ])
+              ])
+            ])
+          ])
+        ]),
+        {
+          width: 1200,
+          height: 630,
+        }
+      )
+
+      return imageResponse
+    } catch (e: any) {
+      console.log(`${e.message}`)
+      // Fall back to HTML version
+    }
   }
 
   // Generate OG image HTML
