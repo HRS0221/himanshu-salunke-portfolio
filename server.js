@@ -307,38 +307,62 @@ app.post('/api/projects', async (req, res) => {
         ]
       };
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${GEMINI_API_KEY}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(geminiRequest)
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Gemini API error:', errorData);
-        return res.status(500).json({
-          error: 'AI service temporarily unavailable',
-          fallback: "I'm having trouble connecting to the AI service right now. Please try again in a moment or feel free to explore the portfolio directly!"
-        });
-      }
-
-      const data = await response.json();
+      // Try multiple models with retry logic
+      const models = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'];
+      let lastError = null;
       
-      if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
-        console.error('Unexpected Gemini response:', data);
-        return res.status(500).json({
-          error: 'AI service returned unexpected response',
-          fallback: "I'm having trouble processing your request right now. Please try again or explore the portfolio sections for more information!"
-        });
+      for (const model of models) {
+        try {
+          console.log(`Trying model: ${model}`);
+          const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(geminiRequest)
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            
+            if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+              console.error('Unexpected Gemini response:', data);
+              continue; // Try next model
+            }
+
+            const aiResponse = data.candidates[0].content.parts[0].text;
+            
+            return res.status(200).json({
+              response: aiResponse,
+              timestamp: new Date().toISOString()
+            });
+          } else {
+            const errorData = await response.json();
+            console.error(`Gemini API error with ${model}:`, errorData);
+            lastError = errorData;
+            
+            // If it's a 503 error, try next model
+            if (response.status === 503) {
+              continue;
+            }
+          }
+        } catch (error) {
+          console.error(`Error with model ${model}:`, error);
+          lastError = error;
+          continue;
+        }
       }
 
-      const aiResponse = data.candidates[0].content.parts[0].text;
+      // If all models failed, provide a helpful fallback response
+      console.error('All Gemini models failed. Last error:', lastError);
+      
+      // Generate a smart fallback based on the user's question
+      const fallbackResponse = generateFallbackResponse(message);
       
       return res.status(200).json({
-        response: aiResponse,
-        timestamp: new Date().toISOString()
+        response: fallbackResponse,
+        timestamp: new Date().toISOString(),
+        fallback: true
       });
     }
 
@@ -376,6 +400,29 @@ app.post('/api/projects', async (req, res) => {
     res.status(500).json({ error: 'Failed to process request' });
   }
 });
+
+// Helper function to generate smart fallback responses
+function generateFallbackResponse(message) {
+  const lowerMessage = message.toLowerCase();
+  
+  if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
+    return "I'd love to tell you about Himanshu's projects! He has worked on several impressive projects including a Real-Time Height Measurement System with ±2cm accuracy, a YouTube Data Engineering Pipeline processing 400MB+ data, and a Sentiment Analysis project with 92.7% accuracy using BERT. You can explore all his projects in the 'Work' section of this portfolio!";
+  }
+  
+  if (lowerMessage.includes('skill') || lowerMessage.includes('technolog')) {
+    return "Himanshu is skilled in AI/ML technologies like Python, TensorFlow, PyTorch, and Scikit-learn, as well as web development with React, Node.js, and TypeScript. He also has experience with cloud platforms like AWS and data engineering tools like Apache Airflow. Check out the 'About' section for a complete overview of his technical skills!";
+  }
+  
+  if (lowerMessage.includes('contact') || lowerMessage.includes('hire') || lowerMessage.includes('collaborat')) {
+    return "You can reach out to Himanshu through the contact form on this website or connect with him on LinkedIn. He's always interested in discussing new opportunities and collaborations in AI/ML and web development!";
+  }
+  
+  if (lowerMessage.includes('experience') || lowerMessage.includes('background')) {
+    return "Himanshu is a full-stack developer and data scientist specializing in AI/ML and web development. He has experience building end-to-end applications from data analysis to production deployment, with expertise in computer vision, natural language processing, and data engineering.";
+  }
+  
+  return "Thanks for your interest! While I'm experiencing some technical difficulties with the AI service, you can explore Himanshu's portfolio directly. Check out his projects, skills, and articles in the navigation menu. Feel free to use the contact form if you'd like to get in touch!";
+}
 
 // Helper function to generate portfolio context for chatbot
 async function generatePortfolioContext() {
