@@ -1,6 +1,6 @@
 # 🚀 Himanshu's Portfolio Website
 
-A modern, responsive portfolio website showcasing AI/ML projects, technical expertise, and professional journey. Built with React, TypeScript, and cutting-edge web technologies.
+A modern, responsive portfolio website showcasing AI/ML projects, technical expertise, and professional journey. Built with React, TypeScript, and cutting-edge web technologies. Updated with latest design improvements and optimizations.
 
 ![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
 ![React](https://img.shields.io/badge/React-18.3.1-blue)
