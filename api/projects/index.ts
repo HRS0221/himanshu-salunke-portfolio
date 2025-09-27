@@ -165,12 +165,23 @@ RESPONSE GUIDELINES:
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Debug endpoint to check environment variables
+  if (req.method === 'GET' && req.query.debug === 'env') {
+    return res.status(200).json({
+      hasGeminiKey: !!GEMINI_API_KEY,
+      geminiKeyLength: GEMINI_API_KEY?.length || 0,
+      geminiKeyPrefix: GEMINI_API_KEY?.substring(0, 10) || 'NOT_SET',
+      allEnvVars: Object.keys(process.env).filter(key => key.includes('GEMINI') || key.includes('API'))
+    })
+  }
+
   // Handle chatbot requests
   if (req.method === 'POST' && (req.url?.includes('chatbot') || req.query.chatbot === 'true')) {
     try {
       // Check if API key is configured
       if (!GEMINI_API_KEY) {
         console.error('GEMINI_API_KEY environment variable is not set')
+        console.error('Available env vars:', Object.keys(process.env).filter(key => key.includes('GEMINI')))
         return res.status(500).json({ 
           error: 'AI service configuration error',
           fallback: "I'm having trouble connecting to the AI service right now. Please try again later or explore the portfolio directly!"
