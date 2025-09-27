@@ -50,8 +50,7 @@ export const Footer: React.FC = () => {
   return (
     <footer 
       id="footer" 
-      className="border-t border-neutral-200 dark:border-neutral-800"
-      style={{ backgroundColor: 'hsla(221, 51%, 16%, 1)' }}
+      className="border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
     >
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Ready to Connect Section */}
@@ -63,14 +62,12 @@ export const Footer: React.FC = () => {
           viewport={{ once: true }}
         >
           <h2 
-            className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ color: 'hsla(0, 0%, 100%, 1)' }}
+            className="text-4xl md:text-5xl font-bold mb-4 text-neutral-900 dark:text-neutral-100"
           >
             Ready to Connect?
           </h2>
           <p 
-            className="text-xl mb-8 max-w-2xl mx-auto"
-            style={{ color: 'hsla(0, 0%, 90%, 1)' }}
+            className="text-xl mb-8 max-w-2xl mx-auto text-neutral-700 dark:text-neutral-300"
           >
             Whether you want to collaborate, have questions, or just say hi!
           </p>
@@ -78,10 +75,7 @@ export const Footer: React.FC = () => {
           {/* CTA Button */}
           <motion.a
             href="/contact"
-            className="inline-block text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
-            style={{
-              backgroundColor: 'hsla(37, 98%, 53%, 1)',
-            }}
+            className="inline-block text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -90,13 +84,11 @@ export const Footer: React.FC = () => {
 
           {/* Quick Action Links */}
           <div 
-            className="mt-8 flex flex-wrap justify-center items-center gap-6"
-            style={{ color: 'hsla(0, 0%, 90%, 1)' }}
+            className="mt-8 flex flex-wrap justify-center items-center gap-6 text-neutral-700 dark:text-neutral-300"
           >
             <a
               href="/articles"
-              className="flex items-center gap-2 transition-colors duration-200"
-              style={{ color: 'hsla(37, 98%, 53%, 1)' }}
+              className="flex items-center gap-2 transition-colors duration-200 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20c-1.2 0-2.18-1-2.18-2.18a2.18 2.18 0 0 1 2.18-2.18m0-5.64a2.18 2.18 0 0 1 2.18 2.18C8.36 13.36 7.38 14.36 6.18 14.36c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 6.18 10m0-5.64a2.18 2.18 0 0 1 2.18 2.18C8.36 7.72 7.38 8.72 6.18 8.72c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 6.18 4.36m5.64 0a2.18 2.18 0 0 1 2.18 2.18C14 7.72 13 8.72 11.82 8.72c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 11.82 4.36m5.64 0a2.18 2.18 0 0 1 2.18 2.18C19.64 7.72 18.64 8.72 17.46 8.72c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 17.46 4.36m-5.64 5.64a2.18 2.18 0 0 1 2.18 2.18C14 13.36 13 14.36 11.82 14.36c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 11.82 10m5.64 0a2.18 2.18 0 0 1 2.18 2.18C19.64 13.36 18.64 14.36 17.46 14.36c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 17.46 10m-5.64 5.64a2.18 2.18 0 0 1 2.18 2.18C14 19 13 20 11.82 20c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 11.82 15.64m5.64 0a2.18 2.18 0 0 1 2.18 2.18C19.64 19 18.64 20 17.46 20c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 17.46 15.64z"/>
@@ -105,14 +97,12 @@ export const Footer: React.FC = () => {
             </a>
             
             <div 
-              className="w-1 h-1 rounded-full"
-              style={{ backgroundColor: 'hsla(0, 0%, 90%, 1)' }}
+              className="w-1 h-1 rounded-full bg-neutral-500 dark:bg-neutral-400"
             ></div>
             
             <a
               href="/work"
-              className="flex items-center gap-2 transition-colors duration-200"
-              style={{ color: 'hsla(37, 98%, 53%, 1)' }}
+              className="flex items-center gap-2 transition-colors duration-200 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
@@ -121,16 +111,14 @@ export const Footer: React.FC = () => {
             </a>
             
             <div 
-              className="w-1 h-1 rounded-full"
-              style={{ backgroundColor: 'hsla(0, 0%, 90%, 1)' }}
+              className="w-1 h-1 rounded-full bg-neutral-500 dark:bg-neutral-400"
             ></div>
             
             <a
               href="/Himanshu_Salunke_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 transition-colors duration-200"
-              style={{ color: 'hsla(37, 98%, 53%, 1)' }}
+              className="flex items-center gap-2 transition-colors duration-200 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
@@ -142,24 +130,21 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Section */}
         <motion.div
-          className="text-center border-t pt-8"
-          style={{ borderColor: 'hsla(0, 0%, 90%, 1)' }}
+          className="text-center border-t border-neutral-300 dark:border-neutral-700 pt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
           <p 
-            className="text-sm"
-            style={{ color: 'hsla(0, 0%, 90%, 1)' }}
+            className="text-sm text-neutral-700 dark:text-neutral-300"
           >
             Built with <span className="text-red-500">❤️</span> by{' '}
             <a
               href="https://github.com/HRS0221"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors duration-200"
-              style={{ color: 'hsla(37, 98%, 53%, 1)' }}
+              className="transition-colors duration-200 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
             >
               Himanshu
             </a>{' '}
@@ -168,8 +153,7 @@ export const Footer: React.FC = () => {
               href="https://vitejs.dev/"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors duration-200"
-              style={{ color: 'hsla(37, 98%, 53%, 1)' }}
+              className="transition-colors duration-200 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
             >
               Vite
             </a>{' '}
@@ -178,8 +162,7 @@ export const Footer: React.FC = () => {
               href="https://tailwindcss.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors duration-200"
-              style={{ color: 'hsla(37, 98%, 53%, 1)' }}
+              className="transition-colors duration-200 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
             >
               Tailwind CSS
             </a>
@@ -188,12 +171,10 @@ export const Footer: React.FC = () => {
           {/* Decorative Icon */}
           <div className="mt-4 flex justify-center">
             <div 
-              className="w-6 h-6 rounded-sm flex items-center justify-center"
-              style={{ backgroundColor: 'hsla(0, 0%, 90%, 1)' }}
+              className="w-6 h-6 rounded-sm flex items-center justify-center bg-neutral-300 dark:bg-neutral-600"
             >
               <div 
-                className="w-3 h-3 rounded-sm"
-                style={{ backgroundColor: 'hsla(37, 98%, 53%, 1)' }}
+                className="w-3 h-3 rounded-sm bg-primary-600 dark:bg-primary-400"
               ></div>
             </div>
           </div>
