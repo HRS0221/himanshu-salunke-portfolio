@@ -161,11 +161,6 @@ export const Header: React.FC = () => {
 
           {/* Controls */}
           <div className="flex items-center space-x-4">
-            {/* Availability Status */}
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 rounded-full">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-xs text-green-700 dark:text-green-300 font-medium">Available for projects</span>
-            </div>
 
             {/* Resume Download */}
             <motion.a
