@@ -48,175 +48,115 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer id="footer" className="bg-neutral-50 dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          {/* Brand */}
-          <div className="col-span-1 md:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
-                Himanshu Kishor Salunke
-              </h3>
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-                Aspiring Data Scientist passionate about creating intelligent solutions 
-                that solve real-world problems. Building the future, one line of code at a time.
-              </p>
-              <div className="mt-3 flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
-                <span>💡 Always learning & growing</span>
-                <span>•</span>
-                <span>🎯 Focused on innovation</span>
-                <span>•</span>
-                <span>🚀 Open to opportunities</span>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Skills */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-sm font-semibold text-neutral-900 dark:text-white">
-                Core Skills
-              </h4>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {['Python', 'React', 'TypeScript', 'Machine Learning', 'Data Science', 'AI'].map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2 py-1 text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-sm font-semibold text-neutral-900 dark:text-white">
-                Quick Links
-              </h4>
-              <ul className="mt-4 space-y-2">
-                {[
-                  { name: 'About', href: '/about' },
-                  { name: 'Work', href: '/work' },
-                  { name: 'Developer', href: '/developer' },
-                  { name: 'Articles', href: '/articles' },
-                  { name: 'Contact', href: '/contact' }
-                ].map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-neutral-600 hover:text-primary-500 dark:text-neutral-400 dark:hover:text-primary-400 transition-colors duration-200"
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Social Links */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-sm font-semibold text-neutral-900 dark:text-white">
-                Connect
-              </h4>
-              <div className="mt-4 flex space-x-4">
-                {socialLinks.map((link) => (
-                  <motion.div
-                    key={link.name}
-                    className="relative group"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <motion.a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`block transition-all duration-200 ${
-                        link.name === 'GitHub' 
-                          ? 'text-neutral-700 dark:text-neutral-300' 
-                          : link.name === 'X (Twitter)'
-                          ? 'text-neutral-800 dark:text-neutral-200'
-                          : ''
-                      }`}
-                      aria-label={link.name}
-                      style={{ 
-                        color: link.name === 'LinkedIn' || link.name === 'Email' 
-                          ? link.color 
-                          : undefined 
-                      }}
-                    >
-                      {link.icon}
-                    </motion.a>
-                    
-                    {/* Tooltip */}
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
-                      {link.name}
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent border-t-neutral-900 dark:border-t-neutral-100"></div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              <div className="mt-4 text-xs text-neutral-500 dark:text-neutral-400">
-                <p>💬 Ready to collaborate?</p>
-                <p className="mt-1">Let's build something amazing together!</p>
-                <div className="mt-2 flex items-center gap-1">
-                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span>Available for projects</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
+    <footer id="footer" className="bg-neutral-900 dark:bg-neutral-950">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        {/* Ready to Connect Section */}
         <motion.div
-          className="mt-8 border-t border-neutral-200 dark:border-neutral-800 pt-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              © {currentYear} Himanshu Kishor Salunke. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-sm text-neutral-600 dark:text-neutral-400">
-              <a
-                href="/privacy"
-                className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="/terms"
-                className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
-              >
-                Terms of Service
-              </a>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Ready to Connect?
+          </h2>
+          <p className="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
+            Whether you want to collaborate, have questions, or just say hi!
+          </p>
+          
+          {/* CTA Button */}
+          <motion.a
+            href="/contact"
+            className="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 transform hover:scale-105"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get In Touch
+          </motion.a>
+
+          {/* Quick Action Links */}
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-6 text-neutral-400">
+            <a
+              href="/articles"
+              className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20c-1.2 0-2.18-1-2.18-2.18a2.18 2.18 0 0 1 2.18-2.18m0-5.64a2.18 2.18 0 0 1 2.18 2.18C8.36 13.36 7.38 14.36 6.18 14.36c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 6.18 10m0-5.64a2.18 2.18 0 0 1 2.18 2.18C8.36 7.72 7.38 8.72 6.18 8.72c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 6.18 4.36m5.64 0a2.18 2.18 0 0 1 2.18 2.18C14 7.72 13 8.72 11.82 8.72c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 11.82 4.36m5.64 0a2.18 2.18 0 0 1 2.18 2.18C19.64 7.72 18.64 8.72 17.46 8.72c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 17.46 4.36m-5.64 5.64a2.18 2.18 0 0 1 2.18 2.18C14 13.36 13 14.36 11.82 14.36c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 11.82 10m5.64 0a2.18 2.18 0 0 1 2.18 2.18C19.64 13.36 18.64 14.36 17.46 14.36c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 17.46 10m-5.64 5.64a2.18 2.18 0 0 1 2.18 2.18C14 19 13 20 11.82 20c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 11.82 15.64m5.64 0a2.18 2.18 0 0 1 2.18 2.18C19.64 19 18.64 20 17.46 20c-1.2 0-2.18-1-2.18-2.18A2.18 2.18 0 0 1 17.46 15.64z"/>
+              </svg>
+              <span>Stay Updated</span>
+            </a>
+            
+            <div className="w-1 h-1 bg-neutral-600 rounded-full"></div>
+            
+            <a
+              href="/work"
+              className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              </svg>
+              <span>Find Content</span>
+            </a>
+            
+            <div className="w-1 h-1 bg-neutral-600 rounded-full"></div>
+            
+            <a
+              href="/Himanshu_Salunke_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+              </svg>
+              <span>Download CV</span>
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Bottom Section */}
+        <motion.div
+          className="text-center border-t border-neutral-800 pt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-neutral-400 text-sm">
+            Built with <span className="text-red-500">❤️</span> by{' '}
+            <a
+              href="https://github.com/HRS0221"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+            >
+              Himanshu
+            </a>{' '}
+            using{' '}
+            <a
+              href="https://vitejs.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+            >
+              Vite
+            </a>{' '}
+            &{' '}
+            <a
+              href="https://tailwindcss.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+            >
+              Tailwind CSS
+            </a>
+          </p>
+          
+          {/* Decorative Icon */}
+          <div className="mt-4 flex justify-center">
+            <div className="w-6 h-6 bg-neutral-700 rounded-sm flex items-center justify-center">
+              <div className="w-3 h-3 bg-neutral-600 rounded-sm"></div>
             </div>
           </div>
         </motion.div>
