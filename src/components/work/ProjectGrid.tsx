@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { EnhancedProjectCard } from './EnhancedProjectCard'
 import { SearchAndFilter } from '../ui/SearchAndFilter'
-import { useRecruiterMode } from '../../context/RecruiterModeContext'
 import { useDebounce } from '../../hooks/useDebounce'
 
 interface Project {
@@ -27,7 +26,6 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [sortBy, setSortBy] = useState<'date-desc' | 'date-asc' | 'name-asc' | 'name-desc'>('date-desc')
-  const { isRecruiterMode } = useRecruiterMode()
   
   // Debounce search term
   const debouncedSearchTerm = useDebounce(searchTerm, 300)
@@ -64,10 +62,6 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
       filtered = filtered.filter(project => project.category === selectedCategory)
     }
 
-    // Filter by recruiter mode (show only featured projects)
-    if (isRecruiterMode) {
-      filtered = filtered.filter(project => project.featured)
-    }
 
     // Sort projects
     filtered.sort((a, b) => {
@@ -86,7 +80,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
     })
 
     return filtered
-  }, [projects, debouncedSearchTerm, selectedCategory, sortBy, isRecruiterMode])
+  }, [projects, debouncedSearchTerm, selectedCategory, sortBy])
 
   return (
     <div className="space-y-8">
@@ -111,7 +105,6 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
       >
         <p className="text-neutral-600 dark:text-neutral-400">
           Showing {filteredAndSortedProjects.length} of {projects.length} projects
-          {isRecruiterMode && ' (Recruiter Mode: Featured Only)'}
         </p>
       </motion.div>
 
@@ -132,7 +125,6 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
               <EnhancedProjectCard
                 project={project}
                 index={index}
-                isRecruiterMode={isRecruiterMode}
               />
             </motion.div>
           ))}

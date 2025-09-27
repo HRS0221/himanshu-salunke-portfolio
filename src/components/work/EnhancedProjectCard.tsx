@@ -22,13 +22,11 @@ interface Project {
 interface EnhancedProjectCardProps {
   project: Project
   index: number
-  isRecruiterMode?: boolean
 }
 
 export const EnhancedProjectCard: React.FC<EnhancedProjectCardProps> = memo(({ 
   project, 
-  index, 
-  isRecruiterMode = false 
+  index
 }) => {
   const stats = useGitHubStats('himanshu', project.slug)
   const isLoading = stats.isLoading
@@ -188,7 +186,7 @@ export const EnhancedProjectCard: React.FC<EnhancedProjectCardProps> = memo(({
 
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.techStack.slice(0, isRecruiterMode ? 6 : 4).map((tech, techIndex) => (
+          {project.techStack.slice(0, 4).map((tech, techIndex) => (
             <motion.div
               key={tech}
               initial={{ opacity: 0, scale: 0 }}
@@ -200,9 +198,9 @@ export const EnhancedProjectCard: React.FC<EnhancedProjectCardProps> = memo(({
               </Tag>
             </motion.div>
           ))}
-          {project.techStack.length > (isRecruiterMode ? 6 : 4) && (
+          {project.techStack.length > 4 && (
             <Tag variant="default" size="sm">
-              +{project.techStack.length - (isRecruiterMode ? 6 : 4)} more
+              +{project.techStack.length - 4} more
             </Tag>
           )}
         </div>
@@ -237,7 +235,6 @@ export const EnhancedProjectCard: React.FC<EnhancedProjectCardProps> = memo(({
         >
           <Link
             to={`/work/${project.slug}`}
-            onClick={incrementView}
             className="block w-full text-center bg-primary-500 hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 group-hover:shadow-lg"
           >
             View Project

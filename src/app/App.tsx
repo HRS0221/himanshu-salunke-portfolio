@@ -2,12 +2,10 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { ThemeProvider } from '../context/ThemeContext'
-import { RecruiterModeProvider } from '../context/RecruiterModeContext'
 import { Header } from '../components/header/Header'
 import { Footer } from '../components/footer/Footer'
 import { ChatbotWidget } from '../components/chatbot/ChatbotWidget'
 import { ProgressTracker, EasterEgg } from '../components/gamification/ProgressTracker'
-import { RecruiterModeBanner } from '../components/recruiter/RecruiterModeToggle'
 import { PageTransition } from '../components/animations/PageTransition'
 import { ScrollToTop } from '../components/ui/ScrollToTop'
 import { BackToTop } from '../components/ui/BackToTop'
@@ -18,7 +16,6 @@ import { ToastProvider, ToastStyles } from '../components/ui/Toast'
 import { AnalyticsBanner } from '../components/analytics/AnalyticsBanner'
 import { VercelAnalytics } from '../components/analytics/VercelAnalytics'
 import { useAnalytics } from '../hooks/useAnalytics'
-import { useRecruiterMode } from '../context/RecruiterModeContext'
 
 // Lazy load pages for better performance
 import { lazy, Suspense } from 'react'
@@ -39,7 +36,6 @@ const LoadingSpinner: React.FC = () => <RouteLoadingFallback />
 // Inner App component that has access to all contexts
 const AppContent: React.FC = () => {
   const { isAnalyticsEnabled, enableAnalytics, disableAnalytics } = useAnalytics()
-  const { isRecruiterMode } = useRecruiterMode()
   const isSupported = false
   const isUpdated = false
   const updateServiceWorker = () => {}
@@ -64,12 +60,10 @@ const AppContent: React.FC = () => {
         {/* Progress Tracker */}
         <ProgressTracker />
         
-        {/* Recruiter Mode Banner */}
-        <RecruiterModeBanner />
         
         <Header />
         
-        <main id="main-content" className={`${isRecruiterMode ? 'pt-28' : 'pt-16'}`}>
+        <main id="main-content" className="pt-16">
           <RouteErrorBoundary>
             <Suspense fallback={<LoadingSpinner />}>
               <PageTransition>
@@ -155,9 +149,7 @@ export const App: React.FC = () => {
   return (
     <HelmetProvider>
       <ThemeProvider>
-        <RecruiterModeProvider>
-          <AppContent />
-        </RecruiterModeProvider>
+      <AppContent />
       </ThemeProvider>
     </HelmetProvider>
   )

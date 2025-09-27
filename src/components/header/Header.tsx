@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../../context/ThemeContext'
-import { useRecruiterMode } from '../../context/RecruiterModeContext'
-import { RecruiterModeToggle } from '../recruiter/RecruiterModeToggle'
 import { GlobalSearch } from '../ui/GlobalSearch'
 
 const navigation = [
@@ -31,12 +29,9 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const { theme, toggleTheme } = useTheme()
-  const { isRecruiterMode } = useRecruiterMode()
   const location = useLocation()
   const menuRef = useRef<HTMLDivElement>(null)
   
-  // Use recruiter mode for conditional rendering
-  // const shouldShowRecruiterFeatures = isRecruiterMode // TODO: Implement recruiter-specific features
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,9 +81,7 @@ export const Header: React.FC = () => {
   return (
     <motion.header
       ref={menuRef}
-      className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
-        isRecruiterMode ? 'top-12' : 'top-0'
-      } ${
+      className={`fixed left-0 right-0 z-40 transition-all duration-300 top-0 ${
         isScrolled
           ? 'bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md shadow-sm border-b border-neutral-200/20 dark:border-neutral-800/20'
           : 'bg-white/80 dark:bg-neutral-950/80 backdrop-blur-sm md:bg-transparent md:dark:bg-transparent'
@@ -185,11 +178,6 @@ export const Header: React.FC = () => {
             {/* Global Search */}
             <GlobalSearch />
 
-            {/* Recruiter Mode Toggle (Desktop) */}
-            <div className="hidden md:flex items-center gap-2">
-              <span className="text-xs text-neutral-500 dark:text-neutral-400">Recruiter</span>
-              <RecruiterModeToggle />
-            </div>
 
             {/* Theme Toggle */}
             <motion.button
@@ -300,11 +288,6 @@ export const Header: React.FC = () => {
                   Download Resume
                 </motion.a>
 
-                {/* Mobile Recruiter Mode Toggle */}
-                <div className="flex items-center justify-between px-3 py-2 mt-4 border-t border-neutral-200 dark:border-neutral-700">
-                  <span className="text-sm text-neutral-600 dark:text-neutral-300">Recruiter Mode</span>
-                  <RecruiterModeToggle />
-                </div>
               </div>
             </motion.div>
           )}
