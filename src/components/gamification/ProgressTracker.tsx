@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { throttle } from '../../hooks/useScrollOptimization'
-import { useRecruiterMode } from '../../context/RecruiterModeContext'
 
 interface ProgressTrackerProps {
   className?: string
@@ -10,7 +9,6 @@ interface ProgressTrackerProps {
 export const ProgressTracker: React.FC<ProgressTrackerProps> = ({ className = '' }) => {
   const [progress, setProgress] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
-  const { isRecruiterMode } = useRecruiterMode()
 
   useEffect(() => {
     const handleScroll = throttle(() => {
@@ -26,11 +24,11 @@ export const ProgressTracker: React.FC<ProgressTrackerProps> = ({ className = ''
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Don't show the main progress tracker when recruiter mode is active
-  if (!isVisible || isRecruiterMode) return null
+  // Don't show the progress tracker if not visible
+  if (!isVisible) return null
 
-  // Calculate top position based on recruiter mode
-  const topPosition = isRecruiterMode ? '48px' : '0px'
+  // Calculate top position
+  const topPosition = '0px'
 
   return (
     <motion.div
