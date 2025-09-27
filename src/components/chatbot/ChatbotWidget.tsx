@@ -9,13 +9,10 @@ interface Message {
   timestamp: Date
 }
 
-const mockResponses = [
-  "I'm an AI assistant for Himanshu's portfolio. I can help you learn about his projects, skills, and experience!",
-  "Himanshu specializes in data science and machine learning. He works with React, TypeScript, Python, and TensorFlow.",
-  "Some of his recent projects include machine learning applications, web dashboards, and mobile apps. Check out the Work section for more details!",
-  "He has experience with AWS, Docker, and modern web technologies. Feel free to explore his GitHub or contact him directly.",
-  "You can find his contact information in the Contact section, or connect with him on LinkedIn and GitHub."
-]
+interface ChatMessage {
+  role: 'user' | 'assistant'
+  content: string
+}
 
 export const ChatbotWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,8 +24,10 @@ export const ChatbotWidget: React.FC = () => {
       timestamp: new Date()
     }
   ])
+  const [conversationHistory, setConversationHistory] = useState<ChatMessage[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
 
@@ -51,21 +50,51 @@ export const ChatbotWidget: React.FC = () => {
     }
 
     setMessages(prev => [...prev, userMessage])
+    setConversationHistory(prev => [...prev, { role: 'user', content: inputValue }])
     setInputValue('')
     setIsTyping(true)
+    setError(null)
 
-    // Simulate AI response delay
-    setTimeout(() => {
-      const randomResponse = mockResponses[Math.floor(Math.random() * mockResponses.length)]
+    try {
+      const response = await fetch('/api/chatbot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: inputValue,
+          conversationHistory: conversationHistory
+        })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to get AI response')
+      }
+
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: randomResponse,
+        text: data.response,
         isUser: false,
         timestamp: new Date()
       }
+
       setMessages(prev => [...prev, aiMessage])
+      setConversationHistory(prev => [...prev, { role: 'assistant', content: data.response }])
+    } catch (error) {
+      console.error('Chatbot error:', error)
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "I'm having trouble connecting right now. Please try again in a moment or explore the portfolio directly!",
+        isUser: false,
+        timestamp: new Date()
+      }
+      setMessages(prev => [...prev, errorMessage])
+      setError('Connection error')
+    } finally {
       setIsTyping(false)
-    }, 1000 + Math.random() * 1000)
+    }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -73,6 +102,17 @@ export const ChatbotWidget: React.FC = () => {
       e.preventDefault()
       handleSendMessage()
     }
+  }
+
+  const clearConversation = () => {
+    setMessages([{
+      id: '1',
+      text: "Hi! I'm here to help you learn about Himanshu's portfolio. What would you like to know?",
+      isUser: false,
+      timestamp: new Date()
+    }])
+    setConversationHistory([])
+    setError(null)
   }
 
   return (
@@ -125,9 +165,20 @@ export const ChatbotWidget: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-neutral-900 dark:text-white">AI Assistant</h3>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400">Online</p>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                    {error ? 'Connection Error' : 'Online'}
+                  </p>
                 </div>
               </div>
+              <button
+                onClick={clearConversation}
+                className="p-1 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors"
+                title="Clear conversation"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
             </div>
 
             {/* Messages */}
@@ -190,7 +241,7 @@ export const ChatbotWidget: React.FC = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask about projects, skills..."
+                  placeholder="Ask about Himanshu's work, skills, or projects..."
                   className="flex-1 px-3 py-2 text-sm border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
                 <motion.button

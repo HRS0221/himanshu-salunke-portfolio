@@ -1,0 +1,37 @@
+[33maae5c77[m Fix build error: Remove recruiter mode references from ProgressTracker
+[1mdiff --git a/src/components/gamification/ProgressTracker.tsx b/src/components/gamification/ProgressTracker.tsx[m
+[1mindex 580ed27..2849a15 100644[m
+[1m--- a/src/components/gamification/ProgressTracker.tsx[m
+[1m+++ b/src/components/gamification/ProgressTracker.tsx[m
+[36m@@ -1,7 +1,6 @@[m
+ import React, { useState, useEffect } from 'react'[m
+ import { motion } from 'framer-motion'[m
+ import { throttle } from '../../hooks/useScrollOptimization'[m
+[31m-import { useRecruiterMode } from '../../context/RecruiterModeContext'[m
+ [m
+ interface ProgressTrackerProps {[m
+   className?: string[m
+[36m@@ -10,7 +9,6 @@[m [minterface ProgressTrackerProps {[m
+ export const ProgressTracker: React.FC<ProgressTrackerProps> = ({ className = '' }) => {[m
+   const [progress, setProgress] = useState(0)[m
+   const [isVisible, setIsVisible] = useState(false)[m
+[31m-  const { isRecruiterMode } = useRecruiterMode()[m
+ [m
+   useEffect(() => {[m
+     const handleScroll = throttle(() => {[m
+[36m@@ -26,11 +24,11 @@[m [mexport const ProgressTracker: React.FC<ProgressTrackerProps> = ({ className = ''[m
+     return () => window.removeEventListener('scroll', handleScroll)[m
+   }, [])[m
+ [m
+[31m-  // Don't show the main progress tracker when recruiter mode is active[m
+[31m-  if (!isVisible || isRecruiterMode) return null[m
+[32m+[m[32m  // Don't show the progress tracker if not visible[m
+[32m+[m[32m  if (!isVisible) return null[m
+ [m
+[31m-  // Calculate top position based on recruiter mode[m
+[31m-  const topPosition = isRecruiterMode ? '48px' : '0px'[m
+[32m+[m[32m  // Calculate top position[m
+[32m+[m[32m  const topPosition = '0px'[m
+ [m
+   return ([m
+     <motion.div[m
