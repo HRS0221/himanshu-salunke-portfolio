@@ -240,13 +240,13 @@ app.post('/api/projects', async (req, res) => {
     if (req.query.chatbot === 'true' || req.url?.includes('chatbot')) {
       // Check if API key is configured
       const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-      if (!GEMINI_API_KEY) {
-        console.error('GEMINI_API_KEY environment variable is not set');
-        return res.status(500).json({
-          error: 'AI service configuration error',
-          fallback: "I'm having trouble connecting to the AI service right now. Please try again later or explore the portfolio directly!"
-        });
-      }
+            if (!GEMINI_API_KEY) {
+              console.error('AI service configuration error');
+              return res.status(500).json({
+                error: 'AI service configuration error',
+                fallback: "I'm having trouble connecting to the AI service right now. Please try again later or explore the portfolio directly!"
+              });
+            }
 
       if (!message || typeof message !== 'string') {
         return res.status(400).json({ error: 'Message is required' });
@@ -313,7 +313,6 @@ app.post('/api/projects', async (req, res) => {
       
       for (const model of models) {
         try {
-          console.log(`Trying model: ${model}`);
           const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`, {
             method: 'POST',
             headers: {
@@ -338,7 +337,7 @@ app.post('/api/projects', async (req, res) => {
             });
           } else {
             const errorData = await response.json();
-            console.error(`Gemini API error with ${model}:`, errorData);
+            console.error(`Gemini API error:`, errorData.error?.message || 'Unknown error');
             lastError = errorData;
             
             // If it's a 503 error, try next model
@@ -347,14 +346,14 @@ app.post('/api/projects', async (req, res) => {
             }
           }
         } catch (error) {
-          console.error(`Error with model ${model}:`, error);
+          console.error('Gemini API connection error:', error.message);
           lastError = error;
           continue;
         }
       }
 
       // If all models failed, provide a helpful fallback response
-      console.error('All Gemini models failed. Last error:', lastError);
+      console.error('Gemini API unavailable, using fallback response');
       
       // Generate a smart fallback based on the user's question
       const fallbackResponse = generateFallbackResponse(message);
