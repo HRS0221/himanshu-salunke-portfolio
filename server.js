@@ -255,14 +255,8 @@ app.post('/api/projects', async (req, res) => {
       // Generate portfolio context
       const portfolioContext = await generatePortfolioContext();
       
-      // Prepare the conversation
-      const systemMessage = {
-        role: 'system',
-        content: portfolioContext
-      };
-      
+      // Prepare the conversation for Gemini API
       const conversation = [
-        systemMessage,
         ...conversationHistory.slice(-10), // Keep last 10 messages for context
         {
           role: 'user',
@@ -270,15 +264,13 @@ app.post('/api/projects', async (req, res) => {
         }
       ];
 
-      // Call Gemini API
+      // Call Gemini API with proper format
       const geminiRequest = {
         contents: [{
           parts: [{
-            text: conversation.map(msg => 
-              msg.role === 'system' 
-                ? `System: ${msg.content}` 
-                : `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`
-            ).join('\n\n')
+            text: `${portfolioContext}\n\nConversation:\n${conversation.map(msg => 
+              `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`
+            ).join('\n\n')}`
           }]
         }],
         generationConfig: {
@@ -308,7 +300,7 @@ app.post('/api/projects', async (req, res) => {
       };
 
       // Try multiple models with retry logic
-      const models = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'];
+      const models = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-flash-latest'];
       let lastError = null;
       
       for (const model of models) {
