@@ -308,7 +308,7 @@ app.post('/api/projects', async (req, res) => {
       };
 
       // Try multiple models with retry logic
-      const models = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'];
+      const models = ['gemini-2.5-flash', 'gemini-1.5-flash', 'gemini-1.5-pro'];
       let lastError = null;
       
       for (const model of models) {
