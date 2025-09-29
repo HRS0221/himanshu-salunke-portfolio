@@ -52,22 +52,22 @@ export const Footer: React.FC = () => {
       id="footer" 
       className="border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
     >
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8 sm:px-6 lg:px-8">
         {/* Ready to Connect Section */}
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <h2 
-            className="text-3xl md:text-4xl font-bold mb-3 text-neutral-900 dark:text-neutral-100"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-neutral-900 dark:text-neutral-100"
           >
             Ready to Connect?
           </h2>
           <p 
-            className="text-lg mb-6 max-w-2xl mx-auto text-neutral-700 dark:text-neutral-300"
+            className="text-base sm:text-lg mb-6 max-w-xl sm:max-w-2xl mx-auto text-neutral-700 dark:text-neutral-300 px-4 sm:px-0"
           >
             Whether you want to collaborate, have questions, or just say hi!
           </p>
@@ -75,7 +75,7 @@ export const Footer: React.FC = () => {
           {/* CTA Button */}
           <motion.a
             href="/contact"
-            className="inline-block text-white px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
+            className="inline-block text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 transform hover:scale-105 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -83,7 +83,7 @@ export const Footer: React.FC = () => {
           </motion.a>
 
           {/* Social Media Links */}
-          <div className="mt-8 flex justify-center space-x-6">
+          <div className="mt-6 sm:mt-8 flex justify-center space-x-4 sm:space-x-6">
             {socialLinks.map((link) => (
               <motion.a
                 key={link.name}
@@ -109,11 +109,11 @@ export const Footer: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 text-center sm:text-left">
               © {currentYear} Himanshu Salunke. All rights reserved.
             </p>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 text-center sm:text-right">
               Built with <span className="text-red-500">❤️</span> using{' '}
               <a
                 href="https://vitejs.dev/"

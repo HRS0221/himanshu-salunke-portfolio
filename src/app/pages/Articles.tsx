@@ -72,12 +72,12 @@ const Articles: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">
               <span 
                 className="bg-clip-text text-transparent"
                 style={{
@@ -91,25 +91,25 @@ const Articles: React.FC = () => {
                 Knowledge Hub
               </span>
             </h1>
-            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl sm:max-w-3xl mx-auto px-4 sm:px-0">
               Comprehensive articles on Machine Learning, Deep Learning, and Reinforcement Learning. 
               Explore fundamental concepts, advanced techniques, and practical applications in AI/ML.
             </p>
           </motion.div>
 
           {/* Article Engagement Metrics */}
-          <motion.div className="mb-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
+          <motion.div className="mb-12 sm:mb-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
             <ArticleEngagementMetrics />
           </motion.div>
 
           {/* Article Categories */}
-          <motion.div className="mb-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}>
+          <motion.div className="mb-12 sm:mb-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}>
             <ArticleCategories />
           </motion.div>
 
           {/* Modern Search and Filter */}
           <motion.div
-            className="mb-12"
+            className="mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -131,13 +131,13 @@ const Articles: React.FC = () => {
 
           {/* Results Counter */}
           <motion.div
-            className="mb-6"
+            className="mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
           >
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                 {filteredArticles.length === articles.length 
                   ? `Showing all ${articles.length} articles`
                   : `Showing ${filteredArticles.length} of ${articles.length} articles`
@@ -151,7 +151,7 @@ const Articles: React.FC = () => {
                     setSelectedStatus('All')
                     setSortBy('date')
                   }}
-                  className="text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium transition-colors"
+                  className="text-xs sm:text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium transition-colors"
                 >
                   Clear filters
                 </button>
@@ -161,7 +161,7 @@ const Articles: React.FC = () => {
 
           {/* Articles Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -174,21 +174,21 @@ const Articles: React.FC = () => {
           {/* No Results */}
           {filteredArticles.length === 0 && (
             <motion.div
-              className="text-center py-16"
+              className="text-center py-12 sm:py-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               <div className="max-w-md mx-auto">
-                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 rounded-full flex items-center justify-center">
-                  <svg className="w-12 h-12 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-4 sm:mb-6 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
+                <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-white mb-2">
                   No articles found
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-6">
+                <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-6 px-4 sm:px-0">
                   Try adjusting your search terms or filters to find what you're looking for.
                 </p>
                 <Button

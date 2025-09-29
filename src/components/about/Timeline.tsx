@@ -160,20 +160,20 @@ export const Timeline: React.FC = () => {
       
       <div className="relative">
         {/* Timeline Line */}
-        <div className={`absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${color}`} />
+        <div className={`absolute left-2 sm:left-3 md:left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${color}`} />
         
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {items.map((item, index) => (
             <motion.div
               key={item.id}
-              className="relative flex items-start gap-6"
+              className="relative flex items-start gap-2 sm:gap-3 md:gap-6"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               {/* Timeline Dot */}
               <div className="relative z-10 flex-shrink-0">
-                <div className={`w-8 h-8 rounded-full border-4 border-white dark:border-neutral-900 ${
+                <div className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full border-2 sm:border-3 md:border-4 border-white dark:border-neutral-900 ${
                   item.current 
                     ? 'bg-blue-500' 
                     : item.type === 'work' 
@@ -182,7 +182,7 @@ export const Timeline: React.FC = () => {
                 }`} />
                 {item.current && (
                   <motion.div
-                    className="absolute inset-0 w-8 h-8 rounded-full bg-blue-500"
+                    className="absolute inset-0 w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-blue-500"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
@@ -192,16 +192,16 @@ export const Timeline: React.FC = () => {
               {/* Content */}
               <div className="flex-1 min-w-0">
                 <motion.div
-                  className="bg-white dark:bg-neutral-800 rounded-lg p-4 shadow-md border border-neutral-200 dark:border-neutral-700"
+                  className="bg-white dark:bg-neutral-800 rounded-lg p-3 sm:p-4 shadow-md border border-neutral-200 dark:border-neutral-700"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-2">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-white">
                         {item.title}
                       </h3>
-                      <p className="text-base text-primary-600 dark:text-primary-500 font-medium">
+                      <p className="text-sm sm:text-base text-primary-600 dark:text-primary-500 font-medium">
                         {item.company}
                       </p>
                       {item.location && (
@@ -210,8 +210,8 @@ export const Timeline: React.FC = () => {
                         </p>
                       )}
                     </div>
-                    <div className="text-right">
-                      <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-neutral-100 dark:bg-neutral-600 text-neutral-700 dark:text-neutral-200">
+                    <div className="flex-shrink-0 sm:text-right">
+                      <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-neutral-100 dark:bg-neutral-600 text-neutral-700 dark:text-neutral-200 whitespace-nowrap">
                         {item.period}
                       </span>
                       {item.current && (
@@ -292,9 +292,9 @@ export const Timeline: React.FC = () => {
           ))}
           
           {/* Timeline Ending Dot */}
-          <div className="relative flex items-start gap-6">
+          <div className="relative flex items-start gap-3 sm:gap-6">
             <div className="relative z-10 flex-shrink-0">
-              <div className={`w-8 h-8 rounded-full border-4 border-white dark:border-neutral-900 ${
+              <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 sm:border-4 border-white dark:border-neutral-900 ${
                 color.includes('primary') ? 'bg-primary-500' : 
                 color.includes('emerald') ? 'bg-emerald-500' : 
                 color.includes('blue') ? 'bg-blue-500' : 'bg-secondary-500'

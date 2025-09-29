@@ -58,42 +58,44 @@ export const ToastProvider: React.FC = () => {
 // Dark mode styles
 export const ToastStyles: React.FC = () => {
   return (
-    <style jsx global>{`
-      :root {
-        --toast-bg: #ffffff;
-        --toast-color: #374151;
-        --toast-border: #e5e7eb;
-      }
-      
-      .dark {
-        --toast-bg: #1f2937;
-        --toast-color: #f9fafb;
-        --toast-border: #374151;
-      }
-      
-      .dark .go3958317564 {
-        background: #1f2937 !important;
-        color: #f9fafb !important;
-        border: 1px solid #374151 !important;
-      }
-      
-      .dark .go3958317564[data-type="success"] {
-        background: #064e3b !important;
-        color: #6ee7b7 !important;
-        border: 1px solid #065f46 !important;
-      }
-      
-      .dark .go3958317564[data-type="error"] {
-        background: #7f1d1d !important;
-        color: #fca5a5 !important;
-        border: 1px solid #991b1b !important;
-      }
-      
-      .dark .go3958317564[data-type="loading"] {
-        background: #1e3a8a !important;
-        color: #93c5fd !important;
-        border: 1px solid #1e40af !important;
-      }
-    `}</style>
+    <style dangerouslySetInnerHTML={{
+      __html: `
+        :root {
+          --toast-bg: #ffffff;
+          --toast-color: #374151;
+          --toast-border: #e5e7eb;
+        }
+        
+        .dark {
+          --toast-bg: #1f2937;
+          --toast-color: #f9fafb;
+          --toast-border: #374151;
+        }
+        
+        .dark .go3958317564 {
+          background: #1f2937 !important;
+          color: #f9fafb !important;
+          border: 1px solid #374151 !important;
+        }
+        
+        .dark .go3958317564[data-type="success"] {
+          background: #064e3b !important;
+          color: #6ee7b7 !important;
+          border: 1px solid #065f46 !important;
+        }
+        
+        .dark .go3958317564[data-type="error"] {
+          background: #7f1d1d !important;
+          color: #fca5a5 !important;
+          border: 1px solid #991b1b !important;
+        }
+        
+        .dark .go3958317564[data-type="loading"] {
+          background: #1e3a8a !important;
+          color: #93c5fd !important;
+          border: 1px solid #1e40af !important;
+        }
+      `
+    }} />
   )
 }

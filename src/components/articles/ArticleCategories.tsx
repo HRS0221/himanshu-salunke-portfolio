@@ -41,30 +41,30 @@ const ArticleCategories: React.FC = () => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
+      className="bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
       {/* Header */}
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+      <div className="text-center mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
           📚 Article Categories
         </h2>
-        <p className="text-neutral-600 dark:text-neutral-400">
+        <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
           Explore content organized by topics and expertise areas
         </p>
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {categories.map((category, index) => {
           const engagement = getEngagementLevel(category.articleCount) // Use article count as engagement indicator
           
           return (
             <motion.div
               key={category.name}
-              className={`group relative rounded-xl p-6 hover:shadow-xl transition-all duration-300 cursor-pointer ${
+              className={`group relative rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-xl transition-all duration-300 cursor-pointer ${
                 category.featured 
                   ? 'bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 border-2 border-primary-200 dark:border-primary-800' 
                   : 'bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 border border-neutral-200 dark:border-neutral-600'
@@ -87,14 +87,14 @@ const ArticleCategories: React.FC = () => {
               {/* Content */}
               <div className="relative z-10">
                 {/* Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="text-3xl">{category.icon}</div>
+                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                  <div className="text-2xl sm:text-3xl">{category.icon}</div>
                   <div>
-                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+                    <h3 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white">
                       {category.name}
                     </h3>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                      <span className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
                         {category.articleCount} articles
                       </span>
                       <span className={`text-xs font-medium ${engagement.color}`}>
@@ -105,20 +105,20 @@ const ArticleCategories: React.FC = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
+                <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 sm:mb-4 leading-relaxed">
                   {category.description}
                 </p>
 
                 {/* Tags */}
-                <div className="mb-4">
-                  <div className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-2 uppercase tracking-wide">
+                <div className="mb-3 sm:mb-4">
+                  <div className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1 sm:mb-2 uppercase tracking-wide">
                     Key Topics
                   </div>
                   <div className="flex flex-wrap gap-1">
                     {category.tags.slice(0, 3).map((tag, tagIndex) => (
                       <motion.span
                         key={tag}
-                        className="px-2 py-1 bg-neutral-200 dark:bg-neutral-600 text-neutral-700 dark:text-neutral-300 text-xs rounded-full"
+                        className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-neutral-200 dark:bg-neutral-600 text-neutral-700 dark:text-neutral-300 text-xs rounded-full"
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2 + index * 0.1 + tagIndex * 0.05 }}
@@ -127,7 +127,7 @@ const ArticleCategories: React.FC = () => {
                       </motion.span>
                     ))}
                     {category.tags.length > 3 && (
-                      <span className="px-2 py-1 bg-neutral-200 dark:bg-neutral-600 text-neutral-700 dark:text-neutral-300 text-xs rounded-full">
+                      <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-neutral-200 dark:bg-neutral-600 text-neutral-700 dark:text-neutral-300 text-xs rounded-full">
                         +{category.tags.length - 3}
                       </span>
                     )}
@@ -136,7 +136,7 @@ const ArticleCategories: React.FC = () => {
 
                 {/* Stats */}
                 <div className="flex items-center justify-between">
-                  <div className="text-2xl font-bold text-primary-600 dark:text-white bg-primary-100 dark:bg-primary-900 px-3 py-1 rounded-lg">
+                  <div className="text-xl sm:text-2xl font-bold text-primary-600 dark:text-white bg-primary-100 dark:bg-primary-900 px-2 sm:px-3 py-1 rounded-lg">
                     {category.articleCount}
                   </div>
                   <div className="text-xs text-neutral-500 dark:text-neutral-400">
@@ -154,18 +154,18 @@ const ArticleCategories: React.FC = () => {
 
       {/* Summary */}
       <motion.div
-        className="mt-8 p-6 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 rounded-xl"
+        className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 rounded-xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
       >
-        <div className="flex items-center gap-3 mb-3">
-          <div className="text-2xl">💡</div>
-          <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+        <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+          <div className="text-xl sm:text-2xl">💡</div>
+          <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-white">
             Content Strategy
           </h3>
         </div>
-        <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        <p className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
           I focus on creating high-quality, practical content that bridges the gap between theory and practice. 
           Each article is designed to provide real value, whether you're a beginner learning the basics or 
           an experienced developer looking for advanced insights.

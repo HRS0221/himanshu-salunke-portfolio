@@ -250,7 +250,7 @@ export const GlobalSearch: React.FC = () => {
             {/* Search Modal */}
             <motion.div
               ref={modalRef}
-              className="fixed top-20 sm:top-24 left-4 right-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 max-w-lg mx-auto z-[70]"
+              className="fixed top-16 sm:top-20 left-2 right-2 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 max-w-lg mx-auto z-[70]"
               initial={{ opacity: 0, scale: 0.95, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
@@ -278,7 +278,7 @@ export const GlobalSearch: React.FC = () => {
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Search projects, articles, pages..."
-                      className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-2.5 sm:py-3 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 border-2 border-neutral-200/50 dark:border-neutral-600/50 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 dark:focus:border-primary-400 transition-all duration-300 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 shadow-lg focus:shadow-xl"
+                      className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-3 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 border-2 border-neutral-200/50 dark:border-neutral-600/50 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 dark:focus:border-primary-400 transition-all duration-300 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 shadow-lg focus:shadow-xl text-base touch-manipulation"
                       autoFocus
                     />
                     {searchTerm && (
@@ -317,12 +317,13 @@ export const GlobalSearch: React.FC = () => {
                       {results.map((result, index) => (
                         <motion.div
                           key={result.id}
-                          className="p-3 rounded-xl hover:bg-neutral-100/50 dark:hover:bg-neutral-700/50 cursor-pointer transition-colors duration-200"
+                          className="p-3 rounded-xl hover:bg-neutral-100/50 dark:hover:bg-neutral-700/50 cursor-pointer transition-colors duration-200 touch-manipulation"
                           onClick={() => handleResultClick(result)}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.05 }}
                           whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.99 }}
                         >
                           <div className="flex items-center gap-3">
                             <div className={`w-8 h-8 rounded-lg bg-gradient-to-r ${getTypeColor(result.type)} flex items-center justify-center text-white text-sm shadow-md`}>

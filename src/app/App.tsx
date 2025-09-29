@@ -40,7 +40,7 @@ const AppContent: React.FC = () => {
   const updateServiceWorker = () => {}
 
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       {/* Scroll to top on route change */}
       <ScrollToTop />
       

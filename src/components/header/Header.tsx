@@ -95,7 +95,7 @@ export const Header: React.FC = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center space-x-2 text-xl font-bold text-neutral-900 dark:text-white"
+            className="flex items-center space-x-1.5 sm:space-x-2 text-xl font-bold text-neutral-900 dark:text-white"
             aria-label="Home"
           >
             <motion.div
@@ -103,7 +103,7 @@ export const Header: React.FC = () => {
               whileTap={{ scale: 0.95 }}
             >
               <svg
-                className="h-8 w-8 text-primary-500"
+                className="h-7 w-7 sm:h-8 sm:w-8 text-primary-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -117,10 +117,10 @@ export const Header: React.FC = () => {
               </svg>
             </motion.div>
             <div className="block">
-              <span className="text-lg sm:text-xl font-bold drop-shadow-sm text-blue-600 dark:text-blue-300">
+              <span className="text-base sm:text-lg md:text-xl font-bold drop-shadow-sm text-blue-600 dark:text-blue-300">
                 Himanshu
               </span>
-              <div className="text-xs text-neutral-500 dark:text-neutral-400 -mt-1 drop-shadow-sm">
+              <div className="text-xs sm:text-xs text-neutral-500 dark:text-neutral-300 -mt-0.5 sm:-mt-1 drop-shadow-sm hidden xs:block">
                 Aspiring Data Scientist
               </div>
             </div>
@@ -135,7 +135,7 @@ export const Header: React.FC = () => {
                 className={`text-sm font-medium transition-all duration-200 relative group hover:scale-105 ${
                   location.pathname === item.href
                     ? 'text-primary-500'
-                    : 'text-neutral-600 hover:text-primary-500 dark:text-neutral-300 dark:hover:text-primary-400'
+                    : 'text-neutral-600 hover:text-primary-500 dark:text-neutral-200 dark:hover:text-primary-400'
                 }`}
                 title={`${item.name} - ${getPageDescription(item.name)}`}
               >
@@ -153,7 +153,7 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Controls */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
 
             {/* Resume Download */}
             <motion.a
@@ -182,7 +182,7 @@ export const Header: React.FC = () => {
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
-              className="rounded-lg p-2 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white"
+              className="rounded-lg p-2 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white"
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -211,14 +211,13 @@ export const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMenu}
-              onMouseEnter={() => setIsMenuOpen(true)}
-              className="rounded-lg p-2 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white md:hidden bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95"
+              className="rounded-lg p-2.5 sm:p-2 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-white md:hidden bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMenuOpen ? (
                   <path
                     strokeLinecap="round"
@@ -243,41 +242,52 @@ export const Header: React.FC = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="md:hidden bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md border-t border-neutral-200/20 dark:border-neutral-800/20"
+              className="md:hidden bg-white/98 dark:bg-neutral-950/98 backdrop-blur-md border-t border-neutral-200/30 dark:border-neutral-800/30 shadow-lg"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="space-y-1 pb-3 pt-2">
-                {navigation.map((item) => (
-                  <Link
+              <div className="space-y-0.5 sm:space-y-1 pb-2 sm:pb-3 pt-1 sm:pt-2">
+                {navigation.map((item, index) => (
+                  <motion.div
                     key={item.name}
-                    to={item.href}
-                    className={`block rounded-lg px-3 py-2 text-base font-medium transition-all duration-200 hover:scale-102 active:scale-98 ${
-                      location.pathname === item.href
-                        ? 'bg-primary-100 text-primary-500 dark:bg-primary-900 dark:text-primary-400 shadow-sm'
-                        : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white'
-                    }`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.2 }}
                   >
-                    <div className="flex items-center justify-between">
-                      <span>{item.name}</span>
-                      <span className="text-xs text-neutral-400 dark:text-neutral-500">
-                        {getPageDescription(item.name)}
-                      </span>
-                    </div>
-                  </Link>
+                    <Link
+                      to={item.href}
+                      className={`block rounded-lg px-3 py-2.5 sm:py-3 text-sm sm:text-base font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] touch-manipulation ${
+                        location.pathname === item.href
+                          ? 'bg-primary-100 text-primary-500 dark:bg-primary-900 dark:text-primary-400 shadow-sm'
+                          : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span>{item.name}</span>
+                        <span className="text-xs sm:text-sm text-neutral-400 dark:text-neutral-300 hidden xs:block">
+                          {getPageDescription(item.name)}
+                        </span>
+                      </div>
+                    </Link>
+                  </motion.div>
                 ))}
                 
                 {/* Mobile Resume Download */}
-                <motion.a
-                  href="/Himanshu_Salunke_Resume.pdf"
-                  download="Himanshu_Salunke_Resume.pdf"
-                  className="flex items-center gap-2 px-3 py-2 mt-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-102 active:scale-98 shadow-sm hover:shadow-md"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navigation.length * 0.05, duration: 0.2 }}
                 >
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <motion.a
+                    href="/Himanshu_Salunke_Resume.pdf"
+                    download="Himanshu_Salunke_Resume.pdf"
+                    className="flex items-center gap-2 px-3 py-2.5 sm:py-3 mt-2 sm:mt-4 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md touch-manipulation"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                  <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -285,8 +295,10 @@ export const Header: React.FC = () => {
                       d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
-                  Download Resume
-                </motion.a>
+                  <span className="hidden xs:inline">Download Resume</span>
+                  <span className="xs:hidden">Resume</span>
+                  </motion.a>
+                </motion.div>
 
               </div>
             </motion.div>

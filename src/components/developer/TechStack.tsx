@@ -126,16 +126,16 @@ export const TechStack: React.FC = () => {
   
   return (
     <motion.section
-      className="mt-16 mb-16"
+      className="mt-8 sm:mt-12 lg:mt-16 mb-8 sm:mb-12 lg:mb-16"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-neutral-900 dark:text-white mb-4">
+      <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-2 sm:mb-3 md:mb-4">
           🛠️ Tech Stack & Skills
         </h2>
-        <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+        <p className="text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl sm:max-w-3xl mx-auto px-4 sm:px-0">
           My arsenal of technologies and tools for building amazing projects. 
           From AI/ML to web development, here's what I work with daily.
         </p>
@@ -144,21 +144,21 @@ export const TechStack: React.FC = () => {
       {/* Live GitHub Language Usage */}
       {githubStats.languages && Object.keys(githubStats.languages).length > 0 && (
         <motion.div
-          className="mb-12 bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
+          className="mb-8 sm:mb-12 bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="text-center mb-6">
-            <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+          <div className="text-center mb-3 sm:mb-4 md:mb-6">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-neutral-900 dark:text-white mb-2">
               📊 Live GitHub Language Usage
             </h3>
-            <p className="text-neutral-600 dark:text-neutral-400">
+            <p className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">
               Real-time data from my GitHub repositories
             </p>
           </div>
           
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3 justify-center">
             {Object.entries(githubStats.languages)
               .filter(([language, bytes]) => language && language !== 'null' && bytes > 0) // Filter out null/empty languages
               .sort(([,a], [,b]) => b - a)
@@ -172,18 +172,18 @@ export const TechStack: React.FC = () => {
                 return (
                   <motion.div
                     key={language}
-                    className="group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-600 hover:shadow-lg hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300"
+                    className="group relative inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-lg sm:rounded-xl border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-600 hover:shadow-lg hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}
                     whileHover={{ scale: 1.05, y: -2 }}
                   >
-                    <IconComponent size={16} className={color} />
-                    <span className="text-sm font-medium text-neutral-900 dark:text-white">
+                    <IconComponent size={12} className={color} />
+                    <span className="text-xs sm:text-sm font-medium text-neutral-900 dark:text-white">
                       {language}
                     </span>
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                    <div className="flex items-center gap-1 sm:gap-1.5">
+                      <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-green-500" />
                       <span className="text-xs font-semibold text-green-600 dark:text-green-400">
                         {percentage}%
                       </span>
@@ -191,11 +191,11 @@ export const TechStack: React.FC = () => {
                     
                     {/* Hover tooltip */}
                     <motion.div
-                      className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10 shadow-lg"
+                      className="absolute -bottom-10 sm:-bottom-12 left-1/2 transform -translate-x-1/2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs px-2 sm:px-3 py-1 sm:py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10 shadow-lg"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                     >
-                      <div className="w-20 bg-neutral-700 dark:bg-neutral-300 rounded-full h-1.5 mb-1">
+                      <div className="w-16 sm:w-20 bg-neutral-700 dark:bg-neutral-300 rounded-full h-1 sm:h-1.5 mb-1">
                         <motion.div
                           className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"
                           initial={{ width: 0 }}
@@ -213,14 +213,14 @@ export const TechStack: React.FC = () => {
           </div>
           
           {githubStats.isLoading && (
-            <div className="text-center text-neutral-500 dark:text-neutral-400">
+            <div className="text-center text-sm text-neutral-500 dark:text-neutral-400">
               Loading GitHub language data...
             </div>
           )}
         </motion.div>
       )}
       
-      <div className="space-y-12">
+      <div className="space-y-8 sm:space-y-10 lg:space-y-12">
         {categories.map((category, categoryIndex) => {
           const categorySkills = skillsData.filter(skill => skill.category === category)
           
@@ -231,38 +231,38 @@ export const TechStack: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className={`w-1 h-8 bg-gradient-to-b ${categoryColors[category]} rounded-full`} />
-                <h3 className="text-xl font-semibold text-neutral-900 dark:text-white">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
+                <div className={`w-1 h-4 sm:h-6 md:h-8 bg-gradient-to-b ${categoryColors[category]} rounded-full`} />
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-neutral-900 dark:text-white">
                   {categoryLabels[category]}
                 </h3>
                 <div className="flex-1 h-px bg-gradient-to-r from-neutral-300 to-transparent dark:from-neutral-600" />
-                <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                <span className="text-xs sm:text-sm font-medium text-neutral-500 dark:text-neutral-400">
                   {categorySkills.length} technologies
                 </span>
               </div>
               
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3">
                 {categorySkills.map((skill, skillIndex) => (
                   <motion.div
                     key={skill.name}
-                    className="group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:shadow-lg hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300"
+                    className="group relative inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-lg sm:rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:shadow-lg hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: categoryIndex * 0.1 + skillIndex * 0.02 }}
                     whileHover={{ scale: 1.05, y: -2 }}
                   >
                     {/* Icon */}
-                    <skill.icon size={16} className={skill.color} />
+                    <skill.icon size={12} className={skill.color} />
                     
                     {/* Skill name */}
-                    <span className="text-sm font-medium text-neutral-900 dark:text-white">
+                    <span className="text-xs sm:text-sm font-medium text-neutral-900 dark:text-white">
                       {skill.name}
                     </span>
                     
                     {/* Level indicator */}
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-neutral-300 dark:bg-neutral-600" />
+                    <div className="flex items-center gap-1 sm:gap-1.5">
+                      <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-neutral-300 dark:bg-neutral-600" />
                       <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
                         {skill.level}%
                       </span>
@@ -270,11 +270,11 @@ export const TechStack: React.FC = () => {
                     
                     {/* Hover tooltip with progress bar */}
                     <motion.div
-                      className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10 shadow-lg"
+                      className="absolute -bottom-10 sm:-bottom-12 left-1/2 transform -translate-x-1/2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs px-2 sm:px-3 py-1 sm:py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10 shadow-lg"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                     >
-                      <div className="w-20 bg-neutral-700 dark:bg-neutral-300 rounded-full h-1.5 mb-1">
+                      <div className="w-16 sm:w-20 bg-neutral-700 dark:bg-neutral-300 rounded-full h-1 sm:h-1.5 mb-1">
                         <motion.div
                           className={`h-full bg-gradient-to-r ${categoryColors[category]} rounded-full`}
                           initial={{ width: 0 }}
@@ -296,7 +296,7 @@ export const TechStack: React.FC = () => {
 
       {/* Summary Stats */}
       <motion.div
-        className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-6"
+        className="mt-6 sm:mt-8 lg:mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
@@ -307,10 +307,10 @@ export const TechStack: React.FC = () => {
           
           return (
             <div key={category} className="text-center">
-              <div className={`text-2xl font-bold bg-gradient-to-r ${categoryColors[category]} bg-clip-text text-transparent mb-1`}>
+              <div className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${categoryColors[category]} bg-clip-text text-transparent mb-1`}>
                 {avgLevel}%
               </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                 {categoryLabels[category]}
               </div>
             </div>

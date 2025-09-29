@@ -51,10 +51,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
       </div>
 
       {/* Article Content */} 
-      <div className="p-6">
+      <div className="p-4 sm:p-5 md:p-6">
         {/* Tags */}
-        <div className="mb-3">
-          <div className="flex flex-wrap gap-2">
+        <div className="mb-2 sm:mb-3">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {article.tags.slice(0, 2).map((tag) => (
               <Tag key={tag} variant="primary" size="sm">
                 {tag}
@@ -69,18 +69,18 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-3 line-clamp-2 font-bold">
+        <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-white mb-2 sm:mb-3 line-clamp-2 font-bold">
           {article.title}
         </h3>
 
         {/* Excerpt */}
-        <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-3">
           {article.excerpt}
         </p>
 
         {/* Meta Information */}
-        <div className="flex items-center justify-between text-sm text-neutral-500 dark:text-neutral-400 mb-4">
-          <div className="flex items-center space-x-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mb-3 sm:mb-4 gap-1 sm:gap-0">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <span>{article.author}</span>
             <span>•</span>
             <span>{article.readTime} min read</span>
@@ -95,7 +95,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => {}}
-          className="inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 dark:text-white dark:hover:text-blue-300 font-semibold text-sm transition-all duration-200 hover:gap-2 group"
+          className="inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 dark:text-white dark:hover:text-blue-300 font-semibold text-xs sm:text-sm transition-all duration-200 hover:gap-2 group"
         >
           <span>Read Article</span>
           <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>

@@ -179,23 +179,23 @@ const CodeQualityMetrics: React.FC = () => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
+      className="bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
       {/* Header */}
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+      <div className="text-center mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
           📊 Code Quality Metrics
         </h2>
-        <p className="text-neutral-600 dark:text-neutral-400">
+        <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
           Measuring excellence in code quality, performance, and development practices
         </p>
       </div>
 
       {/* Metrics Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {metrics.map((metric, index) => (
           <motion.div
             key={metric.title}
@@ -210,24 +210,24 @@ const CodeQualityMetrics: React.FC = () => {
 
       {/* Formula Display */}
       <motion.div
-        className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200 dark:border-blue-700"
+        className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg sm:rounded-xl border border-blue-200 dark:border-blue-700"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
       >
-        <div className="flex items-center gap-3 mb-4">
-          <div className="text-2xl">🧮</div>
-          <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+          <div className="text-xl sm:text-2xl">🧮</div>
+          <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-white">
             My Code Quality Score Formula
           </h3>
         </div>
         
-        <div className="bg-white dark:bg-neutral-800 rounded-lg p-4 mb-4">
-          <div className="font-mono text-sm text-neutral-700 dark:text-neutral-300 mb-2">
+        <div className="bg-white dark:bg-neutral-800 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4">
+          <div className="font-mono text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 mb-2">
             Score = min(100, max(60, (Stars × 2) + (Forks × 3) + (Watchers × 1) + (Languages × 5)))
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-xs sm:text-sm">
             <div className="text-center">
               <div className="text-yellow-600 dark:text-yellow-400 font-semibold">⭐ Stars</div>
               <div className="text-neutral-600 dark:text-neutral-400">× 2 points</div>
@@ -251,7 +251,7 @@ const CodeQualityMetrics: React.FC = () => {
           </div>
         </div>
         
-        <div className="text-sm text-neutral-600 dark:text-neutral-400">
+        <div className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
           <strong>Your Current Values:</strong> {githubStats.isLoading ? 'Loading...' : 
             `${totalStars} stars (${totalStars * 2} pts) + ${totalForks} forks (${totalForks * 3} pts) + ${totalWatchers} watchers (${totalWatchers * 1} pts) + ${languagesCount} languages (${languagesCount * 5} pts) = ${Math.round(Math.min(100, Math.max(60, (totalStars * 2) + (totalForks * 3) + (totalWatchers * 1) + (languagesCount * 5))))}/100`
           }
@@ -260,18 +260,18 @@ const CodeQualityMetrics: React.FC = () => {
 
       {/* Summary */}
       <motion.div
-        className="mt-8 p-6 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl"
+        className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-lg sm:rounded-xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
       >
-        <div className="flex items-center gap-3 mb-3">
-          <div className="text-2xl">🎯</div>
-          <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+        <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+          <div className="text-xl sm:text-2xl">🎯</div>
+          <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-white">
             Development Philosophy
           </h3>
         </div>
-        <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        <p className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
           I believe in writing clean, maintainable, and well-tested code. Every line of code 
           should serve a purpose, be readable by others, and contribute to the overall quality 
           of the project. Quality over quantity, always.

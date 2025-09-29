@@ -133,12 +133,12 @@ const Developer: React.FC = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">
               <span 
                 className="bg-clip-text text-transparent"
                 style={{
@@ -152,42 +152,63 @@ const Developer: React.FC = () => {
                 Developer Dashboard
               </span>
             </h1>
-            <p className="text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-300 max-w-2xl sm:max-w-3xl mx-auto px-4 sm:px-0">
               Deep dive into my technical expertise, coding activity, and development journey. 
               See the metrics that matter for building exceptional software.
             </p>
-            <div className="mt-6 flex items-center justify-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+            <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
               <span>Live data • Last updated:</span>
               <span className="font-mono">{new Date().toLocaleString()}</span>
             </div>
           </motion.div>
 
           {/* Live Development Dashboard */}
-          <LiveDashboard />
+          <motion.div
+            className="mt-8 sm:mt-12 lg:mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <LiveDashboard />
+          </motion.div>
 
           {/* Code Quality Metrics */}
-          <CodeQualityMetrics />
+          <motion.div
+            className="mt-8 sm:mt-12 lg:mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <CodeQualityMetrics />
+          </motion.div>
 
           {/* Tech Stack Section */}
-          <TechStack />
+          <motion.div
+            className="mt-8 sm:mt-12 lg:mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <TechStack />
+          </motion.div>
 
           {/* Social Platforms */}
           <motion.div
-            className="mt-16"
+            className="mt-12 sm:mt-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+            <div className="text-center mb-4 sm:mb-6 lg:mb-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
                 🌐 Connect With Me
               </h2>
-              <p className="text-neutral-600 dark:text-neutral-400">
+              <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 px-4 sm:px-0">
                 Follow my journey across different platforms and communities
               </p>
             </div>
             
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {socialPlatforms.map((platform, index) => (
                 <motion.div
                   key={platform.name}
@@ -200,41 +221,41 @@ const Developer: React.FC = () => {
                     href={platform.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block relative bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-2xl transition-all duration-500 overflow-hidden"
-                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="block relative bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-2xl transition-all duration-500 overflow-hidden"
+                    whileHover={{ y: -4, scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     {/* Background Gradient */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
                     
                     {/* Platform Icon */}
-                    <div className="relative z-10 flex items-center gap-4 mb-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${platform.color} flex items-center justify-center shadow-lg`}>
-                        <platform.icon size={24} className="text-white" />
+                    <div className="relative z-10 flex items-center gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4">
+                      <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br ${platform.color} flex items-center justify-center shadow-lg`}>
+                        <platform.icon size={16} className="text-white sm:w-5 sm:h-5" />
                       </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm sm:text-base md:text-lg font-bold text-neutral-900 dark:text-white truncate">
                           {platform.name}
                         </h3>
-                        <p className="text-sm text-neutral-500 dark:text-neutral-400 font-mono">
+                        <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-mono truncate">
                           @{platform.username}
                         </p>
                       </div>
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm text-neutral-600 dark:text-neutral-300 mb-4">
+                    <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 mb-3 sm:mb-4">
                       {platform.description}
                     </p>
 
                     {/* Stats */}
-                    <div className="space-y-2">
+                    <div className="space-y-1 sm:space-y-2">
                       {platform.stats?.map((stat, statIndex) => (
-                        <div key={statIndex} className="flex justify-between items-center text-sm">
-                          <span className="text-neutral-500 dark:text-neutral-400">
+                        <div key={statIndex} className="flex justify-between items-center text-xs sm:text-sm">
+                          <span className="text-neutral-500 dark:text-neutral-400 truncate">
                             {stat.label}
                           </span>
-                          <span className="font-semibold text-neutral-900 dark:text-white">
+                          <span className="font-semibold text-neutral-900 dark:text-white ml-2">
                             {stat.value}
                           </span>
                         </div>
@@ -242,9 +263,9 @@ const Developer: React.FC = () => {
                     </div>
 
                     {/* Visit Link */}
-                    <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-primary-600 dark:text-primary-500 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
+                    <div className="mt-3 sm:mt-4 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-500 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
                       <span>Visit Profile</span>
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </div>
@@ -259,14 +280,14 @@ const Developer: React.FC = () => {
 
           {/* Fun Developer Quote */}
           <motion.div
-            className="mt-12 text-center"
+            className="mt-8 sm:mt-12 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.0 }}
           >
-            <blockquote className="text-lg italic text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+            <blockquote className="text-sm sm:text-base md:text-lg italic text-neutral-600 dark:text-neutral-300 max-w-xl sm:max-w-2xl mx-auto px-4 sm:px-0">
               "Code is like humor. When you have to explain it, it's bad." 
-              <footer className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+              <footer className="mt-2 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
                 — Cory House (and every developer ever)
               </footer>
             </blockquote>

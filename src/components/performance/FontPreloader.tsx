@@ -20,54 +20,28 @@ export const FontPreloader: React.FC<FontPreloaderProps> = ({
   ]
 }) => {
   useEffect(() => {
-    // Preload critical fonts
-    const preloadFonts = async () => {
-      const fontPromises = fonts.map(font => {
-        const fontFace = new FontFace(
-          font.family,
-          `url(/fonts/${font.family.toLowerCase().replace(/\s+/g, '-')}-${font.weight || '400'}.woff2)`,
-          {
-            weight: font.weight || '400',
-            style: font.style || 'normal',
-            display: font.display || 'swap'
-          }
-        )
+    // Use Google Fonts instead of local fonts
+    const preloadGoogleFonts = () => {
+      const fontLinks = [
+        'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap'
+      ]
 
-        return fontFace.load().then(loadedFont => {
-          document.fonts.add(loadedFont)
-          return loadedFont
-        }).catch(error => {
-          console.warn(`Failed to load font ${font.family}:`, error)
-          return null
-        })
+      fontLinks.forEach(href => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = href
+        link.crossOrigin = 'anonymous'
+        document.head.appendChild(link)
       })
 
-      try {
-        await Promise.all(fontPromises)
-        console.log('Fonts preloaded successfully')
-      } catch (error) {
-        console.warn('Some fonts failed to preload:', error)
-      }
+      console.log('Google Fonts loaded successfully')
     }
 
-    preloadFonts()
+    preloadGoogleFonts()
   }, [fonts])
 
-  return (
-    <>
-      {/* Preload critical fonts in HTML head */}
-      {fonts.map((font, index) => (
-        <link
-          key={index}
-          rel="preload"
-          href={`/fonts/${font.family.toLowerCase().replace(/\s+/g, '-')}-${font.weight || '400'}.woff2`}
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      ))}
-    </>
-  )
+  return null
 }
 
 export const FontDisplayOptimizer: React.FC = () => {

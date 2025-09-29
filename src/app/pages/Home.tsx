@@ -60,7 +60,7 @@ const Home: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-center text-neutral-900 dark:text-white mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-center text-neutral-900 dark:text-white mb-8 sm:mb-12">
                 What I'm Working On
               </h2>
             </motion.div>
@@ -85,10 +85,10 @@ const Home: React.FC = () => {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl font-bold text-neutral-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">
                 Explore My World
               </h2>
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
                 Choose your path and discover what interests you most about my work and journey.
               </p>
             </motion.div>

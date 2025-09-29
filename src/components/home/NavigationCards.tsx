@@ -32,12 +32,12 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
 }) => {
   return (
     <motion.div
-      className="group relative bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-2xl transition-all duration-500 overflow-hidden"
+      className="group relative bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-2xl transition-all duration-500 overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      whileHover={{ y: -8, scale: 1.02 }}
+      whileHover={{ y: -4, scale: 1.01 }}
     >
       {/* Background Gradient */}
       <div className={`absolute inset-0 ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -45,46 +45,46 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
       {/* Content */}
       <div className="relative z-10">
         {/* Icon */}
-        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg">
           {icon}
         </div>
 
         {/* Title */}
-        <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-3">
+        <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2 sm:mb-3">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-neutral-600 dark:text-neutral-300 mb-6 leading-relaxed">
+        <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 mb-4 sm:mb-6 leading-relaxed">
           {description}
         </p>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
               {stats.primary.value}
             </div>
-            <div className="text-sm text-neutral-500 dark:text-neutral-400">
+            <div className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
               {stats.primary.label}
             </div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
               {stats.secondary.value}
             </div>
-            <div className="text-sm text-neutral-500 dark:text-neutral-400">
+            <div className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
               {stats.secondary.label}
             </div>
           </div>
         </div>
 
         {/* Categories */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
           {categories.map((category) => (
             <span
               key={category}
-              className="px-3 py-1 bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 text-sm font-medium rounded-full border border-neutral-200 dark:border-neutral-600"
+              className="px-2 sm:px-3 py-1 bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 text-xs sm:text-sm font-medium rounded-full border border-neutral-200 dark:border-neutral-600"
             >
               {category}
             </span>
@@ -94,7 +94,7 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
         {/* CTA Button */}
         <Link to={href}>
           <motion.div
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white font-semibold rounded-lg sm:rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -118,7 +118,7 @@ export const NavigationCards: React.FC = () => {
   const categoryCount = uniqueCategories.length
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
       {/* Work Card */}
       <NavigationCard
         title="Explore My Work"

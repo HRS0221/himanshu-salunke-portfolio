@@ -99,36 +99,36 @@ export const ContactForm: React.FC = () => {
   if (submitStatus === 'success') {
     return (
       <motion.div
-        className="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
+        className="bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
       >
         <div className="text-center">
           <motion.div
-            className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4"
+            className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
           >
-            <svg className="w-8 h-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </motion.div>
-          <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
+          <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-white mb-2">
             Message Sent Successfully! 🎉
           </h3>
-          <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mb-3 sm:mb-4">
             Thank you for reaching out! I've received your message and will get back to you within 24 hours.
           </p>
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
-            <div className="flex items-start gap-3">
-              <div className="text-blue-600 dark:text-blue-400 text-lg">📧</div>
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="text-blue-600 dark:text-blue-400 text-base sm:text-lg">📧</div>
               <div>
-                <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-1">
+                <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-1 text-sm sm:text-base">
                   What happens next?
                 </h4>
-                <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
+                <ul className="text-xs sm:text-sm text-blue-800 dark:text-blue-200 space-y-1">
                   <li>• I'll review your message and project requirements</li>
                   <li>• You'll receive a detailed response within 24 hours</li>
                   <li>• We can schedule a free consultation call if needed</li>
@@ -150,24 +150,24 @@ export const ContactForm: React.FC = () => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-neutral-800 rounded-xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
+      className="bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-neutral-200 dark:border-neutral-700"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+      <div className="text-center mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">
           Get In Touch
         </h2>
-        <p className="text-neutral-600 dark:text-neutral-400">
+        <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
           Always excited to connect with new people. Feel free to reach out about projects, new opportunities, or anything else.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         {/* Contact Form - Left Side */}
         <div>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4">
         {/* Honeypot field - hidden from users */}
         <input
           type="text"
@@ -179,22 +179,24 @@ export const ContactForm: React.FC = () => {
 
         {/* Name Field */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+          <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1 sm:mb-2">
             Name *
           </label>
           <input
             type="text"
             id="name"
+            name="name"
             {...register('name')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
               errors.name 
                 ? 'border-red-500 dark:border-red-400' 
                 : 'border-neutral-300 dark:border-neutral-600'
-            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400`}
+            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400 text-sm sm:text-base`}
             placeholder="Your full name"
+            autoComplete="name"
           />
           {errors.name && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+            <p className="mt-1 text-xs sm:text-sm text-red-600 dark:text-red-400">
               {errors.name.message}
             </p>
           )}
@@ -202,22 +204,24 @@ export const ContactForm: React.FC = () => {
 
         {/* Email Field */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+          <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1 sm:mb-2">
             Email *
           </label>
           <input
             type="email"
             id="email"
+            name="email"
             {...register('email')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
               errors.email 
                 ? 'border-red-500 dark:border-red-400' 
                 : 'border-neutral-300 dark:border-neutral-600'
-            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400`}
+            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400 text-sm sm:text-base`}
             placeholder="your.email@example.com"
+            autoComplete="email"
           />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+            <p className="mt-1 text-xs sm:text-sm text-red-600 dark:text-red-400">
               {errors.email.message}
             </p>
           )}
@@ -225,22 +229,24 @@ export const ContactForm: React.FC = () => {
 
         {/* Subject Field */}
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+          <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1 sm:mb-2">
             Subject *
           </label>
           <input
             type="text"
             id="subject"
+            name="subject"
             {...register('subject')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
               errors.subject 
                 ? 'border-red-500 dark:border-red-400' 
                 : 'border-neutral-300 dark:border-neutral-600'
-            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400`}
+            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400 text-sm sm:text-base`}
             placeholder="What's this about?"
+            autoComplete="off"
           />
           {errors.subject && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+            <p className="mt-1 text-xs sm:text-sm text-red-600 dark:text-red-400">
               {errors.subject.message}
             </p>
           )}
@@ -248,22 +254,24 @@ export const ContactForm: React.FC = () => {
 
         {/* Message Field */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+          <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1 sm:mb-2">
             Message *
           </label>
           <textarea
             id="message"
-            rows={6}
+            name="message"
+            rows={5}
             {...register('message')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-vertical ${
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-vertical ${
               errors.message 
                 ? 'border-red-500 dark:border-red-400' 
                 : 'border-neutral-300 dark:border-neutral-600'
-            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400`}
+            } bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white dark:placeholder-neutral-400 text-sm sm:text-base`}
             placeholder="Tell me about your project or how I can help..."
+            autoComplete="off"
           />
           {errors.message && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+            <p className="mt-1 text-xs sm:text-sm text-red-600 dark:text-red-400">
               {errors.message.message}
             </p>
           )}
@@ -272,15 +280,15 @@ export const ContactForm: React.FC = () => {
         {/* Error Message */}
         {submitStatus === 'error' && (
           <motion.div
-            className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4"
+            className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3 sm:p-4"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="flex">
-              <svg className="w-5 h-5 text-red-400 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p className="text-sm text-red-600 dark:text-red-400">
+              <p className="text-xs sm:text-sm text-red-600 dark:text-red-400">
                 {errorMessage}
               </p>
             </div>
@@ -297,7 +305,7 @@ export const ContactForm: React.FC = () => {
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin -ml-1 mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -311,34 +319,34 @@ export const ContactForm: React.FC = () => {
         </div>
 
         {/* Contact Information - Right Side */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* Contact & Response Info */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl p-6 border border-blue-200 dark:border-blue-600">
-            <h3 className="font-semibold text-neutral-900 dark:text-white mb-4">Contact & Response</h3>
-            <div className="space-y-4 text-sm">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl p-4 sm:p-6 border border-blue-200 dark:border-blue-600">
+            <h3 className="font-semibold text-neutral-900 dark:text-white mb-3 sm:mb-4 text-sm sm:text-base">Contact & Response</h3>
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm">
                {/* Contact Info */}
-               <div className="space-y-3">
-                 <div className="flex items-center gap-3">
-                   <HiMail className="w-5 h-5 text-blue-600 dark:text-blue-300 flex-shrink-0" />
+               <div className="space-y-2 sm:space-y-3">
+                 <div className="flex items-center gap-2 sm:gap-3">
+                   <HiMail className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-300 flex-shrink-0" />
                    <div>
                      <span className="text-neutral-700 dark:text-neutral-200">Email:</span>
                      <a 
                        href="mailto:contact.himanshusalunke@gmail.com" 
-                       className="block text-primary-600 dark:text-blue-300 hover:underline font-medium"
+                       className="block text-primary-600 dark:text-blue-300 hover:underline font-medium text-xs sm:text-sm break-all"
                      >
                        contact.himanshusalunke@gmail.com
                      </a>
                    </div>
                  </div>
-                 <div className="flex items-center gap-3">
-                   <SiLinkedin className="w-5 h-5 text-blue-600 dark:text-blue-300 flex-shrink-0" />
+                 <div className="flex items-center gap-2 sm:gap-3">
+                   <SiLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-300 flex-shrink-0" />
                    <div>
                      <span className="text-neutral-700 dark:text-neutral-200">LinkedIn:</span>
                      <a 
                        href="https://www.linkedin.com/in/himanshuksalunke/" 
                        target="_blank"
                        rel="noopener noreferrer"
-                       className="block text-primary-600 dark:text-blue-300 hover:underline font-medium"
+                       className="block text-primary-600 dark:text-blue-300 hover:underline font-medium text-xs sm:text-sm"
                      >
                        Connect with me
                      </a>
@@ -347,13 +355,13 @@ export const ContactForm: React.FC = () => {
                </div>
               
                {/* Response Info */}
-               <div className="pt-3 border-t border-blue-200 dark:border-blue-600">
-                 <div className="flex items-center gap-3 mb-2">
-                   <HiClock className="w-5 h-5 text-blue-600 dark:text-blue-300 flex-shrink-0" />
+               <div className="pt-2 sm:pt-3 border-t border-blue-200 dark:border-blue-600">
+                 <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                   <HiClock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-300 flex-shrink-0" />
                    <span className="text-neutral-700 dark:text-neutral-200">Response time: Within 24 hours</span>
                  </div>
-                 <div className="flex items-center gap-3">
-                   <HiGlobe className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
+                 <div className="flex items-center gap-2 sm:gap-3">
+                   <HiGlobe className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
                    <span className="text-neutral-700 dark:text-neutral-200">Timezone: IST (Indian Standard Time)</span>
                  </div>
                </div>
@@ -361,15 +369,15 @@ export const ContactForm: React.FC = () => {
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl p-6 border border-purple-200 dark:border-purple-600">
-            <h3 className="font-semibold text-neutral-900 dark:text-white mb-4">Quick Actions</h3>
-            <div className="space-y-3 text-sm">
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl p-4 sm:p-6 border border-purple-200 dark:border-purple-600">
+            <h3 className="font-semibold text-neutral-900 dark:text-white mb-3 sm:mb-4 text-sm sm:text-base">Quick Actions</h3>
+            <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
               <div>
                 <a 
                   href="/articles" 
-                  className="flex items-center gap-3 text-primary-600 dark:text-blue-300 hover:underline font-medium"
+                  className="flex items-center gap-2 sm:gap-3 text-primary-600 dark:text-blue-300 hover:underline font-medium"
                 >
-                  <FaBookOpen className="w-5 h-5 flex-shrink-0" />
+                  <FaBookOpen className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                   Read My Articles
                 </a>
               </div>
@@ -378,9 +386,9 @@ export const ContactForm: React.FC = () => {
                   href="https://github.com/HimanshuSalunke" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-primary-600 dark:text-blue-300 hover:underline font-medium"
+                  className="flex items-center gap-2 sm:gap-3 text-primary-600 dark:text-blue-300 hover:underline font-medium"
                 >
-                  <SiGithub className="w-5 h-5 flex-shrink-0" />
+                  <SiGithub className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                   View My GitHub
                 </a>
               </div>
@@ -389,9 +397,9 @@ export const ContactForm: React.FC = () => {
                   href="https://leetcode.com/u/himanshusalunke/" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-primary-600 dark:text-blue-300 hover:underline font-medium"
+                  className="flex items-center gap-2 sm:gap-3 text-primary-600 dark:text-blue-300 hover:underline font-medium"
                 >
-                  <SiLeetcode className="w-5 h-5 flex-shrink-0" />
+                  <SiLeetcode className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                   Check My LeetCode
                 </a>
               </div>

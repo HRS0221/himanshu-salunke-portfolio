@@ -20,6 +20,9 @@ interface GitHubRepo {
   languages_url: string
 }
 
+// API base URL - use backend server for development, relative path for production
+const API_BASE_URL = import.meta.env.DEV ? 'http://localhost:5000' : ''
+
 export const useGitHubStats = (username: string, repoName?: string) => {
   const [stats, setStats] = useState<GitHubStats>({
     stars: 0,
@@ -60,36 +63,23 @@ export const useGitHubStats = (username: string, repoName?: string) => {
             error: null
           })
         } else {
-          // Fetch user's total stats
-          const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+          // Fetch user's total stats using our proxy
+          const response = await fetch(`${API_BASE_URL}/api/social-stats/github?username=${encodeURIComponent(username)}`)
           
           if (!response.ok) {
             throw new Error('Failed to fetch user repositories')
           }
 
-          const repos: GitHubRepo[] = await response.json()
+          const userData = await response.json()
           
-          const totalStats = repos.reduce((acc, repo) => ({
-            stars: acc.stars + repo.stargazers_count,
-            forks: acc.forks + repo.forks_count,
-            watchers: acc.watchers + repo.watchers_count,
-            languages: { ...acc.languages, [repo.language]: (acc.languages[repo.language] || 0) + 1 }
-          }), {
-            stars: 0,
-            forks: 0,
-            watchers: 0,
-            languages: {} as { [key: string]: number }
-          })
-
-          const lastCommit = repos
-            .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())[0]
-            ?.updated_at || ''
-
           setStats({
-            ...totalStats,
-            lastCommit,
+            stars: userData.stars || 0,
+            forks: userData.forks || 0,
+            watchers: userData.watchers || 0,
+            lastCommit: new Date().toISOString(), // Mock last commit time
+            languages: {}, // Languages would need separate API call
             isLoading: false,
-            error: null
+            error: userData.error || null
           })
         }
       } catch (error) {

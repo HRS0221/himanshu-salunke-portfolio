@@ -128,12 +128,12 @@ const Work: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">
               <span 
                 className="bg-clip-text text-transparent"
                 style={{
@@ -147,7 +147,7 @@ const Work: React.FC = () => {
                 Project Portfolio
               </span>
             </h1>
-            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl sm:max-w-3xl mx-auto px-4 sm:px-0">
               Explore my diverse portfolio of innovative projects, from AI/ML solutions to full-stack applications. 
               Each project tells a story of problem-solving, creativity, and technical excellence.
             </p>
@@ -156,7 +156,7 @@ const Work: React.FC = () => {
 
           {/* Project Categories */}
           <motion.div
-            className="mb-16"
+            className="mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -166,7 +166,7 @@ const Work: React.FC = () => {
 
           {/* Search and Filter */}
           <motion.div
-            className="mb-12"
+            className="mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -188,7 +188,7 @@ const Work: React.FC = () => {
 
           {/* Projects Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -232,9 +232,9 @@ const Work: React.FC = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
-                  <div className="mb-4">
-                    <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2 font-bold">
+                <div className="p-4 sm:p-5 md:p-6">
+                  <div className="mb-3 sm:mb-4">
+                    <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-white mb-2 font-bold">
                       {project.title}
                     </h3>
                     <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">
@@ -243,11 +243,11 @@ const Work: React.FC = () => {
                   </div>
 
                   {/* Metrics */}
-                  <div className="mb-4">
+                  <div className="mb-3 sm:mb-4">
                     <div className="grid grid-cols-2 gap-2">
                       {project.metrics.slice(0, 2).map((metric, idx) => (
                         <div key={idx} className="text-center">
-                          <div className="text-lg font-bold text-primary-600 dark:text-primary-500">
+                          <div className="text-base sm:text-lg font-bold text-primary-600 dark:text-primary-500">
                             {metric.value}
                           </div>
                           <div className="text-xs text-neutral-500 dark:text-neutral-400">
@@ -259,8 +259,8 @@ const Work: React.FC = () => {
                   </div>
 
                   {/* Tech Stack */}
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2">
+                  <div className="mb-3 sm:mb-4">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {project.techStack.slice(0, 3).map((tech) => (
                         <Tag key={tech} variant="primary" size="sm">
                           {tech}
@@ -276,13 +276,14 @@ const Work: React.FC = () => {
 
                   {/* Date and Actions */}
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                    <span className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
                       {formatDate(project.date)}
                     </span>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5 sm:gap-2">
                       <Link to={`/projects/${project.id}`}>
                         <Button variant="outline" size="sm">
-                          View Details
+                          <span className="hidden xs:inline">View Details</span>
+                          <span className="xs:hidden">View</span>
                         </Button>
                       </Link>
                     </div>
@@ -295,16 +296,16 @@ const Work: React.FC = () => {
           {/* No Results */}
           {filteredProjects.length === 0 && (
             <motion.div
-              className="text-center py-16"
+              className="text-center py-12 sm:py-16"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
+              <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">🔍</div>
+              <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-white mb-2">
                 No projects found
               </h3>
-              <p className="text-neutral-600 dark:text-neutral-400 mb-6">
+              <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-6 px-4 sm:px-0">
                 Try adjusting your search criteria or filters.
               </p>
               <Button
@@ -322,7 +323,7 @@ const Work: React.FC = () => {
 
           {/* Project Timeline */}
           <motion.div
-            className="mt-16"
+            className="mt-12 sm:mt-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}

@@ -49,32 +49,32 @@ export const StatsSection: React.FC = () => {
         viewport={{ once: true }}
         className="mb-12"
       >
-        <h2 className="text-3xl font-bold text-neutral-900 dark:text-white mb-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">
           Making an Impact
         </h2>
-        <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
           Here's how I'm building the future, one innovative solution at a time.
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {stats.map((stat, index) => (
           <motion.div
             key={stat.label}
-            className="group relative bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-2xl transition-all duration-500"
+            className="group relative bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-2xl transition-all duration-500"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
-            whileHover={{ y: -5, scale: 1.02 }}
+            whileHover={{ y: -3, scale: 1.02 }}
           >
             {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl" />
             
             {/* Content */}
             <div className="relative z-10 text-center">
               {/* Icon */}
-              <div className="text-4xl mb-4">
+              <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">
                 {stat.icon}
               </div>
               
@@ -82,16 +82,16 @@ export const StatsSection: React.FC = () => {
               <StatsCounter
                 value={stat.value}
                 suffix={stat.suffix}
-                className="mb-3 text-3xl font-bold text-blue-600 dark:text-blue-400"
+                className="mb-2 sm:mb-3 text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400"
               />
               
               {/* Label */}
-              <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white mb-2 sm:mb-3">
                 {stat.label}
               </h3>
               
               {/* Description */}
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {stat.description}
               </p>
             </div>

@@ -73,33 +73,33 @@ const MissionValues: React.FC = () => {
 
       {/* Mission Statement */}
       <motion.div
-        className="mb-12 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl p-8 border border-primary-200 dark:border-primary-800"
+        className="mb-8 sm:mb-12 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-primary-200 dark:border-primary-800"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <div className="text-center mb-6">
-          <div className="text-4xl mb-4">🎯</div>
-          <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+        <div className="text-center mb-4 sm:mb-6">
+          <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🎯</div>
+          <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">
             {mission.title}
           </h3>
         </div>
         
-        <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6 text-center">
+        <p className="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4 sm:mb-6 text-center px-2 sm:px-0">
           {mission.content}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {mission.goals.map((goal, index) => (
             <motion.div
               key={index}
-              className="flex items-start gap-3 p-4 bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700"
+              className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
             >
-              <div className="text-primary-600 dark:text-primary-400 text-lg">✓</div>
-              <span className="text-sm text-neutral-700 dark:text-neutral-300 font-medium">
+              <div className="text-primary-600 dark:text-primary-400 text-base sm:text-lg">✓</div>
+              <span className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 font-medium">
                 {goal}
               </span>
             </motion.div>
@@ -108,11 +108,11 @@ const MissionValues: React.FC = () => {
       </motion.div>
 
       {/* Values Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {values.map((value, index) => (
           <motion.div
             key={value.title}
-            className="group relative bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-xl transition-all duration-300 overflow-hidden"
+            className="group relative bg-white dark:bg-neutral-800 rounded-xl p-4 sm:p-5 md:p-6 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-xl transition-all duration-300 overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
@@ -123,14 +123,14 @@ const MissionValues: React.FC = () => {
             
             {/* Content */}
             <div className="relative z-10">
-              <div className="text-center mb-4">
-                <div className="text-4xl mb-3">{value.icon}</div>
-                <h3 className="text-xl font-bold text-neutral-900 dark:text-white">
+              <div className="text-center mb-3 sm:mb-4">
+                <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">{value.icon}</div>
+                <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white">
                   {value.title}
                 </h3>
               </div>
               
-              <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-center">
+              <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed text-center">
                 {value.description}
               </p>
             </div>

@@ -37,7 +37,7 @@ const TypewriterText: React.FC<{ text: string; speed?: number }> = ({ text, spee
   }, [currentChar, currentSkill, isDeleting, skills, speed])
 
   return (
-    <span className="inline-block min-w-[200px] text-left">
+    <span className="inline-block min-w-[150px] sm:min-w-[200px] text-left">
       <span>
         {skills[currentSkill].substring(0, currentChar)}
       </span>
@@ -61,30 +61,30 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Greeting */}
-          <p className="text-lg font-semibold mb-4 text-blue-600 dark:text-blue-200">
+          <p className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-blue-600 dark:text-blue-200">
             Hey, I'm
           </p>
 
           {/* Name */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-800 dark:text-neutral-200 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-800 dark:text-neutral-200 mb-4 sm:mb-6">
             Himanshu Salunke
           </h1>
 
           {/* Role with emojis */}
-          <div className="text-xl md:text-2xl lg:text-3xl mb-4 font-semibold text-blue-500 dark:text-blue-200">
+          <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-3 sm:mb-4 font-semibold text-blue-500 dark:text-blue-200">
             <span className="inline-block">😊</span>
-            <span className="mx-2">Specialize in </span>
+            <span className="mx-1 sm:mx-2">Specialize in </span>
             <TypewriterText text="Python, Machine Learning, Deep Learning, Gen AI" speed={150} />
           </div>
 
           {/* Description */}
-          <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed font-medium text-neutral-600 dark:text-neutral-300">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed font-medium text-neutral-600 dark:text-neutral-300 px-4 sm:px-0">
             I'm all about building things that actually work. Whether it's a machine learning model or a simple script, I love the process of turning ideas into reality.
           </p>
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -92,6 +92,7 @@ export const Hero: React.FC = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto"
             >
               <Link to="/work">
                 <Button
@@ -112,6 +113,7 @@ export const Hero: React.FC = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto"
             >
               <Link to="/about">
                 <Button

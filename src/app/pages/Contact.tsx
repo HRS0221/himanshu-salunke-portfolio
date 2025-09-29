@@ -19,12 +19,12 @@ const Contact: React.FC = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">
               <span 
                 className="bg-clip-text text-transparent"
                 style={{
@@ -38,14 +38,14 @@ const Contact: React.FC = () => {
                 Let's Collaborate
               </span>
             </h1>
-            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl sm:max-w-3xl mx-auto px-4 sm:px-0">
               Get in touch with me for general inquiries, collaboration opportunities, or just to say hello. 
               I'm always excited to connect with fellow developers and tech enthusiasts!
             </p>
           </motion.div>
 
           {/* Freelancing Website Card */}
-          <motion.div className="mb-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
+          <motion.div className="mb-12 sm:mb-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
             <FreelancingWebsiteCard />
           </motion.div>
 

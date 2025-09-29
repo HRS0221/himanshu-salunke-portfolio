@@ -63,20 +63,20 @@ export const CurrentFocus: React.FC = () => {
   const focusItems = currentFocusData as FocusItem[]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
       {focusItems.map((item, index) => (
         <motion.div
           key={item.id}
-          className="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-neutral-200 dark:border-neutral-700"
+          className="bg-white dark:bg-neutral-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-neutral-200 dark:border-neutral-700"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
           viewport={{ once: true }}
-          whileHover={{ y: -5 }}
+          whileHover={{ y: -3, scale: 1.02 }}
         >
           {/* Icon */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl text-blue-600 dark:text-blue-400 flex items-center justify-center shadow-sm border border-blue-200/50 dark:border-blue-700/30">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <div className="p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg sm:rounded-xl text-blue-600 dark:text-blue-400 flex items-center justify-center shadow-sm border border-blue-200/50 dark:border-blue-700/30">
               {iconMap[item.icon] || iconMap.rocket}
             </div>
             <span
@@ -91,10 +91,10 @@ export const CurrentFocus: React.FC = () => {
           </div>
 
           {/* Content */}
-          <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">
+          <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-white mb-2">
             {item.title}
           </h3>
-          <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">
+          <p className="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm leading-relaxed">
             {item.description}
           </p>
         </motion.div>
