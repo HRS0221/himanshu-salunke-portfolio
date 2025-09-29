@@ -97,7 +97,7 @@ export const Hero: React.FC = () => {
                 <Button
                   variant="primary"
                   size="lg"
-                  className="w-full sm:w-auto relative overflow-hidden group bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-700"
+                  className="w-full sm:w-auto relative overflow-hidden group bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700"
                 >
                   <span className="relative z-10">Explore My Projects</span>
                 <motion.div
@@ -117,7 +117,7 @@ export const Hero: React.FC = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto relative overflow-hidden group border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white"
+                  className="w-full sm:w-auto relative overflow-hidden group border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-600 dark:text-blue-600 dark:hover:bg-blue-600 dark:hover:text-white"
                 >
                   <span className="relative z-10">My Story</span>
                   <motion.div
