@@ -91,7 +91,7 @@ const categoryLabels = {
 
 export const TechStack: React.FC = () => {
   const categories = Object.keys(categoryLabels) as Array<keyof typeof categoryLabels>
-  const githubStats = useGitHubStats('HRS0221')
+  const githubStats = useGitHubStats('HimanshuSalunke')
   
   // Language mapping for GitHub languages to our skill icons
   const languageIconMap: { [key: string]: React.ComponentType<{ size?: number; className?: string }> } = {

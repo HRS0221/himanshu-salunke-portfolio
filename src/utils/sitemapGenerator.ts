@@ -48,19 +48,6 @@ export class SitemapGenerator {
     this.addEntry('/work', undefined, 'weekly', 0.9);
     this.addEntry('/contact', undefined, 'monthly', 0.8);
 
-    // Add articles
-    try {
-      const articlesPath = join(process.cwd(), 'src/data/articles');
-      const articleFiles = require('fs').readdirSync(articlesPath).filter((file: string) => file.endsWith('.mdx'));
-      
-      articleFiles.forEach((file: string) => {
-        const slug = file.replace('.mdx', '');
-        this.addEntry(`/article/${slug}`, undefined, 'monthly', 0.7);
-      });
-    } catch (error) {
-      console.warn('Could not read articles directory:', error);
-    }
-
     // Add projects
     try {
       const projectsPath = join(process.cwd(), 'src/data/projects');

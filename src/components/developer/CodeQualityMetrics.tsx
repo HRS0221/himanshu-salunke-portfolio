@@ -88,7 +88,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
 }
 
 const CodeQualityMetrics: React.FC = () => {
-  const githubStats = useGitHubStats('HRS0221')
+  const githubStats = useGitHubStats('HimanshuSalunke')
 
   // Calculate real metrics based on GitHub data
   const totalStars = githubStats.stars || 0

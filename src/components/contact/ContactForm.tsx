@@ -335,7 +335,7 @@ export const ContactForm: React.FC = () => {
                    <div>
                      <span className="text-neutral-700 dark:text-neutral-200">LinkedIn:</span>
                      <a 
-                       href="https://www.linkedin.com/in/hr0221/" 
+                       href="https://www.linkedin.com/in/himanshuksalunke/" 
                        target="_blank"
                        rel="noopener noreferrer"
                        className="block text-primary-600 dark:text-blue-300 hover:underline font-medium"
@@ -375,7 +375,7 @@ export const ContactForm: React.FC = () => {
               </div>
               <div>
                 <a 
-                  href="https://github.com/HRS0221" 
+                  href="https://github.com/HimanshuSalunke" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-primary-600 dark:text-blue-300 hover:underline font-medium"

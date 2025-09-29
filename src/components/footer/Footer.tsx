@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const socialLinks = [
   {
     name: 'GitHub',
-    href: 'https://github.com/HRS0221',
+    href: 'https://github.com/HimanshuSalunke',
     color: '#24292e',
     icon: (
       <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -14,7 +14,7 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/hr0221',
+    href: 'https://www.linkedin.com/in/himanshuksalunke',
     color: '#0077b5',
     icon: (
       <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">

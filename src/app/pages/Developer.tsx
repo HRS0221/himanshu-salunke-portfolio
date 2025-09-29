@@ -31,8 +31,8 @@ const getSocialPlatforms = (socialStats: any): SocialPlatform[] => [
   {
     name: 'GitHub',
     icon: SiGithub,
-    url: 'https://github.com/HRS0221',
-    username: 'HRS0221',
+    url: 'https://github.com/HimanshuSalunke',
+    username: 'HimanshuSalunke',
     color: 'from-gray-800 to-gray-900',
     description: 'Where the magic happens ✨',
     stats: [
@@ -44,8 +44,8 @@ const getSocialPlatforms = (socialStats: any): SocialPlatform[] => [
   {
     name: 'LinkedIn',
     icon: SiLinkedin,
-    url: 'https://www.linkedin.com/in/hr0221/',
-    username: 'hr0221',
+    url: 'https://www.linkedin.com/in/himanshuksalunke/',
+    username: 'himanshuksalunke',
     color: 'from-blue-600 to-blue-700',
     description: 'Professional networking & ML articles 📝',
     stats: [
@@ -70,8 +70,8 @@ const getSocialPlatforms = (socialStats: any): SocialPlatform[] => [
   // {
   //   name: 'CodeChef',
   //   icon: SiCodechef,
-  //   url: 'https://www.codechef.com/users/hr0221',
-  //   username: 'hr0221',
+  //   url: 'https://www.codechef.com/users/himanshuksalunke',
+  //   username: 'himanshuksalunke',
   //   color: 'from-red-500 to-red-600',
   //   description: 'Competitive programming adventures 🏆',
   //   stats: [

@@ -466,16 +466,16 @@ export const useSocialStats = () => {
   useEffect(() => {
     const fetchAllStats = async () => {
       // Fetch GitHub stats (works with public API)
-      const githubStats = await fetchGitHubStats('HRS0221')
+      const githubStats = await fetchGitHubStats('HimanshuSalunke')
       
       // Fetch LeetCode stats (works with GraphQL API)
       const leetcodeStats = await fetchLeetCodeStats('himanshusalunke')
       
       // Fetch CodeChef stats (requires backend)
-      // const codechefStats = await fetchCodeChefStats('hr0221')
+      // const codechefStats = await fetchCodeChefStats('himanshuksalunke')
       
       // Fetch LinkedIn stats (limited API access)
-      const linkedinStats = await fetchLinkedInStats('hr0221')
+      const linkedinStats = await fetchLinkedInStats('himanshuksalunke')
       
       // Fetch Twitter stats (requires API token)
       // const twitterStats = await fetchTwitterStats('Wiser_0221')

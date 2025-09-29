@@ -35,7 +35,7 @@ const LiveDashboard: React.FC = () => {
         
         // First, let's check if the user exists and get their repos
         console.log('Fetching GitHub user info...')
-        const userResponse = await fetch('https://api.github.com/users/HRS0221')
+        const userResponse = await fetch('https://api.github.com/users/HimanshuSalunke')
         if (!userResponse.ok) {
           throw new Error(`User not found: ${userResponse.status}`)
         }
@@ -44,7 +44,7 @@ const LiveDashboard: React.FC = () => {
         
         // Get user's repositories to find recent activity
         console.log('Fetching user repositories...')
-        const reposResponse = await fetch('https://api.github.com/users/HRS0221/repos?sort=updated&per_page=20')
+        const reposResponse = await fetch('https://api.github.com/users/HimanshuSalunke/repos?sort=updated&per_page=20')
         if (!reposResponse.ok) {
           throw new Error(`Repos not found: ${reposResponse.status}`)
         }
@@ -69,7 +69,7 @@ const LiveDashboard: React.FC = () => {
           for (const repo of repos.slice(0, 5)) {
             try {
               console.log(`Fetching commits from ${repo.name} (${timeRange.label})...`)
-              const commitsResponse = await fetch(`https://api.github.com/repos/HRS0221/${repo.name}/commits?per_page=10&since=${daysAgo.toISOString()}`)
+              const commitsResponse = await fetch(`https://api.github.com/repos/HimanshuSalunke/${repo.name}/commits?per_page=10&since=${daysAgo.toISOString()}`)
               if (commitsResponse.ok) {
                 const commits = await commitsResponse.json()
                 console.log(`Commits from ${repo.name} (${timeRange.label}):`, commits)
@@ -288,7 +288,7 @@ const LiveDashboard: React.FC = () => {
               
               try {
                 console.log('Manual refresh - Fetching GitHub user info...')
-                const userResponse = await fetch('https://api.github.com/users/HRS0221')
+                const userResponse = await fetch('https://api.github.com/users/HimanshuSalunke')
                 if (!userResponse.ok) {
                   throw new Error(`User not found: ${userResponse.status}`)
                 }
@@ -296,7 +296,7 @@ const LiveDashboard: React.FC = () => {
                 console.log('Manual refresh - User data:', userData)
                 
                 console.log('Manual refresh - Fetching repositories...')
-                const reposResponse = await fetch('https://api.github.com/users/HRS0221/repos?sort=updated&per_page=20')
+                const reposResponse = await fetch('https://api.github.com/users/HimanshuSalunke/repos?sort=updated&per_page=20')
                 if (!reposResponse.ok) {
                   throw new Error(`Repos not found: ${reposResponse.status}`)
                 }
@@ -320,7 +320,7 @@ const LiveDashboard: React.FC = () => {
                   for (const repo of repos.slice(0, 5)) {
                     try {
                       console.log(`Manual refresh - Fetching commits from ${repo.name} (${timeRange.label})...`)
-                      const commitsResponse = await fetch(`https://api.github.com/repos/HRS0221/${repo.name}/commits?per_page=10&since=${daysAgo.toISOString()}`)
+                      const commitsResponse = await fetch(`https://api.github.com/repos/HimanshuSalunke/${repo.name}/commits?per_page=10&since=${daysAgo.toISOString()}`)
                       if (commitsResponse.ok) {
                         const commits = await commitsResponse.json()
                         console.log(`Manual refresh - Commits from ${repo.name} (${timeRange.label}):`, commits)

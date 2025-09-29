@@ -124,7 +124,7 @@ himanshu-portfolio-website/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/HRS0221/himanshu-portfolio-website.git
+   git clone https://github.com/HimanshuSalunke/himanshu-portfolio-website.git
    cd himanshu-portfolio-website
    ```
 
@@ -243,7 +243,7 @@ Update `src/config/site.ts` with your information:
 export const SITE_CONFIG = {
   name: "Your Portfolio Name",
   author: "Your Name",
-  twitterHandle: "@HRS0221",
+  twitterHandle: "@HimanshuSalunke",
   description: "Your portfolio description",
   url: "https://himanshu-salunke.vercel.app",
   themeColor: "#3b82f6",
@@ -343,11 +343,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**Himanshu** - [@HRS0221](https://twitter.com/HRS0221)
+**Himanshu** - [@HimanshuSalunke](https://twitter.com/HimanshuSalunke)
 
 - **Email**: contact.himanshusalunke@gmail.com
 - **LinkedIn**: [Connect with me](https://linkedin.com/in/yourprofile)
-- **GitHub**: [@HRS0221](https://github.com/HRS0221)
+- **GitHub**: [@HimanshuSalunke](https://github.com/HimanshuSalunke)
 - **Portfolio**: [https://himanshu-salunke.vercel.app](https://himanshu-salunke.vercel.app)
 
 ---

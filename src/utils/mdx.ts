@@ -31,24 +31,9 @@ export interface ProjectFrontmatter {
   tag?: string
 }
 
-export interface ArticleFrontmatter {
-  title: string
-  slug: string
-  date: string
-  coverImage: string
-  tags: string[]
-  author: string
-  readTime: number
-  excerpt: string
-}
-
 export interface Project extends ProjectFrontmatter {
   content: string
   readingTime: number
-}
-
-export interface Article extends ArticleFrontmatter {
-  content: string
 }
 
 // Calculate reading time based on content
@@ -79,36 +64,10 @@ export function getAllProjects(): Project[] {
   return projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
-// Get all article files
-export function getAllArticles(): Article[] {
-  const articlesDir = join(process.cwd(), 'src/data/articles')
-  const files = readdirSync(articlesDir).filter(file => file.endsWith('.mdx'))
-  
-  const articles = files.map(file => {
-    const filePath = join(articlesDir, file)
-    const fileContent = readFileSync(filePath, 'utf8')
-    const { data, content } = matter(fileContent)
-    
-    return {
-      ...data as ArticleFrontmatter,
-      content
-    }
-  })
-  
-  // Sort by date (newest first)
-  return articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-}
-
 // Get project by slug
 export function getProjectBySlug(slug: string): Project | null {
   const projects = getAllProjects()
   return projects.find(project => project.slug === slug) || null
-}
-
-// Get article by slug
-export function getArticleBySlug(slug: string): Article | null {
-  const articles = getAllArticles()
-  return articles.find(article => article.slug === slug) || null
 }
 
 // Get featured projects
@@ -123,12 +82,6 @@ export function getRecentProjects(limit: number = 3): Project[] {
   return projects.slice(0, limit)
 }
 
-// Get recent articles (limit)
-export function getRecentArticles(limit: number = 3): Article[] {
-  const articles = getAllArticles()
-  return articles.slice(0, limit)
-}
-
 // Get projects by category
 export function getProjectsByCategory(category: string): Project[] {
   const projects = getAllProjects()
@@ -137,26 +90,11 @@ export function getProjectsByCategory(category: string): Project[] {
   )
 }
 
-// Get articles by tag
-export function getArticlesByTag(tag: string): Article[] {
-  const articles = getAllArticles()
-  return articles.filter(article => 
-    article.tags.some(t => t.toLowerCase() === tag.toLowerCase())
-  )
-}
-
 // Get all unique categories
 export function getAllCategories(): string[] {
   const projects = getAllProjects()
   const categories = new Set(projects.map(project => project.category))
   return Array.from(categories).sort()
-}
-
-// Get all unique tags
-export function getAllTags(): string[] {
-  const articles = getAllArticles()
-  const tags = new Set(articles.flatMap(article => article.tags))
-  return Array.from(tags).sort()
 }
 
 // Search projects
@@ -169,18 +107,6 @@ export function searchProjects(query: string): Project[] {
     project.summary.toLowerCase().includes(lowercaseQuery) ||
     project.category.toLowerCase().includes(lowercaseQuery) ||
     project.techStack.some(tech => tech.toLowerCase().includes(lowercaseQuery))
-  )
-}
-
-// Search articles
-export function searchArticles(query: string): Article[] {
-  const articles = getAllArticles()
-  const lowercaseQuery = query.toLowerCase()
-  
-  return articles.filter(article => 
-    article.title.toLowerCase().includes(lowercaseQuery) ||
-    article.excerpt.toLowerCase().includes(lowercaseQuery) ||
-    article.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
   )
 }
 
