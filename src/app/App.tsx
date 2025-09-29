@@ -4,7 +4,6 @@ import { HelmetProvider } from 'react-helmet-async'
 import { ThemeProvider } from '../context/ThemeContext'
 import { Header } from '../components/header/Header'
 import { Footer } from '../components/footer/Footer'
-import { ChatbotWidget } from '../components/chatbot/ChatbotWidget'
 import { ProgressTracker, EasterEgg } from '../components/gamification/ProgressTracker'
 import { PageTransition } from '../components/animations/PageTransition'
 import { ScrollToTop } from '../components/ui/ScrollToTop'
@@ -88,8 +87,6 @@ const AppContent: React.FC = () => {
         {/* Back to Top Button */}
         <BackToTop />
         
-        {/* AI Chatbot Widget */}
-        <ChatbotWidget />
         
         {/* Easter Egg */}
         <EasterEgg />

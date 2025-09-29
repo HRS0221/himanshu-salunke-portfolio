@@ -69,25 +69,6 @@ test.describe('Portfolio Website', () => {
     await expect(page.locator('text=Recruiter Mode Active')).not.toBeVisible()
   })
 
-  test('should open and interact with chatbot', async ({ page }) => {
-    // Click chatbot button
-    await page.click('[aria-label="Open AI Assistant"]')
-    
-    // Check if chatbot window opens
-    await expect(page.locator('text=AI Assistant')).toBeVisible()
-    
-    // Type a message
-    await page.fill('input[placeholder*="Ask about"]', 'Tell me about your projects')
-    
-    // Send message
-    await page.click('button[type="button"]:has-text("Send")')
-    
-    // Check if message appears
-    await expect(page.locator('text=Tell me about your projects')).toBeVisible()
-    
-    // Check if AI response appears
-    await expect(page.locator('text=I\'m an AI assistant')).toBeVisible({ timeout: 10000 })
-  })
 
   test('should submit contact form', async ({ page }) => {
     await page.goto('/contact')

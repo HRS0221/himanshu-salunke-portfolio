@@ -119,7 +119,6 @@ himanshu-portfolio-website/
 - Node.js 22.x or higher
 - npm or yarn package manager
 - Git
-- Google Gemini API key (for AI chatbot)
 
 ### **Installation**
 
