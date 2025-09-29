@@ -79,7 +79,7 @@ export const Hero: React.FC = () => {
 
           {/* Description */}
           <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed font-medium text-neutral-600 dark:text-neutral-300">
-            Recent graduate passionate about Data Science and Artificial Intelligence. Currently preparing for GATE - 2026 while building innovative AI projects and expanding my expertise in Python, ML algorithms, and Gen AI.
+            I'm all about building things that actually work. Whether it's a machine learning model or a simple script, I love the process of turning ideas into reality.
           </p>
 
           {/* CTA Buttons */}
