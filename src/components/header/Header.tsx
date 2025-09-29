@@ -159,7 +159,7 @@ export const Header: React.FC = () => {
             <motion.a
               href="/Himanshu_Salunke_Resume.pdf"
               download="Himanshu_Salunke_Resume.pdf"
-              className="hidden sm:flex items-center gap-2 px-3 py-2 bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md"
+              className="hidden sm:flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md" 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               title="Download Resume"
@@ -273,7 +273,7 @@ export const Header: React.FC = () => {
                 <motion.a
                   href="/Himanshu_Salunke_Resume.pdf"
                   download="Himanshu_Salunke_Resume.pdf"
-                  className="flex items-center gap-2 px-3 py-2 mt-4 bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-102 active:scale-98 shadow-sm hover:shadow-md"
+                  className="flex items-center gap-2 px-3 py-2 mt-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-102 active:scale-98 shadow-sm hover:shadow-md"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
