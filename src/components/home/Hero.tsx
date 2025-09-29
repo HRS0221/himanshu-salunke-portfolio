@@ -3,65 +3,55 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/Button'
 
+// Typewriter effect component
+const TypewriterText: React.FC<{ text: string; speed?: number }> = ({ text, speed = 100 }) => {
+  const [currentSkill, setCurrentSkill] = React.useState(0)
+  const [currentChar, setCurrentChar] = React.useState(0)
+  const [isDeleting, setIsDeleting] = React.useState(false)
+  
+  const skills = text.split(', ')
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing characters
+        if (currentChar < skills[currentSkill].length) {
+          setCurrentChar(prev => prev + 1)
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), 1500)
+        }
+      } else {
+        // Deleting characters
+        if (currentChar > 0) {
+          setCurrentChar(prev => prev - 1)
+        } else {
+          // Finished deleting, move to next skill
+          setIsDeleting(false)
+          setCurrentSkill(prev => (prev + 1) % skills.length)
+        }
+      }
+    }, isDeleting ? speed / 2 : speed) // Delete faster than type
+
+    return () => clearTimeout(timeout)
+  }, [currentChar, currentSkill, isDeleting, skills, speed])
+
+  return (
+    <span className="inline-block min-w-[200px] text-left">
+      <span>
+        {skills[currentSkill].substring(0, currentChar)}
+      </span>
+      <span className="animate-pulse ml-1">|</span>
+    </span>
+  ) 
+}
+
 export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Lightweight Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900" />
+      <div className="absolute inset-0 bg-white dark:bg-neutral-900" />
       
-      {/* Simple animated background elements - CSS only */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-primary-200 dark:bg-primary-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl opacity-70"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary-200 dark:bg-secondary-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl opacity-70"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-        
-        {/* Additional lightweight decorative elements */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-lg"
-          animate={{
-            y: [0, -20, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 blur-lg"
-          animate={{
-            y: [0, 20, 0],
-            scale: [1, 0.9, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -71,110 +61,26 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Greeting */}
-          <motion.p
-            className="text-lg font-semibold mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <motion.span 
-              className="bg-clip-text text-transparent"
-              style={{
-                background: 'linear-gradient(90deg, hsla(210, 90%, 80%, 1) 0%, hsla(212, 93%, 49%, 1) 100%)',
-                backgroundSize: '200% auto',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                MozBackgroundClip: 'text',
-                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#9FCCFA", endColorstr="#0974F1", GradientType=1)'
-              }}
-              animate={{ backgroundPosition: ['0% 50%', '200% 50%', '0% 50%'] }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-            >
-              Hello, I'm
-            </motion.span>
-          </motion.p>
+          <p className="text-lg font-semibold mb-4 text-blue-600 dark:text-blue-200">
+            Hey, I'm
+          </p>
 
           {/* Name */}
-          <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <motion.span 
-              className="bg-clip-text text-transparent"
-              style={{
-                background: 'linear-gradient(90deg, hsla(210, 90%, 80%, 1) 0%, hsla(212, 93%, 49%, 1) 100%)',
-                backgroundSize: '200% auto',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                MozBackgroundClip: 'text',
-                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#9FCCFA", endColorstr="#0974F1", GradientType=1)'
-              }}
-              animate={{ backgroundPosition: ['0% 50%', '200% 50%', '0% 50%'] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-            >
-              Himanshu Salunke
-            </motion.span>
-          </motion.h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-800 dark:text-neutral-200 mb-6">
+            Himanshu Salunke
+          </h1>
 
           {/* Role with emojis */}
-          <motion.div
-            className="text-xl md:text-2xl lg:text-3xl mb-4 font-semibold"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <motion.span
-              className="inline-block"
-              animate={{ 
-                rotate: [0, 5, -5, 0],
-                transition: { duration: 2, repeat: Infinity, repeatDelay: 3 }
-              }}
-            >
-              🚀
-            </motion.span>
-            <motion.span 
-              className="mx-2 bg-clip-text text-transparent"
-              style={{
-                background: 'linear-gradient(90deg, hsla(210, 90%, 80%, 1) 0%, hsla(212, 93%, 49%, 1) 100%)',
-                backgroundSize: '200% auto',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                MozBackgroundClip: 'text',
-                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#9FCCFA", endColorstr="#0974F1", GradientType=1)'
-              }}
-              animate={{ backgroundPosition: ['0% 50%', '200% 50%', '0% 50%'] }}
-              transition={{ duration: 7, repeat: Infinity, ease: 'linear' }}
-            >
-              Aspiring Data Scientist
-            </motion.span>
-          </motion.div>
+          <div className="text-xl md:text-2xl lg:text-3xl mb-4 font-semibold text-blue-500 dark:text-blue-200">
+            <span className="inline-block">😊</span>
+            <span className="mx-2">Specialize in </span>
+            <TypewriterText text="Python, Machine Learning, Deep Learning, Gen AI" speed={150} />
+          </div>
 
           {/* Description */}
-          <motion.p
-            className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed font-medium"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <motion.span 
-              className="bg-clip-text text-transparent"
-              style={{
-                background: 'linear-gradient(90deg, hsla(210, 90%, 80%, 1) 0%, hsla(212, 93%, 49%, 1) 100%)',
-                backgroundSize: '200% auto',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                MozBackgroundClip: 'text',
-                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#9FCCFA", endColorstr="#0974F1", GradientType=1)'
-              }}
-              animate={{ backgroundPosition: ['0% 50%', '200% 50%', '0% 50%'] }}
-              transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-            >
-              Building the future, one line of code at a time. Passionate about creating intelligent solutions 
-              that solve real-world problems with Python, Machine Learning, and cutting-edge AI technologies.
-            </motion.span>
-          </motion.p>
+          <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed font-medium text-neutral-600 dark:text-neutral-300">
+            Recent graduate passionate about Data Science and Artificial Intelligence. Currently preparing for GATE - 2026 while building innovative AI projects and expanding my expertise in Python, ML algorithms, and Gen AI.
+          </p>
 
           {/* CTA Buttons */}
           <motion.div
@@ -191,11 +97,11 @@ export const Hero: React.FC = () => {
                 <Button
                   variant="primary"
                   size="lg"
-                  className="w-full sm:w-auto relative overflow-hidden group"
+                  className="w-full sm:w-auto relative overflow-hidden group bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-700"
                 >
                   <span className="relative z-10">Explore My Projects</span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-600"
+                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700"
                   initial={{ x: '-100%' }}
                   whileHover={{ x: '0%' }}
                   transition={{ duration: 0.3 }}
@@ -211,11 +117,11 @@ export const Hero: React.FC = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto relative overflow-hidden group"
+                  className="w-full sm:w-auto relative overflow-hidden group border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white"
                 >
                   <span className="relative z-10">My Story</span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-secondary-500 to-primary-500 opacity-0 group-hover:opacity-10"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-10"
                     transition={{ duration: 0.3 }}
                   />
                 </Button>
@@ -224,8 +130,8 @@ export const Hero: React.FC = () => {
           </motion.div>
 
           {/* Scroll indicator */}
-          <motion.div
-            className="absolute bottom-2 left-1/2 transform -translate-x-1/2 -ml-2"
+           <motion.div
+             className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 -ml-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}

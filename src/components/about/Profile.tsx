@@ -27,14 +27,12 @@ export const Profile: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="w-48 h-48 rounded-full p-1 bg-gradient-to-r from-primary-500 to-secondary-500">
-              <ImageWithShimmer
-                src="/images/avatar.jpg"
-                alt="Himanshu - Aspiring Data Scientist & ML Engineer"
-                className="w-full h-full object-cover rounded-full shadow-2xl"
-                priority
-              />
-            </div>
+            <ImageWithShimmer
+              src="/images/avatar.jpg"
+              alt="Himanshu - Aspiring Data Scientist & ML Engineer"
+              className="w-48 h-48 object-cover rounded-full shadow-2xl"
+              priority
+            />
           </motion.div>
         </motion.div>
 
@@ -48,7 +46,16 @@ export const Profile: React.FC = () => {
           {/* Name */}
           <h1 className="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white">
             Hi, I'm{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
+            <span 
+              className="text-transparent bg-clip-text"
+              style={{
+                background: 'linear-gradient(90deg, hsla(212, 93%, 49%, 1) 0%, hsla(210, 100%, 30%, 1) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                MozBackgroundClip: 'text',
+                filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#0974F1", endColorstr="#003A7A", GradientType=1)'
+              }}
+            >
               Himanshu Kishor Salunke
             </span>
           </h1>

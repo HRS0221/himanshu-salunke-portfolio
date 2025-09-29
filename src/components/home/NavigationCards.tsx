@@ -45,7 +45,7 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
       {/* Content */}
       <div className="relative z-10">
         {/* Icon */}
-        <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
           {icon}
         </div>
 
@@ -62,7 +62,7 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
         {/* Stats */}
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary-600 dark:text-primary-500">
+            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {stats.primary.value}
             </div>
             <div className="text-sm text-neutral-500 dark:text-neutral-400">
@@ -70,7 +70,7 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
             </div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-500">
+            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {stats.secondary.value}
             </div>
             <div className="text-sm text-neutral-500 dark:text-neutral-400">
@@ -94,7 +94,7 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
         {/* CTA Button */}
         <Link to={href}>
           <motion.div
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -105,7 +105,7 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-primary-100/30 to-transparent dark:from-primary-800/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-blue-100/30 to-transparent dark:from-blue-800/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </motion.div>
   )
 }
@@ -124,7 +124,7 @@ export const NavigationCards: React.FC = () => {
         title="Explore My Work"
         description="Discover my portfolio of innovative AI/ML projects, data science solutions, and full-stack applications that solve real-world problems."
         icon={
-          <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-8 h-8 text-blue-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
           </svg>
         }
@@ -148,7 +148,7 @@ export const NavigationCards: React.FC = () => {
         title="Get to Know Me"
         description="Learn about my journey, achievements, and the passion that drives me to create innovative solutions in the world of technology."
         icon={
-          <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-8 h-8 text-blue-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
         }
@@ -172,7 +172,7 @@ export const NavigationCards: React.FC = () => {
         title="Technical Expertise"
         description="Dive deep into my technical skills, GitHub activity, and the technologies I use to build cutting-edge solutions."
         icon={
-          <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-8 h-8 text-blue-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
           </svg>
         }
@@ -196,7 +196,7 @@ export const NavigationCards: React.FC = () => {
         title="Read My Articles"
         description="Explore my thoughts on technology, machine learning insights, and practical tutorials that help others grow in their tech journey."
         icon={
-          <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-8 h-8 text-blue-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
         }

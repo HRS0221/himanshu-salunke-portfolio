@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = memo(({
   const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
   
   const variantClasses = {
-    primary: 'bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-md dark:bg-primary-500 dark:hover:bg-primary-400 dark:text-white font-semibold',
+    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm hover:shadow-md dark:bg-blue-500 dark:hover:bg-blue-700 dark:text-white font-semibold',
     secondary: 'bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500 shadow-sm hover:shadow-md dark:bg-secondary-600 dark:hover:bg-secondary-700 dark:text-white',
     outline: 'border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white focus:ring-primary-500 dark:text-white dark:border-primary-300 dark:hover:bg-primary-500 dark:hover:text-white font-semibold drop-shadow-lg shadow-lg',
     ghost: 'text-primary-700 hover:bg-primary-100 dark:hover:bg-primary-900 focus:ring-primary-500 dark:text-primary-300',

@@ -69,7 +69,7 @@ export const StatsSection: React.FC = () => {
             whileHover={{ y: -5, scale: 1.02 }}
           >
             {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
             
             {/* Content */}
             <div className="relative z-10 text-center">
@@ -82,7 +82,7 @@ export const StatsSection: React.FC = () => {
               <StatsCounter
                 value={stat.value}
                 suffix={stat.suffix}
-                className="mb-3 text-3xl font-bold text-primary-600 dark:text-primary-400"
+                className="mb-3 text-3xl font-bold text-blue-600 dark:text-blue-400"
               />
               
               {/* Label */}

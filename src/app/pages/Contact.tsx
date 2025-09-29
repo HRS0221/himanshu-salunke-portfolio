@@ -25,7 +25,16 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4">
-              <span className="bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+              <span 
+                className="bg-clip-text text-transparent"
+                style={{
+                  background: 'linear-gradient(90deg, hsla(212, 93%, 49%, 1) 0%, hsla(210, 100%, 30%, 1) 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#0974F1", endColorstr="#003A7A", GradientType=1)'
+                }}
+              >
                 Let's Collaborate
               </span>
             </h1>

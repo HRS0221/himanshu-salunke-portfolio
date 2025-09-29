@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
               </svg>
             </motion.div>
             <div className="block">
-              <span className="bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent text-lg sm:text-xl font-bold drop-shadow-sm">
+              <span className="text-lg sm:text-xl font-bold drop-shadow-sm text-blue-600 dark:text-blue-300">
                 Himanshu
               </span>
               <div className="text-xs text-neutral-500 dark:text-neutral-400 -mt-1 drop-shadow-sm">
