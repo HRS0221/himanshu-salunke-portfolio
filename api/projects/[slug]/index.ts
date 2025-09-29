@@ -3,6 +3,21 @@ import { readdirSync, readFileSync } from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 
+interface Project {
+  id: string
+  slug: string
+  title: string
+  summary: string
+  category: string
+  coverImage: string
+  date: string
+  techStack: string[]
+  featured: boolean
+  status: string
+  content: string
+  readingTime: number
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const slug = req.query.slug as string
@@ -24,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         slug: frontmatter.id,
         content,
         readingTime: Math.ceil(content.split(' ').length / 200)
-      }
+      } as Project
     })
     
     // Find project by slug

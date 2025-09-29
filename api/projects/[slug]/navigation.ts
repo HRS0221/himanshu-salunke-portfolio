@@ -3,6 +3,21 @@ import { readdirSync, readFileSync } from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 
+interface Project {
+  id: string
+  slug: string
+  title: string
+  summary: string
+  category: string
+  coverImage: string
+  date: string
+  techStack: string[]
+  featured: boolean
+  status: string
+  content: string
+  readingTime: number
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const slug = req.query.slug as string
@@ -24,11 +39,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         slug: frontmatter.id,
         content,
         readingTime: Math.ceil(content.split(' ').length / 200)
-      }
+      } as Project
     })
     
     // Sort projects by date
-    const sortedProjects = projects.sort((a: any, b: any) => {
+    const sortedProjects = projects.sort((a, b) => {
       const dateA = new Date(a.date || '2024-01-01')
       const dateB = new Date(b.date || '2024-01-01')
       return dateB.getTime() - dateA.getTime()
