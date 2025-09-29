@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Tooltip } from '../ui/Tooltip'
 
 const socialLinks = [
   {
@@ -85,18 +86,19 @@ export const Footer: React.FC = () => {
           {/* Social Media Links */}
           <div className="mt-8 flex justify-center space-x-6">
             {socialLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-primary-600 dark:text-neutral-400 dark:hover:text-primary-400 transition-colors duration-200"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={`Visit ${link.name} profile`}
-              >
-                {link.icon}
-              </motion.a>
+              <Tooltip key={link.name} content={link.name} position="top">
+                <motion.a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-600 hover:text-primary-600 dark:text-neutral-400 dark:hover:text-primary-400 transition-colors duration-200"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={`Visit ${link.name} profile`}
+                >
+                  {link.icon}
+                </motion.a>
+              </Tooltip>
             ))}
           </div>
         </motion.div>
