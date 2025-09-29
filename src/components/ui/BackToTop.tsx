@@ -17,6 +17,9 @@ export const BackToTop: React.FC = () => {
     const docHeight = document.documentElement.scrollHeight - window.innerHeight
     const progress = (scrollTop / docHeight) * 100
     setScrollProgress(Math.min(progress, 100))
+    
+    // Debug logging
+    console.log('Scroll position:', scrollTop, 'Progress:', Math.min(progress, 100), 'Visible:', window.pageYOffset > 300)
   }
 
 
@@ -50,12 +53,13 @@ export const BackToTop: React.FC = () => {
 
   return (
     <>
-      {isVisible && (
+      {(isVisible || true) && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 group relative"
+          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] w-12 h-12 md:w-14 md:h-14 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 group relative"
           aria-label="Back to top"
           title={`Scroll to top (${Math.round(scrollProgress)}% scrolled)`}
+          style={{ backgroundColor: 'red' }}
         >
           {/* Circular Progress Bar */}
           <svg
