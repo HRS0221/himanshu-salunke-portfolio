@@ -65,8 +65,8 @@ const fetchGitHubStats = async (username: string): Promise<GitHubStats> => {
   try {
     console.log('🔍 Fetching GitHub stats for:', username)
     
-    // Use our server-side API proxy to avoid CORS and rate limiting issues
-    const response = await fetch(`${API_BASE_URL}/api/social-stats/github?username=${encodeURIComponent(username)}`)
+    // Use our consolidated social-stats API
+    const response = await fetch(`${API_BASE_URL}/api/social-stats?platform=github&username=${encodeURIComponent(username)}`)
 
     if (!response.ok) {
       throw new Error(`Failed to fetch GitHub data: ${response.status}`)
@@ -106,8 +106,8 @@ const fetchLeetCodeStats = async (username: string): Promise<LeetCodeStats> => {
   try {
     console.log('🔍 Fetching LeetCode stats for:', username)
     
-    // Use our server-side API proxy to avoid CORS issues
-    const response = await fetch(`${API_BASE_URL}/api/social-stats/leetcode?username=${encodeURIComponent(username)}`)
+    // Use our consolidated social-stats API
+    const response = await fetch(`${API_BASE_URL}/api/social-stats?platform=leetcode&username=${encodeURIComponent(username)}`)
 
     if (!response.ok) {
       throw new Error(`Failed to fetch LeetCode data: ${response.status}`)
@@ -147,8 +147,8 @@ const fetchCodeChefStats = async (username: string): Promise<CodeChefStats> => {
   try {
     console.log('🔍 Fetching CodeChef stats for:', username)
     
-    // Use our server-side API proxy to avoid CORS issues
-    const response = await fetch(`${API_BASE_URL}/api/social-stats/codechef?username=${encodeURIComponent(username)}`)
+    // Use our consolidated social-stats API
+    const response = await fetch(`${API_BASE_URL}/api/social-stats?platform=codechef&username=${encodeURIComponent(username)}`)
 
     if (!response.ok) {
       throw new Error(`Failed to fetch CodeChef data: ${response.status}`)
@@ -209,8 +209,8 @@ const fetchTwitterStats = async (username: string): Promise<TwitterStats> => {
   try {
     console.log('🔍 Fetching Twitter stats for:', username)
     
-    // Use our server-side API proxy to avoid CORS issues
-    const response = await fetch(`${API_BASE_URL}/api/social-stats/twitter?username=${encodeURIComponent(username)}`)
+    // Use our consolidated social-stats API
+    const response = await fetch(`${API_BASE_URL}/api/social-stats?platform=twitter&username=${encodeURIComponent(username)}`)
 
     if (!response.ok) {
       throw new Error(`Failed to fetch Twitter data: ${response.status}`)
