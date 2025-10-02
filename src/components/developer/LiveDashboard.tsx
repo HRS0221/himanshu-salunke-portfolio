@@ -35,7 +35,8 @@ const LiveDashboard: React.FC = () => {
         
         // Use our GitHub proxy to avoid CORS and rate limiting issues
         console.log('Fetching GitHub user info...')
-        const userResponse = await fetch(`http://localhost:5000/api/social-stats/github?username=HimanshuSalunke`)
+        const API_BASE_URL = import.meta.env.DEV ? 'http://localhost:5000' : ''
+        const userResponse = await fetch(`${API_BASE_URL}/api/social-stats/github?username=HimanshuSalunke`)
         if (!userResponse.ok) {
           throw new Error(`User not found: ${userResponse.status}`)
         }
