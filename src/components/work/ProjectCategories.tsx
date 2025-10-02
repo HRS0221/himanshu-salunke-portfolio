@@ -82,11 +82,11 @@ const ProjectCategories: React.FC<ProjectCategoriesProps> = ({ projects }) => {
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
         {categories.map((category, index) => (
           <motion.div
             key={category.name}
-            className={`group relative rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-xl transition-all duration-300 cursor-pointer ${
+            className={`group relative rounded-lg p-3 sm:p-4 hover:shadow-xl transition-all duration-300 cursor-pointer ${
               category.featured 
                 ? 'bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 border-2 border-primary-200 dark:border-primary-800' 
                 : 'bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-700 dark:to-neutral-800 border border-neutral-200 dark:border-neutral-600'
@@ -94,61 +94,56 @@ const ProjectCategories: React.FC<ProjectCategoriesProps> = ({ projects }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ y: -4, scale: 1.02 }}
+            whileHover={{ y: -2, scale: 1.01 }}
           >
 
             {/* Background Gradient */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-xl`} />
+            <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-lg`} />
             
             {/* Content */}
             <div className="relative z-10">
               {/* Header */}
-              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <div className="text-2xl sm:text-3xl">{category.icon}</div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white">
-                    {category.name}
-                  </h3>
-                  <div className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
-                    {category.projectCount} projects
-                  </div>
-                </div>
+              <div className="text-center mb-2 sm:mb-3">
+                <div className="text-2xl sm:text-3xl mb-1">{category.icon}</div>
+                <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white leading-tight">
+                  {category.name}
+                </h3>
               </div>
 
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-3 sm:mb-4 leading-relaxed">
-                {category.description}
-              </p>
-
-               {/* Technologies */}
-               <div className="mb-3 sm:mb-4">
-                 <div className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1 sm:mb-2 uppercase tracking-wide">
-                   Key Technologies
-                 </div>
-                 <div className="flex flex-wrap gap-1">
-                   {category.technologies.map((tech, techIndex) => (
-                     <motion.span
-                       key={tech}
-                       className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-neutral-200 dark:bg-neutral-600 text-neutral-700 dark:text-neutral-300 text-xs rounded-full"
-                       initial={{ opacity: 0, scale: 0 }}
-                       animate={{ opacity: 1, scale: 1 }}
-                       transition={{ delay: 0.2 + index * 0.1 + techIndex * 0.05 }}
-                     >
-                       {tech}
-                     </motion.span>
-                   ))}
-                 </div>
-               </div>
-
-              {/* Project Count */}
-              <div className="flex items-center justify-between">
-                <div className="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400">
+              {/* Project Count - Prominent Display */}
+              <div className="text-center mb-2 sm:mb-3">
+                <div className="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400">
                   {category.projectCount}
                 </div>
                 <div className="text-xs text-neutral-500 dark:text-neutral-400">
                   {category.projectCount === 1 ? 'project' : 'projects'}
                 </div>
               </div>
+
+              {/* Description - Shortened */}
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 mb-2 sm:mb-3 leading-tight text-center">
+                {category.description.split(',')[0]}
+              </p>
+
+               {/* Technologies - Show only top 3 */}
+               <div className="flex flex-wrap gap-1 justify-center">
+                 {category.technologies.slice(0, 3).map((tech, techIndex) => (
+                   <motion.span
+                     key={tech}
+                     className="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-600 text-neutral-700 dark:text-neutral-300 text-xs rounded-full"
+                     initial={{ opacity: 0, scale: 0 }}
+                     animate={{ opacity: 1, scale: 1 }}
+                     transition={{ delay: 0.2 + index * 0.1 + techIndex * 0.05 }}
+                   >
+                     {tech}
+                   </motion.span>
+                 ))}
+                 {category.technologies.length > 3 && (
+                   <span className="px-1.5 py-0.5 bg-neutral-300 dark:bg-neutral-500 text-neutral-600 dark:text-neutral-400 text-xs rounded-full">
+                     +{category.technologies.length - 3}
+                   </span>
+                 )}
+               </div>
             </div>
           </motion.div>
         ))}
