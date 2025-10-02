@@ -40,7 +40,7 @@ const Work: React.FC = () => {
   const [selectedStatus, setSelectedStatus] = useState('All')
   const [sortBy, setSortBy] = useState<'date' | 'title' | 'featured' | 'readTime'>('date')
 
-  const categories = ['All', 'Computer Vision', 'Deep Learning', 'Data Analysis', 'Data Engineering']
+  const categories = ['All', 'Machine Learning', 'Computer Vision', 'Deep Learning', 'Data Analysis', 'Data Engineering']
   const statuses = ['All', 'Completed', 'In Progress', 'Planning']
 
   const sortOptions = [

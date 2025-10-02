@@ -18,6 +18,15 @@ interface ProjectCategoriesProps {
 const ProjectCategories: React.FC<ProjectCategoriesProps> = ({ projects }) => {
   const categories: Category[] = [
     {
+      name: 'Machine Learning',
+      description: 'AI-powered prediction models, ensemble methods, and intelligent analytics',
+      icon: '🤖',
+      color: 'from-red-500 to-red-600',
+      projectCount: projects.filter(p => p.category === 'Machine Learning').length,
+      technologies: ['LSTM', 'XGBoost', 'Prophet', 'Ensemble Methods', 'Time Series'],
+      featured: true
+    },
+    {
       name: 'Computer Vision',
       description: 'Image processing, object detection, and visual recognition systems',
       icon: '👁️',
@@ -73,7 +82,7 @@ const ProjectCategories: React.FC<ProjectCategoriesProps> = ({ projects }) => {
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
         {categories.map((category, index) => (
           <motion.div
             key={category.name}
