@@ -1,6 +1,6 @@
 # 🚀 Himanshu's Portfolio Website
 
-A modern, responsive portfolio website showcasing AI/ML projects, technical expertise, and professional journey. Built with React, TypeScript, and cutting-edge web technologies. Updated with latest design improvements and optimizations.
+A modern, responsive portfolio website showcasing AI/ML projects, technical expertise, and professional journey. Built with React, TypeScript, and cutting-edge web technologies. Features comprehensive project management, real-time social stats integration, and optimized Vercel deployment.
 
 ![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
 ![React](https://img.shields.io/badge/React-18.3.1-blue)
@@ -26,9 +26,11 @@ A modern, responsive portfolio website showcasing AI/ML projects, technical expe
 ### 🔍 **Advanced Functionality**
 - **Global Search**: Real-time search across projects, articles, and content
 - **Dynamic OG Images**: Auto-generated social media previews using Vercel OG
-- **Analytics Integration**: Comprehensive user behavior tracking
+- **Real-time Social Stats**: Live GitHub, LeetCode, CodeChef, and Twitter metrics
+- **Analytics Integration**: Comprehensive user behavior tracking with Vercel Analytics
 - **Contact Form**: Slack-integrated contact system with spam protection
-- **Newsletter Signup**: Email subscription management
+- **Project Categories**: Auto-updating project counts across different domains
+- **Responsive Image Galleries**: Optimized project showcases with lazy loading
 
 ### 🛠 **Technical Excellence**
 - **TypeScript**: Full type safety across the entire codebase
@@ -54,12 +56,12 @@ React 18.3.1 + TypeScript 5.8.3
 
 ### **Backend & Deployment**
 ```
-Vercel Serverless Functions
+Vercel Serverless Functions (Optimized for Hobby Plan)
 ├── Contact Form API (/api/submit-form)
 ├── Projects API (/api/projects/*)
+├── Consolidated Social Stats API (/api/social-stats)
 ├── OG Image Generation (/api/og/*)
-├── Newsletter API (/api/newsletter)
-└── Analytics Integration
+└── Analytics Integration (Vercel Analytics + Speed Insights)
 ```
 
 ### **Development Tools**
@@ -81,10 +83,11 @@ himanshu-portfolio-website/
 ├── 📁 api/                          # Vercel Serverless Functions
 │   ├── 📁 og/                       # Open Graph Image Generation
 │   ├── 📁 projects/                # Projects API Endpoints
-│   ├── 📁 submit-form/              # Contact Form Handler
-│   └── 📁 newsletter/               # Newsletter Subscription
+│   ├── 📁 social-stats/             # Consolidated Social Stats API
+│   └── 📁 submit-form/              # Contact Form Handler
 ├── 📁 public/                       # Static Assets
-│   ├── 📁 images/                   # Project & Article Images
+│   ├── 📁 images/                   # Organized Project Images
+│   │   └── 📁 projects/             # Project-specific image folders
 │   ├── 📄 manifest.json             # PWA Manifest
 │   ├── 📄 robots.txt                # SEO Configuration
 │   └── 📄 sw.js                     # Service Worker
@@ -99,6 +102,7 @@ himanshu-portfolio-website/
 │   │   ├── 📁 work/                 # Work Page Components
 │   │   ├── 📁 articles/             # Articles Components
 │   │   ├── 📁 contact/              # Contact Components
+│   │   ├── 📁 developer/             # Developer Page Components
 │   │   └── 📁 seo/                 # SEO Components
 │   ├── 📁 data/                     # Content Data
 │   │   ├── 📁 projects/             # Project MDX Files
@@ -112,6 +116,38 @@ himanshu-portfolio-website/
 ├── 📄 tailwind.config.cjs           # Tailwind Configuration
 └── 📄 package.json                  # Dependencies & Scripts
 ```
+
+## 🆕 Recent Updates & Improvements
+
+### **Latest Enhancements (December 2024)**
+
+#### **🔧 Technical Optimizations**
+- **API Consolidation**: Reduced Vercel serverless functions from 12+ to stay within Hobby plan limits
+- **Social Stats Integration**: Consolidated GitHub, LeetCode, CodeChef, and Twitter APIs into single endpoint
+- **Image Organization**: Restructured all project images into organized, project-specific folders
+- **File Naming**: Fixed web compatibility issues by replacing spaces with hyphens in filenames
+
+#### **🎨 UI/UX Improvements**
+- **Developer Page Enhancement**: Added comprehensive website architecture section
+- **Project Categories**: Auto-updating project counts across different domains (Machine Learning, Computer Vision, etc.)
+- **Responsive Design**: Enhanced mobile-first approach with proper icon scaling
+- **Image Galleries**: Added responsive image galleries for projects with multiple screenshots
+
+#### **📱 Mobile Optimization**
+- **Icon Responsiveness**: Fixed fixed-size icons to use responsive Tailwind classes
+- **Touch Interactions**: Improved mobile touch targets and interactions
+- **Performance**: Optimized bundle sizes and loading times for mobile devices
+
+#### **🛠 Development Workflow**
+- **TypeScript Fixes**: Resolved all import errors and type issues
+- **Code Quality**: Enhanced error handling and safety checks
+- **Testing**: Improved component testing and error boundaries
+
+### **📊 Current Project Portfolio**
+- **8 Active Projects**: Including IntelliStock Pro AI-Powered Stock Prediction Analytics
+- **5 Categories**: Machine Learning, Computer Vision, Deep Learning, Data Analysis, Data Engineering
+- **Real-time Stats**: Live GitHub, LeetCode, and social media metrics
+- **Responsive Galleries**: Optimized project showcases with lazy loading
 
 ## 🚀 Quick Start
 
@@ -226,11 +262,12 @@ featured: true
 
 ### **Environment Variables**
 ```bash
-# Contact Form
-VITE_SLACK_WEBHOOK_URL=your_slack_webhook_url
+# Contact Form (Required for contact functionality)
+SLACK_WEBHOOK_URL=your_slack_webhook_url
 
-# Analytics (Optional)
-VITE_GA_TRACKING_ID=your_google_analytics_id
+# Social Stats APIs (Optional - uses fallback data if not provided)
+GITHUB_TOKEN=your_github_token
+TWITTER_BEARER_TOKEN=your_twitter_bearer_token
 
 # Site Configuration
 VITE_SITE_URL=https://himanshu-salunke.vercel.app
@@ -261,7 +298,8 @@ export const SITE_CONFIG = {
 
 2. **Environment Variables**
    - Add environment variables in Vercel dashboard
-   - Set `VITE_SLACK_WEBHOOK_URL` for contact form
+   - Set `SLACK_WEBHOOK_URL` for contact form
+   - Optionally add `GITHUB_TOKEN` and `TWITTER_BEARER_TOKEN` for enhanced social stats
 
 3. **Deploy**
    - Push to main branch triggers automatic deployment
@@ -355,4 +393,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ⭐ **Star this repository if you found it helpful!**
 
 🔗 **Live Demo**: [https://himanshu-salunke.vercel.app](https://himanshu-salunke.vercel.app)
-<!-- Updated: 09/27/2025 15:27:26 -->
+<!-- Updated: December 2024 -->

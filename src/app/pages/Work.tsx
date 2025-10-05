@@ -245,7 +245,7 @@ const Work: React.FC = () => {
                   {/* Metrics */}
                   <div className="mb-3 sm:mb-4">
                     <div className="grid grid-cols-2 gap-2">
-                      {project.metrics.slice(0, 2).map((metric, idx) => (
+                      {(project.metrics || []).slice(0, 2).map((metric, idx) => (
                         <div key={idx} className="text-center">
                           <div className="text-base sm:text-lg font-bold text-primary-600 dark:text-primary-500">
                             {metric.value}

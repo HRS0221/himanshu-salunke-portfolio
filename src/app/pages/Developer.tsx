@@ -12,6 +12,7 @@ import { useUnifiedStats } from '../../hooks/useUnifiedStats'
 import { TechStack } from '../../components/developer/TechStack'
 import LiveDashboard from '../../components/developer/LiveDashboard'
 import CodeQualityMetrics from '../../components/developer/CodeQualityMetrics'
+import WebsiteInfo from '../../components/developer/WebsiteInfo'
 
 interface SocialPlatform {
   name: string
@@ -187,9 +188,19 @@ const Developer: React.FC = () => {
             className="mt-8 sm:mt-12 lg:mt-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
           >
             <TechStack />
+          </motion.div>
+
+          {/* Website Architecture Section */}
+          <motion.div
+            className="mt-8 sm:mt-12 lg:mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <WebsiteInfo />
           </motion.div>
 
           {/* Social Platforms */}
