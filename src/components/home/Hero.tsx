@@ -74,7 +74,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               <ImageWithShimmer
-                src="/images/avatar.png"
+                src="/images/avatar.jpg"
                 alt="Himanshu Salunke - Aspiring Data Scientist"
                 className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-cover rounded-full shadow-2xl"
                 priority
