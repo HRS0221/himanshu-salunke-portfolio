@@ -28,7 +28,7 @@ export const Profile: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <ImageWithShimmer
-              src="/images/avatar.png"
+              src="/images/avatar.jpg"
               alt="Himanshu - Aspiring Data Scientist & ML Engineer"
               className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover rounded-full shadow-2xl"
               priority
