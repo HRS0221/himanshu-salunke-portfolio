@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/Button'
+import { ImageWithShimmer } from '../ui/ImageWithShimmer'
 
 // Typewriter effect component
 const TypewriterText: React.FC<{ text: string; speed?: number }> = ({ text, speed = 100 }) => {
@@ -60,6 +61,27 @@ export const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+          {/* Avatar */}
+          <motion.div
+            className="relative mb-6 sm:mb-8 flex justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ImageWithShimmer
+                src="/images/avatar.png"
+                alt="Himanshu Salunke - Aspiring Data Scientist"
+                className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-cover rounded-full shadow-2xl"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+
           {/* Greeting */}
           <p className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-blue-600 dark:text-blue-200">
             Hey, I'm
