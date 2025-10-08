@@ -223,7 +223,8 @@ app.get('/api/projects/:slug/related', (req, res) => {
       .filter(p => p.id !== slug)
       .filter(p => 
         p.category === currentProject.category || 
-        p.techStack.some(tech => currentProject.techStack.includes(tech))
+        (p.techStack && currentProject.techStack && 
+         p.techStack.some(tech => currentProject.techStack.includes(tech)))
       )
       .slice(0, limit);
     

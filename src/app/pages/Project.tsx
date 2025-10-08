@@ -7,6 +7,7 @@ import { Button } from '../../components/ui/Button'
 import { ImageWithShimmer } from '../../components/ui/ImageWithShimmer'
 import { TableOfContents, MobileTableOfContents } from '../../components/ui/TableOfContents'
 import { ReadingProgress } from '../../components/ui/ReadingProgress'
+import { ProjectGallery } from '../../components/ui/ProjectGallery'
 import { SocialShare } from '../../components/ui/SocialShare'
 import { MDXContentRenderer } from '../../components/mdx/MDXContentRenderer'
 import { TechBadge } from '../../components/ui/TechBadge'
@@ -412,19 +413,36 @@ const Project: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Cover Image */}
-            <motion.div
-              className="mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <ImageWithShimmer
-                src={project.coverImage}
-                alt={project.title}
-                className="h-auto object-contain rounded-2xl shadow-2xl bg-neutral-100 dark:bg-neutral-800"
-              />
-            </motion.div>
+            {/* Cover Image - Only show if no gallery images */}
+            {(!project.images || project.images.length === 0) && (
+              <motion.div
+                className="mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <ImageWithShimmer
+                  src={project.coverImage}
+                  alt={project.title}
+                  className="h-auto object-contain rounded-2xl shadow-2xl bg-neutral-100 dark:bg-neutral-800"
+                />
+              </motion.div>
+            )}
+
+            {/* Project Images Gallery */}
+            {project.images && project.images.length > 0 && (
+              <motion.div
+                className="mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <ProjectGallery 
+                  images={project.images} 
+                  title={project.title}
+                />
+              </motion.div>
+            )}
           </div>
         </section>
 
